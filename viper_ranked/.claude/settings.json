@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"c:\\\\Users\\\\Admin\\\\Documents\\\\FIVEMOK\\\\viper_ranked\\\\server\" \"c:\\\\Users\\\\Admin\\\\Documents\\\\FIVEMOK\\\\viper_ranked\\\\client\" \"c:\\\\Users\\\\Admin\\\\Documents\\\\FIVEMOK\\\\viper_ranked\\\\html\" \"c:\\\\Users\\\\Admin\\\\Documents\\\\FIVEMOK\\\\viper_ranked\\\\sql\")",
+      "Bash(grep -iE \"\\\\.\\(png|jpg|jpeg|svg|webp|gif\\)$\")",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Admin\\\\Desktop\" | Where-Object { $_.Name -match '\\\\.\\(png|jpg|jpeg|svg|webp\\)$' } | Select-Object Name, LastWriteTime | Sort-Object LastWriteTime -Descending)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Admin\\Documents\\FIVEMOK\\viper_ranked"
+    ]
+  }
+}

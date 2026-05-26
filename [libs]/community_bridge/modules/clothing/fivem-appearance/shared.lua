@@ -1,0 +1,43 @@
+
+
+-- {
+--     male = {
+--         name = "Short Sleeve",
+--         outfitData = {
+--             ["pants"] = {item = 133, texture = 0}, -- Pants
+--             ["arms"] = {item = 31, texture = 0}, -- Arms
+--             ["t-shirt"] = {item = 35, texture = 0}, -- T Shirt
+--             ["vest"] = {item = 34, texture = 0}, -- Body Vest
+--             ["torso2"] = {item = 48, texture = 0}, -- Jacket
+--             ["shoes"] = {item = 52, texture = 0}, -- Shoes
+--             ["accessory"] = {item = 0, texture = 0}, -- Neck Accessory
+--             ["bag"] = {item = 0, texture = 0}, -- Bag
+--             ["hat"] = {item = 0, texture = 0}, -- Hat
+--             ["glass"] = {item = 0, texture = 0}, -- Glasses
+--             ["mask"] = {item = 0, texture = 0} -- Mask
+--         },
+--         grades = {0, 1, 2, 3, 4},
+--     },
+--     female = {
+--         name = "Short Sleeve",
+--         outfitData = {
+--             ["pants"] = {item = 133, texture = 0}, -- Pants
+--             ["arms"] = {item = 31, texture = 0}, -- Arms
+--             ["t-shirt"] = {item = 35, texture = 0}, -- T Shirt
+--             ["vest"] = {item = 34, texture = 0}, -- Body Vest
+--             ["torso2"] = {item = 48, texture = 0}, -- Jacket
+--             ["shoes"] = {item = 52, texture = 0}, -- Shoes
+--             ["accessory"] = {item = 0, texture = 0}, -- Neck Accessory
+--             ["bag"] = {item = 0, texture = 0}, -- Bag
+--             ["hat"] = {item = 0, texture = 0}, -- Hat
+--             ["glass"] = {item = 0, texture = 0}, -- Glasses
+--             ["mask"] = {item = 0, texture = 0} -- Mask
+--         },
+--     }
+-- }
+
+-- function Clothing.ConvertData(data)
+--     return data 
+-- end
+
+-- This still needed?

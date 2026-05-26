@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "Je hebt niet genoeg geld om dit item te kopen",
+		"Input": "Hoeveelheid invoer",
+		"PurchaseAmount": "Aankoop hoeveelheid",
+		"PurchasedItem": "Je hebt gekocht %s %s",
+		"PurchaseFailed": "Aankoop mislukt, inventaris vol",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "Aankoop bevestigen",
+		"AreYouSure": "Weet je zeker dat je een %s wilt kopen",
+		"PayByCash": "Betaal %s contant",
+		"PayByCard": "Betaal %s met kaart",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Winkelnaam"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "Melding"
+	},
+	"clipboard": {
+		"copy": "Gekopieerd naar klembord"
+	},
+	"input": {
+		"submit_text": "Indienen"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Je hebt geen object gedefinieerd om te plaatsen",
+		"cant_place_here": "Je kunt dit object hier niet plaatsen",
+		"place_object_place": "[E] Plaatsen  \n",
+		"place_object_cancel": "[X] Annuleren  \n",
+		"place_object_scroll_up": "[Scroll Up] Rechtsom draaien  \n",
+		"place_object_scroll_down": "[Scroll Down] Linksom draaien  \n",
+		"object_place": "[%s] Plaatsen  \n",
+		"object_cancel": "[%s] Annuleren  \n",
+		"object_scroll_up": "[%s] Rechtsom draaien  \n",
+		"object_scroll_down": "[%s] Linksom draaien  \n",
+		"rotate_left": "Linksom draaien",
+		"rotate_right": "Rechtsom draaien",
+		"rotate_clockwise": "[%s] Draai met de klok mee  \n",
+		"rotate_counter_clockwise": "[%s] Draai tegen de klok in  \n",
+		"depth_modifier": "[%s] Diepte controle modifier  \n"
+	},
+	"target": {
+		"interact": "[E] Interactie",
+		"title": "Opties",
+		"description": "Geen beschrijving"
+	}
+}

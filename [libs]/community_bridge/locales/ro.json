@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "Nu ai destui bani să cumperi acest articol",
+		"Input": "Introducere cantitate",
+		"PurchaseAmount": "Cantitate de cumpărare",
+		"PurchasedItem": "Ai cumpărat %s %s",
+		"PurchaseFailed": "Achiziție eșuată, inventar plin",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "Confirmă cumpărarea",
+		"AreYouSure": "Ești sigur că vrei să cumperi un %s",
+		"PayByCash": "Plătește %s cu numerar",
+		"PayByCard": "Plătește %s cu cardul",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Numele magazinului"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "Notificare"
+	},
+	"clipboard": {
+		"copy": "Copiat în clipboard"
+	},
+	"input": {
+		"submit_text": "Trimit"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Nu ai definit niciun obiect de plasat",
+		"cant_place_here": "Nu poți plasa acest obiect aici",
+		"place_object_place": "[E] Plasează  \n",
+		"place_object_cancel": "[X] Anulează  \n",
+		"place_object_scroll_up": "[Scroll Up] Rotește la dreapta  \n",
+		"place_object_scroll_down": "[Scroll Down] Rotește la stânga  \n",
+		"object_place": "[%s] Plasează  \n",
+		"object_cancel": "[%s] Anulează  \n",
+		"object_scroll_up": "[%s] Rotește la dreapta  \n",
+		"object_scroll_down": "[%s] Rotește la stânga  \n",
+		"rotate_left": "Rotește la stânga",
+		"rotate_right": "Rotește la dreapta",
+		"rotate_clockwise": "[%s] Rotește în sensul acelor de ceasornic  \n",
+		"rotate_counter_clockwise": "[%s] Rotește în sens invers acelor de ceasornic  \n",
+		"depth_modifier": "[%s] Modificator de control al adâncimii  \n"
+	},
+	"target": {
+		"interact": "[E] Interacționează",
+		"title": "Opțiuni",
+		"description": "Fără descriere"
+	}
+}

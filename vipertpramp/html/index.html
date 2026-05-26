@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP Ramps</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Panel Admin -->
+<div id="admin-panel" class="panel hidden">
+    <div class="panel-header">
+        <span class="panel-title">TP RAMPS <span class="subtitle">ADMIN</span></span>
+        <button class="close-btn" onclick="closeAdmin()">✕</button>
+    </div>
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('npcs', this)">PNJ RAMPS</button>
+        <button class="tab" onclick="switchTab('zones', this)">ZONES REVIVE</button>
+    </div>
+
+    <!-- Tab PNJ -->
+    <div id="tab-npcs" class="tab-content">
+        <div class="add-section">
+            <div class="input-row">
+                <input id="npc-name-input" type="text" placeholder="Nom (ex: Ramp 1)" maxlength="64">
+                <button class="btn-green" onclick="addNpc()">AJOUTER ICI</button>
+            </div>
+            <div class="type-toggle">
+                <button id="type-npc" class="type-btn active" onclick="setNpcType('npc')">PNJ</button>
+                <button id="type-marker" class="type-btn" onclick="setNpcType('marker')">MARQUEUR</button>
+            </div>
+        </div>
+        <div class="list-header">PNJ ACTIFS</div>
+        <div id="npc-list" class="item-list"></div>
+    </div>
+
+    <!-- Tab Zones -->
+    <div id="tab-zones" class="tab-content hidden">
+        <div class="add-section">
+            <div class="input-row">
+                <input id="zone-name-input" type="text" placeholder="Nom de la zone" maxlength="64">
+                <input id="zone-radius-input" type="number" placeholder="Rayon (m)" min="5" max="500" value="50">
+                <button class="btn-green" onclick="addZone()">AJOUTER ICI</button>
+            </div>
+        </div>
+        <div class="list-header">ZONES ACTIVES</div>
+        <div id="zone-list" class="item-list"></div>
+    </div>
+</div>
+
+<!-- Panel TP Select -->
+<div id="tp-select" class="overlay hidden">
+    <div class="tp-card">
+        <div class="tp-header">
+            <span>CHOISIR LA DESTINATION</span>
+            <button class="close-btn" onclick="closeTpSelect()">✕</button>
+        </div>
+        <div id="tp-npc-list" class="tp-list"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

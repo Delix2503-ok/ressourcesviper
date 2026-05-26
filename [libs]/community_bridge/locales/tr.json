@@ -1,0 +1,47 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "Bu öğeyi satın almak için yeterli paranız yok",
+		"Input": "Miktar girişi",
+		"PurchaseAmount": "Satın alma miktarı",
+		"PurchasedItem": "Satın aldınız %s %s",
+		"PurchaseFailed": "Satın alma başarısız, envanter dolu",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "Satın almayı onayla",
+		"AreYouSure": "Bir %s satın almak istediğinizden emin misiniz",
+		"PayByCash": "%s nakit ile öde",
+		"PayByCard": "%s kart ile öde",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Mağaza adı"
+	},	"Notifications": {
+		"PlaceholderTitle": "Bildirim"
+	},	"clipboard": {
+		"copy": "Panoya kopyalandı"
+	},
+	"input": {
+		"submit_text": "Gönder"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Yerleştirmek için herhangi bir nesne tanımlamadınız",
+		"cant_place_here": "Bu nesneyi buraya yerleştiremezsiniz",
+		"place_object_place": "[E] Yerleştir  \n",
+		"place_object_cancel": "[X] İptal  \n",
+		"place_object_scroll_up": "[Scroll Up] Sağa döndür  \n",
+		"place_object_scroll_down": "[Scroll Down] Sola döndür  \n",
+		"object_place": "[%s] Yerleştir  \n",
+		"object_cancel": "[%s] İptal  \n",
+		"object_scroll_up": "[%s] Sağa döndür  \n",
+		"object_scroll_down": "[%s] Sola döndür  \n",
+		"rotate_left": "Sola döndür",
+		"rotate_right": "Sağa döndür",
+		"rotate_clockwise": "[%s] Saat yönünde döndür  \n",
+		"rotate_counter_clockwise": "[%s] Saat yönünün tersine döndür  \n",
+		"depth_modifier": "[%s] Derinlik Kontrol Değiştirici  \n"
+	},
+	"target": {
+		"interact": "[E] Etkileşim",
+		"title": "Seçenekler",
+		"description": "Açıklama yok"
+	}
+}

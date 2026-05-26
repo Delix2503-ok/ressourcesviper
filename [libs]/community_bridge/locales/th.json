@@ -1,0 +1,47 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "คุณไม่มีเงินเพียงพอที่จะซื้อสิ่งนี้",
+		"Input": "ป้อนจำนวน",
+		"PurchaseAmount": "จำนวนที่ซื้อ",
+		"PurchasedItem": "คุณได้ซื้อ %s %s",
+		"PurchaseFailed": "การซื้อล้มเหลว คลังเต็ม",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "ยืนยันการซื้อ",
+		"AreYouSure": "คุณแน่ใจหรือว่าต้องการซื้อ %s",
+		"PayByCash": "จ่าย %s ด้วยเงินสด",
+		"PayByCard": "จ่าย %s ด้วยบัตร",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "ชื่อร้าน"
+	},	"Notifications": {
+		"PlaceholderTitle": "การแจ้งเตือน"
+	},	"clipboard": {
+		"copy": "คัดลอกไปยังคลิปบอร์ด"
+	},
+	"input": {
+		"submit_text": "ส่ง"
+	},
+	"placeable_object": {
+		"no_prop_defined": "คุณไม่ได้กำหนดวัตถุใดๆ เพื่อวาง",
+		"cant_place_here": "คุณไม่สามารถวางวัตถุนี้ที่นี่",
+		"place_object_place": "[E] วาง  \n",
+		"place_object_cancel": "[X] ยกเลิก  \n",
+		"place_object_scroll_up": "[Scroll Up] หมุนไปทางขวา  \n",
+		"place_object_scroll_down": "[Scroll Down] หมุนไปทางซ้าย  \n",
+		"object_place": "[%s] วาง  \n",
+		"object_cancel": "[%s] ยกเลิก  \n",
+		"object_scroll_up": "[%s] หมุนไปทางขวา  \n",
+		"object_scroll_down": "[%s] หมุนไปทางซ้าย  \n",
+		"rotate_left": "หมุนไปทางซ้าย",
+		"rotate_right": "หมุนไปทางขวา",
+		"rotate_clockwise": "[%s] หมุนตามเข็มนาฬิกา  \n",
+		"rotate_counter_clockwise": "[%s] หมุนทวนเข็มนาฬิกา  \n",
+		"depth_modifier": "[%s] ตัวปรับควบคุมความลึก  \n"
+	},
+	"target": {
+		"interact": "[E] โต้ตอบ",
+		"title": "ตัวเลือก",
+		"description": "ไม่มีคำอธิบาย"
+	}
+}

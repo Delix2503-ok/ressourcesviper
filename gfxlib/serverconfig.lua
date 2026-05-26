@@ -1,0 +1,3 @@
+ServerConfig = {
+    DiscordBotToken = "YOUR_DISCORD_BOT_TOKEN"
+}

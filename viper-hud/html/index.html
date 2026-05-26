@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ViperPVP HUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ======= HUD Sante / Armure ======= -->
+  <div id="hud" class="hud hidden">
+    <div class="hud-logo-wrap">
+      <div class="weapon-section invisible" id="weapon-section">
+        <img id="weapon-img" class="weapon-img" src="" alt="">
+      </div>
+      <div class="hud-center-col">
+        <img src="logo.png" class="hud-logo" alt="">
+        <span id="hud-player-id" class="hud-player-id"></span>
+      </div>
+      <div class="ammo-section invisible" id="ammo-section">
+        <div class="ammo-display">
+          <span class="ammo-main" id="ammo-clip">0</span>
+          <span class="ammo-sep">/</span>
+          <span class="ammo-reserve" id="ammo-total">0</span>
+        </div>
+        <div class="ammo-label">MUNITIONS</div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <span class="bar-icon health-icon">♥</span>
+      <div class="bar-track">
+        <div class="bar-fill health-fill" id="health-fill" style="width:100%"></div>
+        <span class="bar-label" id="health-label">100</span>
+      </div>
+    </div>
+    <div class="bar-row">
+      <span class="bar-icon armor-icon">⬡</span>
+      <div class="bar-track">
+        <div class="bar-fill armor-fill" id="armor-fill" style="width:0%"></div>
+        <span class="bar-label" id="armor-label">0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= BARRE SANTE (F3, rouge, 5s) ======= -->
+  <div id="health-prog" class="prog-box hidden">
+    <div class="prog-logo"><img src="logo.png" alt=""></div>
+    <div class="prog-title red-text">KIT DE SOIN</div>
+    <div class="prog-track">
+      <div class="prog-fill red-fill" id="health-fill-prog"></div>
+    </div>
+    <div class="prog-pct red-text" id="health-pct">0%</div>
+  </div>
+
+  <!-- ======= BARRE ARMURE (F4, verte, 3s) ======= -->
+  <div id="armor-prog" class="prog-box hidden">
+    <div class="prog-logo"><img src="logo.png" alt=""></div>
+    <div class="prog-title green-text">ÉQUIPEMENT ARMURE</div>
+    <div class="prog-track">
+      <div class="prog-fill green-fill" id="armor-fill-prog"></div>
+    </div>
+    <div class="prog-pct green-text" id="armor-pct">0%</div>
+  </div>
+
+  <!-- ======= BARRE SAFE (/safe, bleue, 10s) ======= -->
+  <div id="safe-prog" class="prog-box hidden">
+    <div class="prog-logo"><img src="logo.png" alt=""></div>
+    <div class="prog-title blue-text">ZONE DE SÉCURITÉ</div>
+    <div class="prog-track">
+      <div class="prog-fill blue-fill" id="safe-fill-prog"></div>
+    </div>
+    <div class="prog-pct blue-text" id="safe-pct">0%</div>
+    <div class="prog-hint">Ne bougez pas !</div>
+  </div>
+
+  <!-- ======= PANEL ADMIN ======= -->
+  <div id="admin-panel" class="admin-panel hidden">
+    <div class="admin-header">
+      <img src="logo.png" class="admin-logo" alt="ViperPVP">
+      <h1 class="admin-title">VIPER <span>ADMIN</span></h1>
+      <button class="close-btn" id="close-btn">✕</button>
+    </div>
+
+    <div class="admin-tabs">
+      <button class="atab active" data-tab="players">👥 Joueurs</button>
+      <button class="atab" data-tab="server">⚙ Serveur</button>
+      <button class="atab" data-tab="actions">⚡ Actions</button>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- TAB JOUEURS -->
+      <div id="tab-players" class="tab-pane active">
+        <div class="tab-toolbar">
+          <span class="tab-title">Joueurs en ligne</span>
+          <button class="refresh-btn" id="refresh-players">↺ Actualiser</button>
+        </div>
+        <div class="player-list" id="player-list">
+          <div class="empty-msg">Chargement...</div>
+        </div>
+      </div>
+
+      <!-- TAB SERVEUR -->
+      <div id="tab-server" class="tab-pane">
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-name">☀ Météo ensoleillée</span>
+            <span class="setting-desc">Forcer EXTRASUNNY en permanence</span>
+          </div>
+          <button class="toggle-btn on" id="toggle-weather" data-key="toggleWeather" data-state="true">ON</button>
+        </div>
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-name">🚗 Supprimer trafic & PNJ</span>
+            <span class="setting-desc">Densité véhicules et piétons à zéro</span>
+          </div>
+          <button class="toggle-btn on" id="toggle-traffic" data-key="toggleTraffic" data-state="true">ON</button>
+        </div>
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-name">🍖 Désactiver faim & soif</span>
+            <span class="setting-desc">Valeurs gelées à 100 pour tous</span>
+          </div>
+          <button class="toggle-btn on" id="toggle-hunger" data-key="toggleHunger" data-state="true">ON</button>
+        </div>
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-name">🗺 Masquer blips carte</span>
+            <span class="setting-desc">Cache tous les marqueurs de script</span>
+          </div>
+          <button class="toggle-btn on" id="toggle-blips" data-key="toggleBlips" data-state="true">ON</button>
+        </div>
+
+        <!-- SafeZone coords -->
+        <div class="safezone-box">
+          <div class="setting-name" style="margin-bottom:8px">📍 Coordonnées SafeZone (/safe)</div>
+          <input type="text" id="safe-coords-input" class="modal-input"
+                 placeholder="vector4(-1355.69, -3200.18, 13.94, 145.57)">
+          <button class="save-coords-btn" id="save-coords-btn">💾 Enregistrer</button>
+        </div>
+      </div>
+
+      <!-- TAB ACTIONS -->
+      <div id="tab-actions" class="tab-pane">
+        <div class="actions-grid">
+          <button class="action-btn green" data-action="fullArmorAll">⚔ Armure max<br><small>Tous les joueurs</small></button>
+          <button class="action-btn green" data-action="healAllPlayers">♥ Soigner<br><small>Tous les joueurs</small></button>
+          <button class="action-btn blue" data-action="hideBlips">🗺 Cacher blips<br><small>Pour moi</small></button>
+          <button class="action-btn blue" data-action="noop" disabled>➕ Bientôt<br><small>—</small></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modale kick -->
+  <div id="kick-modal" class="modal hidden">
+    <div class="modal-box">
+      <h3>Expulser le joueur</h3>
+      <input type="text" id="kick-reason" placeholder="Raison..." class="modal-input">
+      <div class="modal-btns">
+        <button class="modal-cancel" id="modal-cancel">Annuler</button>
+        <button class="modal-confirm" id="modal-confirm">Expulser</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

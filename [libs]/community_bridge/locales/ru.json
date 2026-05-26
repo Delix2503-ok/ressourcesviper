@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "У вас недостаточно денег для покупки этого предмета",
+		"Input": "Ввод количества",
+		"PurchaseAmount": "Количество покупки",
+		"PurchasedItem": "Вы купили %s %s",
+		"PurchaseFailed": "Покупка не удалась, инвентарь полон",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "Подтвердить покупку",
+		"AreYouSure": "Вы уверены, что хотите купить %s",
+		"PayByCash": "Оплатить %s наличными",
+		"PayByCard": "Оплатить %s картой",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Название магазина"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "Уведомление"
+	},
+	"clipboard": {
+		"copy": "Скопировано в буфер обмена"
+	},
+	"input": {
+		"submit_text": "Отправить"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Вы не определили никакого объекта для размещения",
+		"cant_place_here": "Вы не можете разместить этот объект здесь",
+		"place_object_place": "[E] Разместить  \n",
+		"place_object_cancel": "[X] Отменить  \n",
+		"place_object_scroll_up": "[Scroll Up] Повернуть вправо  \n",
+		"place_object_scroll_down": "[Scroll Down] Повернуть влево  \n",
+		"object_place": "[%s] Разместить  \n",
+		"object_cancel": "[%s] Отменить  \n",
+		"object_scroll_up": "[%s] Повернуть вправо  \n",
+		"object_scroll_down": "[%s] Повернуть влево  \n",
+		"rotate_left": "Повернуть влево",
+		"rotate_right": "Повернуть вправо",
+		"rotate_clockwise": "[%s] Вращать по часовой стрелке  \n",
+		"rotate_counter_clockwise": "[%s] Вращать против часовой стрелки  \n",
+		"depth_modifier": "[%s] Модификатор контроля глубины  \n"
+	},
+	"target": {
+		"interact": "[E] Взаимодействовать",
+		"title": "Опции",
+		"description": "Нет описания"
+	}
+}

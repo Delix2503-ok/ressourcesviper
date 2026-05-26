@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "Δεν έχετε αρκετά χρήματα για να αγοράσετε αυτό το αντικείμενο",
+		"Input": "Εισαγωγή ποσότητας",
+		"PurchaseAmount": "Ποσότητα αγοράς",
+		"PurchasedItem": "Αγοράσατε %s %s",
+		"PurchaseFailed": "Η αγορά απέτυχε, το αποθέμα είναι γεμάτο",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "Επιβεβαίωση αγοράς",
+		"AreYouSure": "Είστε βέβαιοι ότι θέλετε να αγοράσετε ένα %s",
+		"PayByCash": "Πληρωμή %s με μετρητά",
+		"PayByCard": "Πληρωμή %s με κάρτα",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Όνομα καταστήματος"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "Ειδοποίηση"
+	},
+	"clipboard": {
+		"copy": "Αντιγράφηκε στο clipboard"
+	},
+	"input": {
+		"submit_text": "Υποβολή"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Δεν ορίσατε κανένα αντικείμενο για τοποθέτηση",
+		"cant_place_here": "Δεν μπορείτε να τοποθετήσετε αυτό το αντικείμενο εδώ",
+		"place_object_place": "[E] Τοποθέτηση  \n",
+		"place_object_cancel": "[X] Ακύρωση  \n",
+		"place_object_scroll_up": "[Scroll Up] Περιστροφή δεξιά  \n",
+		"place_object_scroll_down": "[Scroll Down] Περιστροφή αριστερά  \n",
+		"object_place": "[%s] Τοποθέτηση  \n",
+		"object_cancel": "[%s] Ακύρωση  \n",
+		"object_scroll_up": "[%s] Περιστροφή δεξιά  \n",
+		"object_scroll_down": "[%s] Περιστροφή αριστερά  \n",
+		"rotate_left": "Περιστροφή αριστερά",
+		"rotate_right": "Περιστροφή δεξιά",
+		"rotate_clockwise": "[%s] Περιστροφή δεξιόστροφα  \n",
+		"rotate_counter_clockwise": "[%s] Περιστροφή αριστερόστροφα  \n",
+		"depth_modifier": "[%s] Τροποποιητής ελέγχου βάθους  \n"
+	},
+	"target": {
+		"interact": "[E] Αλληλεπίδραση",
+		"title": "Επιλογές",
+		"description": "Χωρίς περιγραφή"
+	}
+}

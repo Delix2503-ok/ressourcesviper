@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: transparent;
+            overflow: visible;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .dmg {
+            position: fixed;
+            pointer-events: none;
+            transform: translateX(-50%);
+            font-family: 'Impact', 'Arial Black', Arial, sans-serif;
+            font-weight: 900;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .dmg.body {
+            font-size: 26px;
+            color: #ffffff;
+            text-shadow:
+                0 0 3px #000,
+                 1px  1px 0 #000,
+                -1px  1px 0 #000,
+                 1px -1px 0 #000,
+                -1px -1px 0 #000;
+        }
+
+        .dmg.headshot {
+            font-size: 38px;
+            color: #ff1111;
+            text-shadow:
+                0 0 10px rgba(255, 30, 30, 0.9),
+                0 0 20px rgba(255, 0,  0,  0.5),
+                 1px  1px 0 #000,
+                -1px  1px 0 #000,
+                 1px -1px 0 #000,
+                -1px -1px 0 #000;
+        }
+    </style>
+</head>
+<body>
+<!-- Indicateur de chargement NUI — à retirer une fois confirmé -->
+<div id="nui-indicator" style="position:fixed;top:4px;right:4px;background:rgba(0,200,0,0.85);color:#fff;font-size:13px;padding:2px 7px;border-radius:4px;z-index:99999;pointer-events:none;font-family:Arial">HM-OK</div>
+
+<script>
+'use strict';
+
+window.addEventListener('message', function(e) {
+    var d = e.data;
+    if (!d || d.action !== 'showDamageNumber') return;
+
+    var el = document.createElement('div');
+    el.className = 'dmg ' + (d.isHeadshot ? 'headshot' : 'body');
+    el.textContent = String(Math.floor(d.damage));
+    el.style.left = (d.x * 100) + 'vw';
+
+    var startY = d.y * window.innerHeight;
+    el.style.top = startY + 'px';
+    el.style.opacity = '1';
+
+    document.body.appendChild(el);
+
+    var startTime = null;
+    var duration  = 1000;
+
+    function animate(ts) {
+        if (!startTime) startTime = ts;
+        var p = Math.min((ts - startTime) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 2);
+        el.style.top     = (startY - eased * 80) + 'px';
+        el.style.opacity = String(1 - p);
+        if (p < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            if (el.parentNode) el.parentNode.removeChild(el);
+        }
+    }
+    requestAnimationFrame(animate);
+});
+</script>
+</body>
+</html>

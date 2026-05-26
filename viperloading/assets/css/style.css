@@ -1,0 +1,297 @@
+body {
+    background: rgb(0, 0, 0);
+    overflow: hidden;
+}
+
+.bg {
+    position: fixed;
+    top: -5%;
+    left: -5%;
+
+    width: 110%;
+    height: 110%;
+    z-index: -1;
+}
+
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity .5s;
+    pointer-events: none;
+}
+
+.overlay * {
+    pointer-events: auto;
+}
+
+/* -------------- */
+/* MAIN CONTAINER */
+/* -------------- */
+
+.overlay .container {
+    display: flex;
+    align-items: center; /* Centre verticalement */
+    justify-content: flex-start; /* Aligne à gauche */
+
+    width: 100%;
+    height: 100vh; /* S'assure que ça prend toute la hauteur */
+}
+
+/* Hide overlay */
+
+.overlay .cornercontainer {
+    position: absolute;
+    top: 5%;  /* Déplace un peu plus bas pour mieux voir */
+    right: 3%;  /* Un peu plus à droite */
+}
+
+.overlay .cornercontainer > .top {
+    display: flex;
+    gap: 1.2vw;  /* Augmenter l'espacement entre les éléments */
+}
+
+.overlay .cornercontainer > .top > .left,
+.overlay .cornercontainer > .top > .right {
+    flex-basis: 50%;
+    justify-content: right;
+}
+
+.overlay .cornercontainer > .top > .left > * {
+    width: max-content;
+    margin: 0;
+    margin-left: auto;
+    line-height: 1.8vw;  /* Augmenter le line-height */
+    color: var(--main-color);
+    font-family: "PoppinsSemiBold";
+}
+
+.overlay .cornercontainer > .top .title {
+    font-size: 1.6vw;  /* Doubler la taille de la police */
+    text-transform: uppercase;
+}
+
+.overlay .cornercontainer > .top .state {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 1.3vw;  /* Doubler la taille de la police */
+}
+
+.overlay .cornercontainer > .top .state::before {
+    content: "";
+    position: absolute;
+    left: -1.6vw;
+    width: 0.3vw;  /* Augmenter la taille du cercle */
+    height: 0.3vw;
+    background: var(--main-color);
+    background-clip: padding-box;
+    border: solid 0.4vw rgb(255, 255, 255);
+    border-radius: 3vw;
+}
+
+.overlay .cornercontainer > .top > .right > .logo {
+    width: 4.4vw;  /* Doubler la taille de l'image */
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.overlay .cornercontainer > .sounds {
+    display: flex;
+    position: relative;
+    top: 6%;  /* Positionner un peu plus bas */
+    background-color: var(--main-color);
+    border-radius: 1vw;  /* Augmenter le rayon du bord */
+    transform: skew(-20deg, 0);
+    margin-top: 1vw;
+    margin-left: auto;
+    width: 9.6vw;  /* Doubler la largeur */
+}
+
+.overlay .cornercontainer > .sounds > .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6vw;  /* Doubler la taille de l'icône */
+    height: 2.6vw;  /* Doubler la taille de l'icône */
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 1vw;  /* Augmenter le rayon du bord */
+    font-size: 1.2vw;  /* Doubler la taille de la police */
+    color: var(--main-color);
+}
+
+.overlay .cornercontainer > .sounds > .icon > * {
+    transform: skew(20deg, 0deg);
+}
+
+.overlay .cornercontainer > .sounds > .switch {
+    position: relative;
+    width: 7vw;  /* Doubler la largeur du switch */
+}
+
+.overlay .cornercontainer > .sounds > .switch > .form-switch {
+    display: block;
+    user-select: none;
+    width: 100%;
+    height: 2.6vw;  /* Augmenter la hauteur du switch */
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.overlay .cornercontainer > .sounds > .switch > .label {
+    margin: 0;
+    margin-bottom: .4vw;  /* Augmenter l'espacement du label */
+    text-align: center;
+    color: var(--main-color);
+    font-size: 1.2vw;  /* Doubler la taille de la police */
+    font-family: Poppins;
+}
+
+.overlay .cornercontainer > .sounds > .switch > .form-switch > i {
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 2.6vw;  /* Augmenter la hauteur de l'icône */
+    transition: all .3s linear;
+}
+
+.overlay .cornercontainer > .sounds > .switch > .left,
+.overlay .cornercontainer > .sounds > .switch > .right {
+    position: absolute;
+    bottom: 0;
+    line-height: 2.6vw;  /* Augmenter la ligne de base */
+    color: rgb(0, 0, 0);
+    font-size: 1.0vw;  /* Doubler la taille de la police */
+    font-family: PoppinsMedium;
+    pointer-events: none;
+    transform: skew(20deg, 0);
+    z-index: 99;
+}
+
+.overlay .cornercontainer > .sounds > .switch > .left {
+    left: 12%;
+}
+
+.overlay .cornercontainer > .sounds > .switch > .right {
+    right: 12%;
+}
+
+.overlay .cornercontainer > .sounds > .switch > .form-switch > i::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 50%; /* Ajuste la largeur à 50% pour correspondre à la moitié de l'icône */
+    height: 100%;
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 1vw;
+    box-shadow: 0 0 1vw 0 #ffffff;
+    transition: all .2s ease-in-out;
+    transform-origin: left;
+}
+
+.overlay .cornercontainer > .sounds > .switch > .form-switch > input { display: none; }
+
+.overlay .cornercontainer > .sounds > .switch > .form-switch > input:active + i::after { transform: scale(1.2, 1.0); }
+
+.overlay .cornercontainer > .sounds > .switch > .form-switch > input:checked + i::after { transform: translateX(100%) }
+
+.overlay .cornercontainer > .sounds > .switch > .form-switch > input:checked:active + i::after { transform: translateX(100%) scale(1.2, 1.0); transform-origin: right; }
+
+/* Barre de chargement */
+
+.overlay .loader {
+    position: absolute;
+    width: 80%;
+    height: 20px;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 9999;
+}
+
+.overlay .progress-bar-container {
+    width: 80%;
+    height: 20px;
+    background-color: #444444;
+    border-radius: 25px;
+    margin: 0 auto;
+}
+
+.overlay .progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--main-color);
+    border-radius: 25px;
+    transition: width 0.5s ease;
+}
+
+/* Hide overlay */
+
+.overlay .container > .hideoverlay {
+    display: flex;
+    position: absolute;
+    bottom: 3%;
+    left: calc(11.5% - 6.5vw);
+    user-select: none;
+}
+
+.overlay .container > .hideoverlay .bind {
+    width: 1vw;
+    height: 1vw;
+    border-radius: .2vw;
+    background: white;
+
+    margin-right: .4vw;
+
+    line-height: 1vw;
+    text-align: center;
+    color: black;
+    font-size: .7vw;
+    font-family: PoppinsSemibold;
+}
+
+.overlay .container > .hideoverlay {
+    line-height: 1vw;
+    color: rgba(255, 255, 255, .7);
+    font-size: .6vw;
+    font-family: Poppins;
+}
+
+/* Socials */
+
+.overlay .socials {
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1.2vw;
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+.overlay .socials a {
+    color: white;
+    font-size: 2vw;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.overlay .socials a:hover {
+    color: var(--main-color);
+}

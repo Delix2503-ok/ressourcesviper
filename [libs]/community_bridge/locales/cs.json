@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "Nemáte dostatek peněz na koupi této položky",
+		"Input": "Zadání množství",
+		"PurchaseAmount": "Množství nákupu",
+		"PurchasedItem": "Zakoupili jste %s %s",
+		"PurchaseFailed": "Nákup se nezdařil, inventář je plný",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "Potvrdit nákup",
+		"AreYouSure": "Jste si jisti, že chcete koupit %s",
+		"PayByCash": "Zaplatit %s hotovostí",
+		"PayByCard": "Zaplatit %s kartou",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Název obchodu"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "Oznámení"
+	},
+	"clipboard": {
+		"copy": "Zkopírováno do schránky"
+	},
+	"input": {
+		"submit_text": "Odeslat"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Nedefinovali jste žádný objekt k umístění",
+		"cant_place_here": "Tento objekt nemůžete umístit zde",
+		"place_object_place": "[E] Umístit  \n",
+		"place_object_cancel": "[X] Zrušit  \n",
+		"place_object_scroll_up": "[Scroll Up] Otočit doprava  \n",
+		"place_object_scroll_down": "[Scroll Down] Otočit doleva  \n",
+		"object_place": "[%s] Umístit  \n",
+		"object_cancel": "[%s] Zrušit  \n",
+		"object_scroll_up": "[%s] Otočit doprava  \n",
+		"object_scroll_down": "[%s] Otočit doleva  \n",
+		"rotate_left": "Otočit doleva",
+		"rotate_right": "Otočit doprava",
+		"rotate_clockwise": "[%s] Otočit ve směru hodinových ručiček  \n",
+		"rotate_counter_clockwise": "[%s] Otočit proti směru hodinových ručiček  \n",
+		"depth_modifier": "[%s] Modifikátor řízení hloubky  \n"
+	},
+	"target": {
+		"interact": "[E] Interakce",
+		"title": "Možnosti",
+		"description": "Bez popisu"
+	}
+}

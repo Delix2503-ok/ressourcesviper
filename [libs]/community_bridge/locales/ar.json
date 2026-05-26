@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "ليس لديك ما يكفي من المال لشراء هذا العنصر",
+		"Input": "إدخال الكمية",
+		"PurchaseAmount": "كمية الشراء",
+		"PurchasedItem": "لقد قمت بشراء %s %s",
+		"PurchaseFailed": "فشل الشراء، المخزون ممتلئ",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "تأكيد الشراء",
+		"AreYouSure": "هل أنت متأكد أنك تريد شراء %s",
+		"PayByCash": "ادفع %s نقداً",
+		"PayByCard": "ادفع %s بالبطاقة",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "اسم المتجر"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "إشعار"
+	},
+	"clipboard": {
+		"copy": "تم النسخ إلى الحافظة"
+	},
+	"input": {
+		"submit_text": "إرسال"
+	},
+	"placeable_object": {
+		"no_prop_defined": "لم تحدد أي كائن للوضع",
+		"cant_place_here": "لا يمكنك وضع هذا الكائن هنا",
+		"place_object_place": "[E] وضع  \n",
+		"place_object_cancel": "[X] إلغاء  \n",
+		"place_object_scroll_up": "[Scroll Up] استدارة يمين  \n",
+		"place_object_scroll_down": "[Scroll Down] استدارة يسار  \n",
+		"object_place": "[%s] وضع  \n",
+		"object_cancel": "[%s] إلغاء  \n",
+		"object_scroll_up": "[%s] استدارة يمين  \n",
+		"object_scroll_down": "[%s] استدارة يسار  \n",
+		"rotate_left": "استدارة يسار",
+		"rotate_right": "استدارة يمين",
+		"rotate_clockwise": "[%s] استدارة مع عقارب الساعة  \n",
+		"rotate_counter_clockwise": "[%s] استدارة عكس عقارب الساعة  \n",
+		"depth_modifier": "[%s] معدل التحكم في العمق  \n"
+	},
+	"target": {
+		"interact": "[E] تفاعل",
+		"title": "خيارات",
+		"description": "لا يوجد وصف"
+	}
+}

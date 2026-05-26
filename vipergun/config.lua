@@ -1,0 +1,470 @@
+Config = {}
+
+-- Licences ayant accès au panel admin /admingun
+Config.AdminLicenses = {
+    'license:0d8ffc78a89c6052a1887611461a049cf010b3b6',
+    'license:de43671d6e0457044af83c3bfdbc2d9bb5acc96c',
+}
+
+-- ============================================================
+-- SYSTÈME DE COFFRES
+-- ============================================================
+Config.Coffres = {
+    baseChests         = 4,        -- Coffres de base par joueur
+    maxChests          = 8,        -- Maximum de coffres
+    slotsPerChest      = 100,      -- Slots par coffre
+    weightPerChest     = 9999999,  -- Poids max (infini en pratique)
+    interactionDistance = 2.5,     -- Distance d'interaction avec le PNJ
+
+    -- Prix des coffres 5 à 8 (en argent banque)
+    chestPrices = {
+        [5] = 500000,
+        [6] = 1000000,
+        [7] = 1500000,
+        [8] = 2000000,
+    },
+
+    -- Configuration du PNJ (modifiable via panel admin)
+    pedLocation = {
+        model   = 's_m_y_dealer_01',
+        x       = 0.0,
+        y       = 0.0,
+        z       = 0.0,
+        heading = 0.0,
+    },
+}
+
+-- ============================================================
+-- ACCESSOIRES DES ARMES (menu F6)
+-- Catégories : 'Bouche', 'Optique', 'Chargeur', 'Sous-canon'
+-- ============================================================
+Config.ComponentLabels = {
+    -- Silencieux
+    ['COMPONENT_AT_PI_SUPP']        = { label = 'Silencieux',            category = 'Bouche',       icon = 'fa-wind'         },
+    ['COMPONENT_AT_PI_SUPP_02']     = { label = 'Silencieux',            category = 'Bouche',       icon = 'fa-wind'         },
+    ['COMPONENT_AT_AR_SUPP']        = { label = 'Silencieux',            category = 'Bouche',       icon = 'fa-wind'         },
+    ['COMPONENT_AT_AR_SUPP_02']     = { label = 'Silencieux',            category = 'Bouche',       icon = 'fa-wind'         },
+    ['COMPONENT_AT_SR_SUPP']        = { label = 'Silencieux Sniper',     category = 'Bouche',       icon = 'fa-wind'         },
+    ['COMPONENT_AT_SR_SUPP_03']     = { label = 'Silencieux Sniper MK2', category = 'Bouche',       icon = 'fa-wind'         },
+    -- Compensateurs / Cache-flamme
+    ['COMPONENT_AT_MUZZLE_1']       = { label = 'Frein de bouche',       category = 'Bouche',       icon = 'fa-circle-dot'   },
+    ['COMPONENT_AT_MUZZLE_2']       = { label = 'Cache-flamme',          category = 'Bouche',       icon = 'fa-circle-dot'   },
+    ['COMPONENT_AT_MUZZLE_3']       = { label = 'Compensateur',          category = 'Bouche',       icon = 'fa-circle-dot'   },
+    ['COMPONENT_AT_MUZZLE_4']       = { label = 'Compensateur Fat',      category = 'Bouche',       icon = 'fa-circle-dot'   },
+    ['COMPONENT_AT_MUZZLE_5']       = { label = 'Déviation Sport',       category = 'Bouche',       icon = 'fa-circle-dot'   },
+    ['COMPONENT_AT_MUZZLE_6']       = { label = 'Frein Sniper',          category = 'Bouche',       icon = 'fa-circle-dot'   },
+    ['COMPONENT_AT_MUZZLE_7']       = { label = 'Spike',                 category = 'Bouche',       icon = 'fa-circle-dot'   },
+    -- Optiques
+    ['COMPONENT_AT_SCOPE_MACRO']    = { label = 'Point rouge',           category = 'Optique',      icon = 'fa-crosshairs'   },
+    ['COMPONENT_AT_SCOPE_MACRO_02'] = { label = 'Point rouge MK2',       category = 'Optique',      icon = 'fa-crosshairs'   },
+    ['COMPONENT_AT_SCOPE_SMALL']    = { label = 'Viseur 2x',             category = 'Optique',      icon = 'fa-crosshairs'   },
+    ['COMPONENT_AT_SCOPE_SMALL_02'] = { label = 'Viseur 2x MK2',         category = 'Optique',      icon = 'fa-crosshairs'   },
+    ['COMPONENT_AT_SCOPE_MEDIUM']   = { label = 'Viseur 4x',             category = 'Optique',      icon = 'fa-crosshairs'   },
+    ['COMPONENT_AT_SCOPE_MEDIUM_MK2'] = { label = 'Viseur 4x MK2',       category = 'Optique',      icon = 'fa-crosshairs'   },
+    ['COMPONENT_AT_SCOPE_LARGE']    = { label = 'Lunette sniper',        category = 'Optique',      icon = 'fa-crosshairs'   },
+    ['COMPONENT_AT_SCOPE_LARGE_MK2'] = { label = 'Lunette sniper MK2',   category = 'Optique',      icon = 'fa-crosshairs'   },
+    ['COMPONENT_AT_SCOPE_MAX']      = { label = 'Lunette longue portée', category = 'Optique',      icon = 'fa-crosshairs'   },
+    ['COMPONENT_AT_RAILCOVER_01']   = { label = 'Cache rail',            category = 'Optique',      icon = 'fa-minus'        },
+    -- Sous-canon / poignées
+    ['COMPONENT_AT_AR_FLSH']        = { label = 'Lampe tactique',        category = 'Sous-canon',   icon = 'fa-lightbulb'    },
+    ['COMPONENT_AT_PI_FLSH']        = { label = 'Lampe tactique',        category = 'Sous-canon',   icon = 'fa-lightbulb'    },
+    ['COMPONENT_AT_PI_FLSH_02']     = { label = 'Lampe tactique MK2',    category = 'Sous-canon',   icon = 'fa-lightbulb'    },
+    ['COMPONENT_AT_AR_AFGRIP']      = { label = 'Poignée avant',         category = 'Sous-canon',   icon = 'fa-hand'         },
+    ['COMPONENT_AT_AR_AFGRIP_02']   = { label = 'Poignée avant MK2',     category = 'Sous-canon',   icon = 'fa-hand'         },
+    -- Canons
+    ['COMPONENT_PISTOL_MK2_BARREL_01'] = { label = 'Canon standard',     category = 'Canon',        icon = 'fa-minus'        },
+    ['COMPONENT_PISTOL_MK2_BARREL_02'] = { label = 'Canon lourd',        category = 'Canon',        icon = 'fa-minus'        },
+    -- Chargeurs
+    ['COMPONENT_PISTOL_CLIP_01']       = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_PISTOL_CLIP_02']       = { label = 'Chargeur étendu',    category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_PISTOL_MK2_CLIP_01']   = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_PISTOL_MK2_CLIP_02']   = { label = 'Chargeur étendu',    category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_PISTOL_MK2_CLIP_FMJ']  = { label = 'Chargeur FMJ',       category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_COMBATPISTOL_CLIP_01'] = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_COMBATPISTOL_CLIP_02'] = { label = 'Chargeur étendu',    category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_APPISTOL_CLIP_01']     = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_APPISTOL_CLIP_02']     = { label = 'Chargeur étendu',    category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_MICROSMG_CLIP_01']     = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_MICROSMG_CLIP_02']     = { label = 'Chargeur étendu',    category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_SMG_CLIP_01']          = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_SMG_CLIP_02']          = { label = 'Chargeur étendu',    category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_SMG_CLIP_03']          = { label = 'Chargeur 100 balles',category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_SMG_MK2_CLIP_01']      = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_SMG_MK2_CLIP_02']      = { label = 'Chargeur étendu',    category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_ASSAULTRIFLE_CLIP_01'] = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_ASSAULTRIFLE_CLIP_02'] = { label = 'Chargeur étendu',    category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_ASSAULTRIFLE_CLIP_03'] = { label = 'Chargeur 100 balles',category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_ASSAULTRIFLE_MK2_CLIP_01'] = { label = 'Chargeur standard',  category = 'Chargeur', icon = 'fa-database'     },
+    ['COMPONENT_ASSAULTRIFLE_MK2_CLIP_02'] = { label = 'Chargeur étendu',    category = 'Chargeur', icon = 'fa-database'     },
+    ['COMPONENT_CARBINERIFLE_CLIP_01'] = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_CARBINERIFLE_CLIP_02'] = { label = 'Chargeur étendu',    category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_CARBINERIFLE_CLIP_03'] = { label = 'Chargeur 100 balles',category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_CARBINERIFLE_MK2_CLIP_01'] = { label = 'Chargeur standard',  category = 'Chargeur', icon = 'fa-database'     },
+    ['COMPONENT_CARBINERIFLE_MK2_CLIP_02'] = { label = 'Chargeur étendu',    category = 'Chargeur', icon = 'fa-database'     },
+    ['COMPONENT_SPECIALCARBINE_CLIP_01'] = { label = 'Chargeur standard', category = 'Chargeur',    icon = 'fa-database'     },
+    ['COMPONENT_SPECIALCARBINE_CLIP_02'] = { label = 'Chargeur étendu',   category = 'Chargeur',    icon = 'fa-database'     },
+    ['COMPONENT_SPECIALCARBINE_CLIP_03'] = { label = 'Chargeur 100 balles',category = 'Chargeur',   icon = 'fa-database'     },
+    ['COMPONENT_SNIPERRIFLE_CLIP_01']  = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_HEAVYSNIPER_CLIP_01']  = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_MARKSMANRIFLE_CLIP_01'] = { label = 'Chargeur standard', category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_MARKSMANRIFLE_CLIP_02'] = { label = 'Chargeur étendu',   category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_PUMPSHOTGUN_CLIP_01']  = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_GLOCK17_CLIP_02']      = { label = 'Chargeur étendu',    category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_MACHINEPISTOL_CLIP_01'] = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_MACHINEPISTOL_CLIP_02'] = { label = 'Chargeur étendu',    category = 'Chargeur',     icon = 'fa-database', forceCompat = true },
+    ['COMPONENT_MACHINEPISTOL_CLIP_03'] = { label = 'Grande capacité',    category = 'Chargeur',     icon = 'fa-database', forceCompat = true },
+    ['COMPONENT_PISTOL50_CLIP_01']      = { label = 'Chargeur standard',  category = 'Chargeur',     icon = 'fa-database'     },
+    ['COMPONENT_PISTOL50_CLIP_02']      = { label = 'Grande capacité',    category = 'Chargeur',     icon = 'fa-database'     },
+}
+
+-- Accessoires disponibles par arme
+Config.WeaponAttachments = {
+    ['weapon_pistol'] = {
+        'COMPONENT_PISTOL_CLIP_01',
+        'COMPONENT_PISTOL_CLIP_02',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_PI_SUPP_02',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_pistol_mk2'] = {
+        'COMPONENT_PISTOL_MK2_CLIP_01',
+        'COMPONENT_PISTOL_MK2_CLIP_02',
+        'COMPONENT_PISTOL_MK2_CLIP_FMJ',
+        'COMPONENT_AT_PI_FLSH_02',
+        'COMPONENT_AT_SCOPE_MACRO_02',
+        'COMPONENT_AT_MUZZLE_1',
+        'COMPONENT_AT_MUZZLE_2',
+        'COMPONENT_AT_MUZZLE_3',
+        'COMPONENT_AT_MUZZLE_4',
+        'COMPONENT_AT_MUZZLE_5',
+        'COMPONENT_AT_MUZZLE_6',
+        'COMPONENT_AT_MUZZLE_7',
+        'COMPONENT_PISTOL_MK2_BARREL_01',
+        'COMPONENT_PISTOL_MK2_BARREL_02',
+    },
+    ['weapon_combatpistol'] = {
+        'COMPONENT_COMBATPISTOL_CLIP_01',
+        'COMPONENT_COMBATPISTOL_CLIP_02',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_PI_SUPP_02',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_appistol'] = {
+        'COMPONENT_APPISTOL_CLIP_01',
+        'COMPONENT_APPISTOL_CLIP_02',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_PI_SUPP',
+    },
+    ['weapon_heavypistol'] = {
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_vintagepistol'] = {
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_PI_SUPP',
+    },
+    ['weapon_revolver'] = {
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_revolver_mk2'] = {
+        'COMPONENT_AT_PI_FLSH_02',
+        'COMPONENT_AT_SCOPE_MACRO_02',
+        'COMPONENT_AT_MUZZLE_1',
+        'COMPONENT_AT_MUZZLE_2',
+        'COMPONENT_AT_MUZZLE_3',
+    },
+    ['weapon_microsmg'] = {
+        'COMPONENT_MICROSMG_CLIP_01',
+        'COMPONENT_MICROSMG_CLIP_02',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO',
+        'COMPONENT_AT_PI_SUPP',
+    },
+    ['weapon_smg'] = {
+        'COMPONENT_SMG_CLIP_01',
+        'COMPONENT_SMG_CLIP_02',
+        'COMPONENT_SMG_CLIP_03',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_smg_mk2'] = {
+        'COMPONENT_SMG_MK2_CLIP_01',
+        'COMPONENT_SMG_MK2_CLIP_02',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO_02',
+        'COMPONENT_AT_MUZZLE_1',
+        'COMPONENT_AT_MUZZLE_2',
+        'COMPONENT_AT_MUZZLE_3',
+    },
+    ['weapon_assaultsmg'] = {
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO',
+        'COMPONENT_AT_AR_SUPP',
+    },
+    ['weapon_assaultrifle'] = {
+        'COMPONENT_ASSAULTRIFLE_CLIP_01',
+        'COMPONENT_ASSAULTRIFLE_CLIP_02',
+        'COMPONENT_ASSAULTRIFLE_CLIP_03',
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_SCOPE_MEDIUM',
+        'COMPONENT_AT_AR_SUPP_02',
+    },
+    ['weapon_assaultrifle_mk2'] = {
+        'COMPONENT_ASSAULTRIFLE_MK2_CLIP_01',
+        'COMPONENT_ASSAULTRIFLE_MK2_CLIP_02',
+        'COMPONENT_AT_AR_AFGRIP_02',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_SCOPE_MEDIUM_MK2',
+        'COMPONENT_AT_AR_SUPP_02',
+        'COMPONENT_AT_MUZZLE_1',
+        'COMPONENT_AT_MUZZLE_2',
+        'COMPONENT_AT_MUZZLE_3',
+        'COMPONENT_AT_MUZZLE_4',
+        'COMPONENT_AT_MUZZLE_5',
+    },
+    ['weapon_carbinerifle'] = {
+        'COMPONENT_CARBINERIFLE_CLIP_01',
+        'COMPONENT_CARBINERIFLE_CLIP_02',
+        'COMPONENT_CARBINERIFLE_CLIP_03',
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_SCOPE_MEDIUM',
+        'COMPONENT_AT_AR_SUPP',
+    },
+    ['weapon_carbinerifle_mk2'] = {
+        'COMPONENT_CARBINERIFLE_MK2_CLIP_01',
+        'COMPONENT_CARBINERIFLE_MK2_CLIP_02',
+        'COMPONENT_AT_AR_AFGRIP_02',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_SCOPE_MEDIUM_MK2',
+        'COMPONENT_AT_AR_SUPP_02',
+        'COMPONENT_AT_MUZZLE_1',
+        'COMPONENT_AT_MUZZLE_2',
+        'COMPONENT_AT_MUZZLE_3',
+    },
+    ['weapon_specialcarbine'] = {
+        'COMPONENT_SPECIALCARBINE_CLIP_01',
+        'COMPONENT_SPECIALCARBINE_CLIP_02',
+        'COMPONENT_SPECIALCARBINE_CLIP_03',
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_SCOPE_MEDIUM',
+        'COMPONENT_AT_AR_SUPP_02',
+    },
+    ['weapon_specialcarbine_mk2'] = {
+        'COMPONENT_AT_AR_AFGRIP_02',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_SCOPE_MEDIUM_MK2',
+        'COMPONENT_AT_AR_SUPP_02',
+        'COMPONENT_AT_MUZZLE_1',
+        'COMPONENT_AT_MUZZLE_2',
+        'COMPONENT_AT_MUZZLE_3',
+    },
+    ['weapon_bullpuprifle'] = {
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_SCOPE_SMALL',
+        'COMPONENT_AT_AR_SUPP',
+    },
+    ['weapon_bullpuprifle_mk2'] = {
+        'COMPONENT_AT_AR_AFGRIP_02',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_SCOPE_SMALL_02',
+        'COMPONENT_AT_AR_SUPP',
+        'COMPONENT_AT_MUZZLE_1',
+        'COMPONENT_AT_MUZZLE_2',
+    },
+    ['weapon_sniperrifle'] = {
+        'COMPONENT_SNIPERRIFLE_CLIP_01',
+        'COMPONENT_AT_SCOPE_LARGE',
+        'COMPONENT_AT_SCOPE_MAX',
+        'COMPONENT_AT_AR_SUPP_02',
+    },
+    ['weapon_heavysniper'] = {
+        'COMPONENT_HEAVYSNIPER_CLIP_01',
+        'COMPONENT_AT_SCOPE_MAX',
+    },
+    ['weapon_heavysniper_mk2'] = {
+        'COMPONENT_AT_SCOPE_LARGE_MK2',
+        'COMPONENT_AT_SCOPE_MAX',
+        'COMPONENT_AT_SR_SUPP_03',
+        'COMPONENT_AT_MUZZLE_1',
+        'COMPONENT_AT_MUZZLE_6',
+    },
+    ['weapon_marksmanrifle'] = {
+        'COMPONENT_MARKSMANRIFLE_CLIP_01',
+        'COMPONENT_MARKSMANRIFLE_CLIP_02',
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_SCOPE_LARGE',
+        'COMPONENT_AT_AR_SUPP',
+    },
+    ['weapon_marksmanrifle_mk2'] = {
+        'COMPONENT_AT_AR_AFGRIP_02',
+        'COMPONENT_AT_SCOPE_LARGE_MK2',
+        'COMPONENT_AT_AR_SUPP',
+        'COMPONENT_AT_MUZZLE_1',
+        'COMPONENT_AT_MUZZLE_6',
+    },
+    ['weapon_pumpshotgun'] = {
+        'COMPONENT_PUMPSHOTGUN_CLIP_01',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_AR_SUPP',
+    },
+    ['weapon_pumpshotgun_mk2'] = {
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_MUZZLE_1',
+        'COMPONENT_AT_MUZZLE_2',
+    },
+    ['weapon_heavyshotgun'] = {
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_AR_SUPP',
+    },
+    ['weapon_combatmg'] = {
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_SCOPE_MEDIUM',
+    },
+    ['weapon_combatmg_mk2'] = {
+        'COMPONENT_AT_AR_AFGRIP_02',
+        'COMPONENT_AT_SCOPE_MEDIUM_MK2',
+        'COMPONENT_AT_MUZZLE_1',
+        'COMPONENT_AT_MUZZLE_2',
+    },
+
+    ['weapon_machinepistol'] = {
+        'COMPONENT_MACHINEPISTOL_CLIP_01',
+        'COMPONENT_MACHINEPISTOL_CLIP_02',
+        'COMPONENT_MACHINEPISTOL_CLIP_03',
+        'COMPONENT_AT_PI_SUPP',
+    },
+    ['weapon_pistol50'] = {
+        'COMPONENT_PISTOL50_CLIP_01',
+        'COMPONENT_PISTOL50_CLIP_02',
+    },
+
+    -- Armes personnalisées (ggcweapons)
+    ['weapon_glock17'] = {
+        'COMPONENT_GLOCK17_CLIP_02',
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_glock18c'] = {
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_glock22'] = {
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_deagle'] = {
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_fnx45'] = {
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_m1911'] = {
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_glock20'] = {
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_glock19gen4'] = {
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_browning'] = {
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_pmxfm'] = {
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_AR_SUPP',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_mac10'] = {
+        'COMPONENT_AT_PI_FLSH',
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_PI_SUPP',
+        'COMPONENT_AT_AR_SUPP',
+        'COMPONENT_AT_SCOPE_MACRO',
+    },
+    ['weapon_mk47fm'] = {
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_SCOPE_MEDIUM',
+        'COMPONENT_AT_SCOPE_SMALL',
+        'COMPONENT_AT_AR_SUPP',
+        'COMPONENT_AT_AR_SUPP_02',
+    },
+    ['weapon_m6ic'] = {
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_SCOPE_MEDIUM',
+        'COMPONENT_AT_SCOPE_SMALL',
+        'COMPONENT_AT_AR_SUPP',
+        'COMPONENT_AT_AR_SUPP_02',
+    },
+    ['weapon_scarsc'] = {
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_SCOPE_MEDIUM',
+        'COMPONENT_AT_SCOPE_SMALL',
+        'COMPONENT_AT_AR_SUPP',
+        'COMPONENT_AT_AR_SUPP_02',
+    },
+    ['weapon_m4'] = {
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_SCOPE_MEDIUM',
+        'COMPONENT_AT_SCOPE_SMALL',
+        'COMPONENT_AT_AR_SUPP',
+        'COMPONENT_AT_AR_SUPP_02',
+    },
+    ['weapon_ak47'] = {
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_SCOPE_MEDIUM',
+        'COMPONENT_AT_SCOPE_SMALL',
+        'COMPONENT_AT_AR_SUPP',
+    },
+    ['weapon_ak74'] = {
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_SCOPE_MEDIUM',
+        'COMPONENT_AT_SCOPE_SMALL',
+        'COMPONENT_AT_AR_SUPP',
+    },
+    ['weapon_aks74'] = {
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_SCOPE_MEDIUM',
+        'COMPONENT_AT_SCOPE_SMALL',
+        'COMPONENT_AT_AR_SUPP',
+    },
+    ['weapon_groza'] = {
+        'COMPONENT_AT_AR_FLSH',
+        'COMPONENT_AT_AR_AFGRIP',
+        'COMPONENT_AT_SCOPE_MEDIUM',
+        'COMPONENT_AT_SCOPE_SMALL',
+        'COMPONENT_AT_AR_SUPP',
+    },
+}

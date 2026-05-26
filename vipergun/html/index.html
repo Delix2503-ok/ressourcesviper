@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viper PvP</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ============================================================
+     PANEL ADMIN (/admingun)
+     ============================================================ -->
+<div id="admin-panel" class="hidden">
+    <div class="admin-overlay" id="adminOverlay"></div>
+    <div class="admin-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="logo.png" alt="Viper PvP" class="logo-img">
+                <span class="logo-sub">Admin Panel</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-tab="coffres">
+                    <i class="fas fa-box-open"></i>
+                    <span>Coffres</span>
+                </button>
+                <button class="nav-item" data-tab="ped">
+                    <i class="fas fa-person-walking"></i>
+                    <span>PNJ Coffres</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <span>Viper Gun v1.0</span>
+            </div>
+        </aside>
+
+        <!-- Contenu principal -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1 id="tabTitle">Gestion des Coffres</h1>
+                <button class="close-btn" id="closeAdmin" title="Fermer">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- ── ONGLET COFFRES ───────────────────────────── -->
+            <div id="tab-coffres" class="tab-content active">
+                <div class="toolbar">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="coffreSearch" placeholder="Rechercher un joueur (citizenid)...">
+                    </div>
+                    <span id="coffreCount" class="badge-info">0 joueur(s)</span>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Citizen ID</th>
+                                <th class="center">Coffres débloqués</th>
+                                <th class="center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="coffresList"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ── ONGLET PNJ ───────────────────────────────── -->
+            <div id="tab-ped" class="tab-content">
+                <!-- Barre d'ajout -->
+                <div class="toolbar" style="gap:10px;flex-wrap:wrap">
+                    <input type="text" id="pedModel" value="s_m_y_dealer_01"
+                        style="flex:1;min-width:180px;padding:8px 12px;background:var(--surface2);
+                               border:1px solid var(--border);border-radius:var(--radius-sm);
+                               color:var(--text);outline:none">
+                    <button class="btn-secondary btn-icon" id="useMyPosition">
+                        <i class="fas fa-crosshairs"></i>&nbsp; Ma position
+                    </button>
+                    <button class="btn-primary btn-icon" id="addPed">
+                        <i class="fas fa-circle-plus"></i>&nbsp; Ajouter ici
+                    </button>
+                </div>
+
+                <!-- Liste des PNJ existants -->
+                <div class="table-wrapper" style="margin-top:14px">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th style="width:46px">#</th>
+                                <th>Modèle</th>
+                                <th>Coordonnées</th>
+                                <th class="center" style="width:120px">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pedsList"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<!-- ============================================================
+     MENU ACCESSOIRES (F6)
+     ============================================================ -->
+<div id="attachment-menu" class="hidden">
+    <div class="att-header">
+        <div class="att-title">
+            <i class="fas fa-screwdriver-wrench"></i>
+            <span id="attWeaponName">Accessoires</span>
+        </div>
+        <button class="att-close" id="closeAttachments">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="att-body" id="attBody"></div>
+</div>
+
+<!-- Toast notification -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

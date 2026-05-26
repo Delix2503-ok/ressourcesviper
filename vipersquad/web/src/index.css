@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: "Bai Jamjuree", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+}
+
+#root {
+  height: 100%
+}
+
+:root {
+  --color-primary: #FF2F2F;
+  --color-primary-content: #900000;
+  --color-primary-opacity: rgba(255, 47, 47, 0.2);
+
+  --color-menu-bg: #080A0C;
+  --color-menu-item: #0B1215;
+  --color-menu-darker: #060A0C;
+  --color-menu-border: #222e34;
+  --color-menu-divider: #0A0A0B;
+
+  --color-danger: #D22829;
+  --color-success: #9DDB8D;
+
+  --color-hud-bg: #222222;
+  --color-hud-bg-alpha: rgba(34, 34, 34, 0.3);
+  --color-health-label: #A51B24;
+  --color-health-bar: #DF202D;
+  --color-armor-bar: #FFFFFF;
+
+  --color-chat-header: #090E11;
+  --color-chat-header-alpha: rgba(9, 14, 17, 0.2);
+  --color-danger-alpha: rgba(210, 40, 41, 0.1);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.clipped {
+  clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
+}
+
+::-webkit-scrollbar {
+  width: 0em;
+  height: 0em;
+}

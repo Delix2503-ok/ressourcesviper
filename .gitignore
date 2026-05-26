@@ -1,0 +1,17 @@
+# Médias lourds
+*.mp4
+*.mp3
+*.ogg
+*.wav
+
+# Fichiers temporaires
+*.tmp
+*.log
+Thumbs.db
+.DS_Store
+
+# Node
+node_modules/
+
+# Dépôts git imbriqués (gérés séparément)
+viper-blanchiment/.git/

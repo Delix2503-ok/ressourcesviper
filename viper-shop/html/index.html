@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+
+<div id="root" class="hidden">
+
+    <!-- ══ PANEL ADMIN ══ -->
+    <div id="admin-panel" class="overlay hidden">
+        <div class="window admin-window">
+            <div class="win-header">
+                <div class="win-title">
+                    <img src="nui://viper-hud/html/logo.png" class="win-logo" alt="" />
+                    VIPER SHOP — PANEL ADMIN
+                </div>
+                <button class="close-btn" id="close-admin">✕</button>
+            </div>
+            <div class="win-body">
+
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <div class="shop-tabs">
+                        <button class="tab-btn tab-active" data-shop="weapons">⚔ ARMES</button>
+                        <button class="tab-btn tab-ammo"    data-shop="ammo">◎ MUNITIONS</button>
+                        <button class="tab-btn tab-illegal" data-shop="illegal">⚠ ILLÉGAL</button>
+                    </div>
+                    <div class="sidebar-header">
+                        ARTICLES <span id="item-count" class="badge">0</span>
+                    </div>
+                    <div id="admin-items-list" class="admin-items-list"></div>
+                    <button class="btn-new" id="btn-new-item">+ AJOUTER UN ARTICLE</button>
+                    <button class="btn-spawn" id="btn-spawn-npc">📍 SPAWN ICI</button>
+                    <button class="btn-tp" id="btn-tp-npc">🚀 TP AU PNJ</button>
+                </div>
+
+                <!-- Éditeur -->
+                <div class="editor">
+                    <div class="editor-empty" id="editor-empty">
+                        <div class="empty-icon">⬡</div>
+                        <p>Sélectionne un article ou crée-en un nouveau</p>
+                    </div>
+                    <div id="editor-form" class="editor-form hidden">
+                        <div class="form-title" id="form-title">NOUVEL ARTICLE</div>
+                        <input type="hidden" id="edit-id" />
+
+                        <div class="field-group">
+                            <label>LABEL AFFICHÉ</label>
+                            <input type="text" id="field-label" placeholder="Ex: Pistolet .50" maxlength="128" />
+                        </div>
+                        <div class="field-group">
+                            <label>NOM ITEM <span class="hint">— ox_inventory</span></label>
+                            <input type="text" id="field-item" placeholder="weapon_pistol50 · ammo_pistol · …" maxlength="64" />
+                        </div>
+                        <div class="field-group">
+                            <label>PRIX <span class="hint">— $ (0 = gratuit)</span></label>
+                            <input type="number" id="field-price" placeholder="0" min="0" value="0" />
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn-save" id="btn-save">SAUVEGARDER</button>
+                            <button class="btn-cancel" id="btn-cancel">ANNULER</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ PANEL JOUEUR ══ -->
+    <div id="player-panel" class="overlay hidden">
+        <div class="window player-window" id="player-window">
+            <div class="win-header">
+                <div class="win-title">
+                    <img src="nui://viper-hud/html/logo.png" class="win-logo" alt="" />
+                    <span id="shop-title">VENDEUR D'ARMES</span>
+                </div>
+                <button class="close-btn" id="close-player">✕</button>
+            </div>
+            <div id="player-tabs" class="player-tabs hidden">
+                <button class="ptab-btn ptab-active" data-ptab="buy">⚔ ACHETER</button>
+                <button class="ptab-btn" data-ptab="sell">💰 REVENDRE</button>
+            </div>
+            <div class="player-subtitle" id="player-subtitle">Choisis tes articles — paiement en <span class="money-tag">$</span></div>
+            <div id="shop-grid" class="shop-grid"></div>
+            <div id="sell-grid" class="sell-grid hidden"></div>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

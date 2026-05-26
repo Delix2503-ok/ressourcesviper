@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViperLogs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="panel" class="hidden">
+        <div class="header">
+            <span class="title">VIPER<span class="accent">LOGS</span></span>
+            <button class="close-btn" id="closeBtn">✕</button>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="kills">KILLS</button>
+            <button class="tab" data-tab="loot">LOOT</button>
+        </div>
+
+        <!-- KILLS -->
+        <div id="tab-kills" class="tab-content active">
+            <div class="search-bar">
+                <input type="text" id="kills-license" class="license-input" placeholder="license:xxxxxxxxxxxxxxx">
+                <button class="search-btn" onclick="searchKills()">RECHERCHER</button>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date / Heure</th>
+                            <th>Victime</th>
+                            <th>Tué par</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kills-body">
+                        <tr class="empty-row"><td colspan="3">Entrez une licence et cliquez Rechercher</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- LOOT -->
+        <div id="tab-loot" class="tab-content">
+            <div class="search-bar">
+                <input type="text" id="loot-license" class="license-input" placeholder="license:xxxxxxxxxxxxxxx">
+                <button class="search-btn" onclick="searchLoot()">RECHERCHER</button>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date / Heure</th>
+                            <th>Joueur looté</th>
+                            <th>Item</th>
+                            <th>Qté</th>
+                            <th>Pris par</th>
+                        </tr>
+                    </thead>
+                    <tbody id="loot-body">
+                        <tr class="empty-row"><td colspan="5">Entrez une licence et cliquez Rechercher</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>

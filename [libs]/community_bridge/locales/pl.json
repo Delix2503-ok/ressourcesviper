@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "Nie masz wystarczająco pieniędzy, aby kupić ten przedmiot",
+		"Input": "Wprowadzanie ilości",
+		"PurchaseAmount": "Ilość zakupu",
+		"PurchasedItem": "Kupiłeś %s %s",
+		"PurchaseFailed": "Zakup nieudany, ekwipunek pełny",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "Potwierdź zakup",
+		"AreYouSure": "Czy na pewno chcesz kupić %s",
+		"PayByCash": "Zapłać %s gotówką",
+		"PayByCard": "Zapłać %s kartą",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Nazwa sklepu"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "Powiadomienie"
+	},
+	"clipboard": {
+		"copy": "Skopiowano do schowka"
+	},
+	"input": {
+		"submit_text": "Wyślij"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Nie zdefiniowałeś żadnego obiektu do umieszczenia",
+		"cant_place_here": "Nie możesz umieścić tego obiektu tutaj",
+		"place_object_place": "[E] Umieść  \n",
+		"place_object_cancel": "[X] Anuluj  \n",
+		"place_object_scroll_up": "[Scroll Up] Obróć w prawo  \n",
+		"place_object_scroll_down": "[Scroll Down] Obróć w lewo  \n",
+		"object_place": "[%s] Umieść  \n",
+		"object_cancel": "[%s] Anuluj  \n",
+		"object_scroll_up": "[%s] Obróć w prawo  \n",
+		"object_scroll_down": "[%s] Obróć w lewo  \n",
+		"rotate_left": "Obróć w lewo",
+		"rotate_right": "Obróć w prawo",
+		"rotate_clockwise": "[%s] Obróć zgodnie z ruchem wskazówek zegara  \n",
+		"rotate_counter_clockwise": "[%s] Obróć przeciwnie do ruchu wskazówek zegara  \n",
+		"depth_modifier": "[%s] Modyfikator kontroli głębokości  \n"
+	},
+	"target": {
+		"interact": "[E] Interakcja",
+		"title": "Opcje",
+		"description": "Brak opisu"
+	}
+}

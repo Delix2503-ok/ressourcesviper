@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viper Ranked</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     HUD SCORE  (haut centre, pendant le match)
+═══════════════════════════════════════════════ -->
+<div id="score-hud" class="hidden">
+  <div class="hud-pill">
+    <div class="hud-team left">
+      <span class="hud-name" id="hud-t1-name">Team 1</span>
+      <span class="hud-score" id="hud-t1-score">0</span>
+    </div>
+    <div class="hud-center">
+      <span class="hud-round" id="hud-round">ROUND 1</span>
+      <span class="hud-vs">VS</span>
+    </div>
+    <div class="hud-team right">
+      <span class="hud-score" id="hud-t2-score">0</span>
+      <span class="hud-name" id="hud-t2-name">Team 2</span>
+    </div>
+  </div>
+  <div class="hud-countdown hidden" id="hud-countdown">
+    <span id="hud-countdown-num">3</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     OVERLAY RÉSULTAT
+═══════════════════════════════════════════════ -->
+<div id="result-overlay" class="hidden">
+  <div class="result-box">
+    <h1 id="result-title">VICTOIRE!</h1>
+    <div class="result-rewards">
+      <div class="reward-chip" id="result-elo"></div>
+      <div class="reward-chip coins" id="result-coins" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     HUB PRINCIPAL  (Classement + Boutique)
+═══════════════════════════════════════════════ -->
+<div id="hub-overlay" class="hidden">
+  <div class="hub-modal">
+
+    <!-- Barre de navigation -->
+    <nav class="hub-nav">
+      <!-- Logo -->
+      <div class="hub-logo">
+        <svg viewBox="0 0 200 52" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gGold" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#FFD060"/>
+              <stop offset="100%" stop-color="#FF8C00"/>
+            </linearGradient>
+          </defs>
+          <!-- chevron -->
+          <polygon points="8,8 22,26 8,44 18,44 32,26 18,8" fill="url(#gGold)"/>
+          <polygon points="18,8 32,26 18,44 26,44 40,26 26,8" fill="url(#gGold)" opacity=".45"/>
+          <!-- texte VIPER -->
+          <text x="48" y="33" font-family="Rajdhani,sans-serif" font-size="28" font-weight="700"
+                fill="url(#gGold)" letter-spacing="3">VIPER</text>
+          <!-- texte RANKED -->
+          <text x="50" y="46" font-family="Rajdhani,sans-serif" font-size="11" font-weight="600"
+                fill="rgba(255,255,255,.45)" letter-spacing="8">RANKED</text>
+        </svg>
+      </div>
+
+      <!-- Onglets -->
+      <div class="hub-tabs">
+        <button class="hub-tab active" data-tab="leaderboard">
+          <span class="tab-icon">🏆</span> Classement
+        </button>
+        <button class="hub-tab" data-tab="shop">
+          <span class="tab-icon">🛒</span> Boutique
+        </button>
+      </div>
+
+      <!-- Coins + close -->
+      <div class="hub-right">
+        <div class="coins-badge">
+          <svg class="coin-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#FFB800" stroke="#FF8C00" stroke-width="1.5"/><text x="12" y="17" text-anchor="middle" font-size="12" font-weight="700" fill="#3a1f00" font-family="Rajdhani,sans-serif">RC</text></svg>
+          <span id="nav-coins">0</span>
+        </div>
+        <button class="hub-close" id="btn-close-hub">✕</button>
+      </div>
+    </nav>
+
+    <!-- ── ONGLET CLASSEMENT ── -->
+    <div class="hub-content" id="tab-leaderboard">
+      <div class="lb-wrap">
+        <table class="lb-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Joueur</th>
+              <th>ELO</th>
+              <th>Victoires</th>
+              <th>Défaites</th>
+              <th>Matchs</th>
+              <th>Ratio</th>
+            </tr>
+          </thead>
+          <tbody id="lb-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── ONGLET BOUTIQUE ── -->
+    <div class="hub-content hidden" id="tab-shop">
+      <div class="shop-header">
+        <div class="shop-rotation">
+          <svg viewBox="0 0 16 16" width="14" style="margin-right:5px"><circle cx="8" cy="8" r="7" fill="none" stroke="#FFB800" stroke-width="1.5"/><path d="M8 4v4l3 2" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+          Prochaine actualisation dans <strong id="shop-days">–</strong> jours
+        </div>
+        <div class="shop-coins-display">
+          <svg class="coin-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#FFB800" stroke="#FF8C00" stroke-width="1.5"/><text x="12" y="17" text-anchor="middle" font-size="12" font-weight="700" fill="#3a1f00" font-family="Rajdhani,sans-serif">RC</text></svg>
+          <span id="shop-coins">0</span> RankedCoins
+        </div>
+      </div>
+      <div class="shop-grid" id="shop-grid">
+        <div class="shop-empty">Aucun article disponible cette rotation.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     WIDGET FILE D'ATTENTE  (bas droite)
+═══════════════════════════════════════════════ -->
+<div id="queue-widget" class="hidden">
+  <div class="queue-inner">
+    <div class="queue-top">
+      <span class="queue-mode-badge" id="qw-mode">1V1</span>
+      <span class="queue-dot-anim">
+        <span></span><span></span><span></span>
+      </span>
+    </div>
+    <p class="queue-sub" id="qw-status-text">EN FILE D'ATTENTE</p>
+
+    <!-- Mode groupe : code + membres -->
+    <div id="group-code-wrap" class="hidden">
+      <div class="group-code-label">CODE DU GROUPE</div>
+      <div class="group-code-val" id="group-code-text">------</div>
+      <div class="group-members-count" id="group-members-text">1 / 2 joueurs</div>
+    </div>
+
+    <!-- Mode file : timer -->
+    <div class="queue-timer-row" id="qw-timer-row">
+      <svg viewBox="0 0 16 16" width="13" fill="none"><circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/><path d="M8 4v4l3 2" stroke="rgba(255,255,255,.6)" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span id="qw-timer">00:00</span>
+    </div>
+
+    <div class="queue-key-hint">
+      <kbd class="key-badge">X</kbd>
+      <span id="qw-key-hint-text">Quitter</span>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

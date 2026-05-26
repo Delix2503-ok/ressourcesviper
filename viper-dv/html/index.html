@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Viper DV Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div id="panel" class="panel hidden">
+
+  <div class="panel-header">
+    <div class="header-title">
+      <i class="fas fa-car-crash"></i>
+      <span>DV ADMIN</span>
+    </div>
+    <button class="close-btn" onclick="closePanel()"><i class="fas fa-times"></i></button>
+  </div>
+
+  <!-- ── Section DV ── -->
+  <div class="section">
+    <div class="section-title"><i class="fas fa-trash"></i> SUPPRIMER VÉHICULES</div>
+    <div class="field-row">
+      <label>Rayon (mètres)</label>
+      <div class="input-group">
+        <input type="number" id="dv-radius" value="30" min="1" max="500">
+        <button class="btn-red" onclick="doDv()">
+          <i class="fas fa-trash-alt"></i> DV
+        </button>
+      </div>
+      <div class="quick-btns">
+        <button onclick="setRadius(10)">10m</button>
+        <button onclick="setRadius(30)">30m</button>
+        <button onclick="setRadius(50)">50m</button>
+        <button onclick="setRadius(100)">100m</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Section Zones Parking ── -->
+  <div class="section">
+    <div class="section-title"><i class="fas fa-parking"></i> ZONES DE RANGEMENT</div>
+    <div class="field-row">
+      <label>Nom de la zone</label>
+      <div class="input-group">
+        <input type="text" id="zone-name" placeholder="ex: Parking Safezone Nord...">
+        <button class="btn-green" onclick="addZone()">
+          <i class="fas fa-map-marker-alt"></i> Créer ici
+        </button>
+      </div>
+    </div>
+    <div id="zones-list" class="zones-list"></div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

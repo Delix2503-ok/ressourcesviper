@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CTaskAimingInfoManager>
+  <AimingInfoList>
+    <Item type="CAimingInfo">
+      <Name>PISTOL_ZERO_RECOIL</Name>
+      <fRecoilAccuracy value="0.000000" />
+      <fRecoilAccuracyScaler value="0.000000" />
+      <fRecoilAccuracyToAllowHeadShotPlayer value="0.000000" />
+      <fRecoilRecoveryRate value="100.000000" />
+      <fRecoilSweepAngle value="0.000000" />
+      <fRecoilMax value="0.000000" />
+      <fRecoilMaxFiringLag value="0.000000" />
+      <fCameraShake value="0.000000" />
+      <fIdleSwayMaxAngle value="0.100000" />
+      <fIdleSwayAmplitude value="0.050000" />
+      <fIdleSwayFrequency value="0.500000" />
+      <fIdleSwayVerticalBias value="0.500000" />
+    </Item>
+  </AimingInfoList>
+</CTaskAimingInfoManager>

@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "Nemate dovoljno novca za kupnju ovog predmeta",
+		"Input": "Unos količine",
+		"PurchaseAmount": "Količina kupnje",
+		"PurchasedItem": "Kupili ste %s %s",
+		"PurchaseFailed": "Kupnja nije uspjela, inventar pun",
+		"CurrencySymbol": "%s kn",
+		"Confirm": "Potvrdi kupnju",
+		"AreYouSure": "Jeste li sigurni da želite kupiti %s",
+		"PayByCash": "Platite %s gotovinom",
+		"PayByCard": "Platite %s karticom",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Naziv trgovine"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "Obavijest"
+	},
+	"clipboard": {
+		"copy": "Kopirano u međuspremnik"
+	},
+	"input": {
+		"submit_text": "Pošalji"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Niste definirali nijedan objekt za postavljanje",
+		"cant_place_here": "Ne možete postaviti ovaj objekt ovdje",
+		"place_object_place": "[E] Postavi  \n",
+		"place_object_cancel": "[X] Otkažи  \n",
+		"place_object_scroll_up": "[Scroll Up] Okreni desno  \n",
+		"place_object_scroll_down": "[Scroll Down] Okreni lijevo  \n",
+		"object_place": "[%s] Postavi  \n",
+		"object_cancel": "[%s] Otkažи  \n",
+		"object_scroll_up": "[%s] Okreni desno  \n",
+		"object_scroll_down": "[%s] Okreni lijevo  \n",
+		"rotate_left": "Okreni lijevo",
+		"rotate_right": "Okreni desno",
+		"rotate_clockwise": "[%s] Rotiraj u smjeru kazaljke na satu  \n",
+		"rotate_counter_clockwise": "[%s] Rotiraj suprotno od kazaljke na satu  \n",
+		"depth_modifier": "[%s] Modifikator kontrole dubine  \n"
+	},
+	"target": {
+		"interact": "[E] Interakcija",
+		"title": "Opcije",
+		"description": "Nema opisa"
+	}
+}

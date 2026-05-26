@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MRC Scuba</title>
+    <script type="module" crossorigin src="./assets/index-B0fYxqh2.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BEeeZu6c.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script> 
+    // dont judge me
+
+    function isTableJSON(jsonString) {
+        try {
+            const parsed = JSON.parse(jsonString);                   
+            return parsed;
+        } catch (e) {
+            return false;
+        }
+    }
+    const copyToClipboard = (str) => {
+    const el = document.createElement("textarea");
+    el.value = str;
+    document.body.appendChild(el);
+      el.select();
+      document.execCommand("copy");
+      document.body.removeChild(el);
+    };
+
+    window.addEventListener("message", (event) => {
+        if (event?.data?.type === "copytoclipboard") {
+            var str = event.data.text;
+            // str = JSON.parse(str);
+            if (isTableJSON(str)) {
+                str = str.replace(/\[/g, '{');
+                str = str.replace(/\]/g, '}');
+                // replace : with = 
+                str = str.replace(/:/g, '=');
+                // I need all indexes with quotes to be replaced with nothing but not affect any string values
+                str = str.replace(/"([^"]+)"=/g, '$1=');
+            }
+            copyToClipboard(str);
+        }
+        
+    });
+  </script>
+</html>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CWeaponInfoBlob>
+  <SlotNavigateOrder>
+    <Item>
+      <WeaponSlots>
+        <Item>
+          <OrderNumber value="112" />
+          <Entry>SLOT_PISTOL_MK2</Entry>
+        </Item>
+      </WeaponSlots>
+    </Item>
+    <Item>
+      <WeaponSlots>
+        <Item>
+          <OrderNumber value="132" />
+          <Entry>SLOT_PISTOL_MK2</Entry>
+        </Item>
+      </WeaponSlots>
+    </Item>
+  </SlotNavigateOrder>
+  <SlotBestOrder>
+    <WeaponSlots>
+      <Item>
+        <OrderNumber value="186" />
+        <Entry>SLOT_PISTOL_MK2</Entry>
+      </Item>
+    </WeaponSlots>
+  </SlotBestOrder>
+  <TintSpecValues />
+  <FiringPatternAliases />
+  <UpperBodyFixupExpressionData />
+  <AimingInfos />
+  <Infos>
+    <Item>
+      <Infos />
+    </Item>
+    <Item>
+      <Infos>
+        <Item type="CWeaponInfo">
+          <Name>WEAPON_PISTOL_MK2</Name>
+          <Model>w_pi_pistol_mk2</Model>
+          <Audio>AUDIO_ITEM_PISTOL_MK2</Audio>
+          <Slot>SLOT_PISTOL_MK2</Slot>
+          <DamageType>BULLET</DamageType>
+          <Explosion>
+            <Default>DONTCARE</Default>
+            <HitCar>DONTCARE</HitCar>
+            <HitTruck>DONTCARE</HitTruck>
+            <HitBike>DONTCARE</HitBike>
+            <HitBoat>DONTCARE</HitBoat>
+            <HitPlane>DONTCARE</HitPlane>
+          </Explosion>
+          <FireType>INSTANT_HIT</FireType>
+          <WheelSlot>WHEEL_PISTOL</WheelSlot>
+          <Group>GROUP_PISTOL</Group>
+          <AmmoInfo ref="AMMO_PISTOL_MK2" />
+          <AimingInfo ref="PISTOL_ZERO_RECOIL" />
+          <ClipSize value="17" />
+          <AccuracySpread value="1.500000" />
+          <AccurateModeAccuracyModifier value="0.500000" />
+          <RunAndGunAccuracyModifier value="2.000000" />
+          <RunAndGunAccuracyMaxModifier value="1.000000" />
+          <RecoilAccuracyMax value="0.000000" />
+          <RecoilErrorTime value="2.000000" />
+          <RecoilRecoveryRate value="1.000000" />
+          <RecoilAccuracyToAllowHeadShotAI value="1000.000000" />
+          <MinHeadShotDistanceAI value="1000.000000" />
+          <MaxHeadShotDistanceAI value="1000.000000" />
+          <HeadShotDamageModifierAI value="1000.000000" />
+          <RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
+          <MinHeadShotDistancePlayer value="2.500000" />
+          <MaxHeadShotDistancePlayer value="20.000000" />
+          <HeadShotDamageModifierPlayer value="40.000000" />
+          <Damage value="5.000000" />
+          <DamageTime value="0.000000" />
+          <DamageTimeInVehicle value="0.000000" />
+          <DamageTimeInVehicleHeadShot value="0.000000" />
+          <HitLimbsDamageModifier value="0.500000" />
+          <NetworkHitLimbsDamageModifier value="0.800000" />
+          <LightlyArmouredDamageModifier value="0.750000" />
+          <Force value="50.000000" />
+          <ForceHitPed value="125.000000" />
+          <ForceHitVehicle value="750.000000" />
+          <ForceHitFlyingHeli value="750.000000" />
+          <ForceMaxStrengthMult value="1.000000" />
+          <ForceFalloffRangeStart value="0.000000" />
+          <ForceFalloffRangeEnd value="50.000000" />
+          <ForceFalloffMin value="1.000000" />
+          <ProjectileForce value="0.000000" />
+          <FragImpulse value="250.000000" />
+          <Penetration value="0.010000" />
+          <VerticalLaunchAdjustment value="0.000000" />
+          <DropForwardVelocity value="0.000000" />
+          <Speed value="2000.000000" />
+          <BulletsInBatch value="1" />
+          <BatchSpread value="0.000000" />
+          <ReloadTimeMP value="-1.000000" />
+          <ReloadTimeSP value="-1.000000" />
+          <VehicleReloadTime value="1.000000" />
+          <AnimReloadRate value="1.000000" />
+          <BulletsPerAnimLoop value="1" />
+          <TimeBetweenShots value="0.220000" />
+          <TimeLeftBetweenShotsWhereShouldFireIsCached value="0.150000" />
+          <SpinUpTime value="0.000000" />
+          <SpinTime value="0.000000" />
+          <SpinDownTime value="0.000000" />
+          <AlternateWaitTime value="-1.000000" />
+          <BulletBendingNearRadius value="0.000000" />
+          <BulletBendingFarRadius value="0.750000" />
+          <BulletBendingZoomedRadius value="0.375000" />
+          <FirstPersonBulletBendingNearRadius value="0.000000" />
+          <FirstPersonBulletBendingFarRadius value="0.000000" />
+          <FirstPersonBulletBendingZoomedRadius value="0.000000" />
+          <NetworkPlayerDamageModifier value="1.000000" />
+          <NetworkPedDamageModifier value="1.000000" />
+          <NetworkHeadShotPlayerDamageModifier value="1.500000" />
+          <LockOnRange value="27.500000" />
+          <WeaponRange value="60.000000" />
+          <BulletDirectionOffsetInDegrees value="0.000000" />
+          <AiSoundRange value="-1.000000" />
+          <AiPotentialBlastEventRange value="-1.000000" />
+          <DamageFallOffRangeMin value="15.000000" />
+          <DamageFallOffRangeMax value="60.000000" />
+          <DamageFallOffModifier value="0.300000" />
+          <DefaultCameraHash>DEFAULT_THIRD_PERSON_PED_AIM_CAMERA</DefaultCameraHash>
+          <CoverCameraHash>DEFAULT_THIRD_PERSON_PED_AIM_IN_COVER_CAMERA</CoverCameraHash>
+          <CoverReadyToFireCameraHash />
+          <RunAndGunCameraHash>DEFAULT_THIRD_PERSON_PED_RUN_AND_GUN_CAMERA</RunAndGunCameraHash>
+          <CinematicShootingCameraHash>DEFAULT_THIRD_PERSON_PED_CINEMATIC_SHOOTING_CAMERA</CinematicShootingCameraHash>
+          <AlternativeOrScopedCameraHash />
+          <RunAndGunAlternativeOrScopedCameraHash />
+          <CinematicShootingAlternativeOrScopedCameraHash />
+          <CameraFov value="45.000000" />
+          <ZoomFactorForAccurateMode value="1.300000" />
+          <RecoilShakeHash>PISTOL_RECOIL_SHAKE</RecoilShakeHash>
+          <RecoilShakeHashFirstPerson>FPS_PISTOL_RECOIL_SHAKE</RecoilShakeHashFirstPerson>
+          <MinTimeBetweenRecoilShakes value="150" />
+          <RecoilShakeAmplitude value="0.000000" />
+          <IkRecoilDisplacement value="0.000000" />
+          <IkRecoilDisplacementScope value="0.000000" />
+          <IkRecoilDisplacementScaleBackward value="0.000000" />
+          <IkRecoilDisplacementScaleVertical value="0.000000" />
+          <ExplosionShakeAmplitude value="-1.000000" />
+          <ReticuleHudPosition x="0.000000" y="0.000000" />
+          <ReticuleMinSizeStanding value="0.650000" />
+          <ReticuleMinSizeCrouched value="0.550000" />
+          <ReticuleScale value="0.300000" />
+          <ReticuleStyleHash>WEAPON_PISTOL</ReticuleStyleHash>
+          <PickupHash>PICKUP_WEAPON_PISTOL_MK2</PickupHash>
+          <MPPickupHash>PICKUP_AMMO_BULLET_MP</MPPickupHash>
+          <HumanNameHash>WT_PISTOL_MK2</HumanNameHash>
+          <MovementModeConditionalIdle>MMI_1Handed</MovementModeConditionalIdle>
+          <StatName>PISTOL</StatName>
+          <KnockdownCount value="3" />
+          <KillshotImpulseScale value="1.000000" />
+          <NmShotTuningSet>normal</NmShotTuningSet>
+          <WeaponFlags>CarriedInHand Gun CanLockonOnFoot CanLockonInVehicle CanFreeAim AnimReload AnimCrouchFire UsableOnFoot UsableClimbing UsableInCover AllowCloseQuarterKills HasLowCoverReloads HasLowCoverSwaps TorsoIKForWeaponBlock UseFPSAimIK UseFPSSecondaryMotion</WeaponFlags>
+          <TintSpecValues ref="TINT_DEFAULT" />
+          <FiringPatternAliases ref="FIRING_PATTERN_PISTOL" />
+          <ReloadUpperBodyFixupExpressionData ref="DEFAULT" />
+          <AmmoDiminishingRate value="3" />
+          <HudDamage value="15" />
+          <HudSpeed value="55" />
+          <HudCapacity value="45" />
+          <HudAccuracy value="60" />
+          <HudRange value="25" />
+        </Item>
+      </Infos>
+    </Item>
+    <Item>
+      <Infos />
+    </Item>
+    <Item>
+      <Infos />
+    </Item>
+  </Infos>
+  <VehicleWeaponInfos />
+  <Name>Pistol MK2 - Custom</Name>
+</CWeaponInfoBlob>

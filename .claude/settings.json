@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\" -Directory)",
+      "Bash(Select-Object -ExpandProperty Name)",
+      "Read(//c/Users/Admin/Documents/Projet FiveM/resources/**)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\" -Directory)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\\\\viper_ranked\" -Recurse -File)",
+      "PowerShell([System.IO.Directory]::GetDirectories\\(\"C:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\"\\) | Select-Object -ExpandProperty Name)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\\\\`[weapons`]\\\\ggcweapons\" -Recurse -File | Select-Object -ExpandProperty FullName | ForEach-Object { $_.Replace\\(\"C:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\\\\\", \"\"\\) })",
+      "Bash(Get-ChildItem \"c:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\\\\[qb]\\\\qb-core\\\\server\\\\\" | Select-Object Name)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\\\\viper-shop\\\\html\\\\images\")",
+      "Bash(Out-Null)",
+      "Bash(New-Item -ItemType File -Force -Path \"c:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\\\\viper-shop\\\\html\\\\images\\\\.gitkeep\")",
+      "Bash(Write-Output \"OK\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\\\\viper-shop\\\\html\\\\images\")",
+      "PowerShell(New-Item -ItemType File -Force -Path \"c:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\\\\viper-shop\\\\html\\\\images\\\\.gitkeep\")",
+      "PowerShell(\"OK\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\" -Recurse -Directory -Include \"*image*\",\"*img*\",\"*items*\")",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\" -Recurse -Directory | Where-Object { $_.Name -match \"\\(image|img|items|weapon\\)\" } | Select-Object -ExpandProperty FullName | Sort-Object)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\\\\[weapons]\\\\ggcweapons\\\\images\\\\\" -Filter \"*.png\" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name | Sort-Object)",
+      "PowerShell(Get-ChildItem -LiteralPath \"c:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\\\\[ox]\\\\ox_inventory\" -Recurse -Directory | Where-Object { $_.Name -eq \"images\" })",
+      "PowerShell(Get-ChildItem -LiteralPath \"c:\\\\Users\\\\Admin\\\\Documents\\\\Projet FiveM\\\\resources\\\\[weapons]\\\\ggcweapons\" -Recurse -Directory | Where-Object { $_.Name -eq \"images\" })"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Admin\\Documents\\Projet FiveM\\resources\\[qb]\\qb-multicharacter\\html"
+    ]
+  }
+}

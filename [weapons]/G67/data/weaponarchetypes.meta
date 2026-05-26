@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CWeaponModelInfo__InitDataList>
+  <InitDatas>
+    <Item>
+      <lodDist value="500"></lodDist>
+      <modelName>W_PI_G67</modelName>
+      <txdName>W_PI_G67</txdName>
+      <ptfxAssetName>NULL</ptfxAssetName>
+    </Item>
+  </InitDatas>
+</CWeaponModelInfo__InitDataList>

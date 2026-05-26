@@ -1,0 +1,222 @@
+-- Get appearence data
+
+-- {
+--     "tattoos": {
+--         "ZONE_HAIR": [
+--             {
+--                 "label": "hair-0-188",
+--                 "collection": "multiplayer_overlays",
+--                 "name": "hair-0-188",
+--                 "hashFemale": "FM_F_Hair_003_c",
+--                 "hashMale": "FM_M_Hair_003_c",
+--                 "zone": "ZONE_HAIR"
+--             }
+--         ]
+--     },
+--     "components": [
+--         {
+--             "texture": -1,
+--             "drawable": -1,
+--             "component_id": 0
+--         },
+--         {
+--             "texture": -1,
+--             "drawable": -1,
+--             "component_id": 1
+--         },
+--         {
+--             "texture": -1,
+--             "drawable": -1,
+--             "component_id": 2
+--         },
+--         {
+--             "texture": -1,
+--             "drawable": -1,
+--             "component_id": 3
+--         },
+--         {
+--             "texture": -1,
+--             "drawable": -1,
+--             "component_id": 4
+--         },
+--         {
+--             "texture": -1,
+--             "drawable": -1,
+--             "component_id": 5
+--         },
+--         {
+--             "texture": -1,
+--             "drawable": -1,
+--             "component_id": 6
+--         },
+--         {
+--             "texture": -1,
+--             "drawable": -1,
+--             "component_id": 7
+--         },
+--         {
+--             "texture": -1,
+--             "drawable": -1,
+--             "component_id": 8
+--         },
+--         {
+--             "texture": -1,
+--             "drawable": -1,
+--             "component_id": 9
+--         },
+--         {
+--             "texture": -1,
+--             "drawable": -1,
+--             "component_id": 10
+--         },
+--         {
+--             "texture": -1,
+--             "drawable": -1,
+--             "component_id": 11
+--         }
+--     ],
+--     "headBlend": {
+--         "skinSecond": 0,
+--         "skinMix": 0.0,
+--         "shapeFirst": 0,
+--         "shapeThird": 0,
+--         "skinFirst": 0,
+--         "shapeMix": 0.0,
+--         "shapeSecond": 0,
+--         "skinThird": 0,
+--         "thirdMix": 0.0
+--     },
+--     "hair": {
+--         "texture": -1,
+--         "style": -1,
+--         "color": -1,
+--         "highlight": -1
+--     },
+--     "eyeColor": -1,
+--     "headOverlays": {
+--         "lipstick": {
+--             "color": 0,
+--             "style": 0,
+--             "opacity": 0.0,
+--             "secondColor": 0
+--         },
+--         "moleAndFreckles": {
+--             "color": 0,
+--             "style": 0,
+--             "opacity": 0.0,
+--             "secondColor": 0
+--         },
+--         "ageing": {
+--             "color": 0,
+--             "style": 0,
+--             "opacity": 0.0,
+--             "secondColor": 0
+--         },
+--         "makeUp": {
+--             "color": 0,
+--             "style": 0,
+--             "opacity": 0.0,
+--             "secondColor": 0
+--         },
+--         "beard": {
+--             "color": 0,
+--             "style": 0,
+--             "opacity": 0.0,
+--             "secondColor": 0
+--         },
+--         "blush": {
+--             "color": 0,
+--             "style": 0,
+--             "opacity": 0.0,
+--             "secondColor": 0
+--         },
+--         "complexion": {
+--             "color": 0,
+--             "style": 0,
+--             "opacity": 0.0,
+--             "secondColor": 0
+--         },
+--         "bodyBlemishes": {
+--             "color": 0,
+--             "style": 0,
+--             "opacity": 0.0,
+--             "secondColor": 0
+--         },
+--         "eyebrows": {
+--             "color": 0,
+--             "style": 0,
+--             "opacity": 0.0,
+--             "secondColor": 0
+--         },
+--         "chestHair": {
+--             "color": 0,
+--             "style": 0,
+--             "opacity": 0.0,
+--             "secondColor": 0
+--         },
+--         "sunDamage": {
+--             "color": 0,
+--             "style": 0,
+--             "opacity": 0.0,
+--             "secondColor": 0
+--         },
+--         "blemishes": {
+--             "color": 0,
+--             "style": 0,
+--             "opacity": 0.0,
+--             "secondColor": 0
+--         }
+--     },
+--     "faceFeatures": {
+--         "jawBoneBackSize": 0.0,
+--         "noseWidth": 0.0,
+--         "eyeBrownHigh": 0.0,
+--         "chinBoneSize": 0.0,
+--         "chinHole": 0.0,
+--         "neckThickness": 0.0,
+--         "noseBoneTwist": 0.0,
+--         "noseBoneHigh": 0.0,
+--         "nosePeakHigh": 0.0,
+--         "nosePeakSize": 0.0,
+--         "eyesOpening": 0.0,
+--         "cheeksBoneHigh": 0.0,
+--         "cheeksBoneWidth": 0.0,
+--         "cheeksWidth": 0.0,
+--         "lipsThickness": 0.0,
+--         "nosePeakLowering": 0.0,
+--         "jawBoneWidth": 0.0,
+--         "eyeBrownForward": 0.0,
+--         "chinBoneLenght": 0.0,
+--         "chinBoneLowering": 0.0
+--     },
+--     "model": "mp_m_freemode_01",
+--     "props": [
+--         {
+--             "drawable": -1,
+--             "prop_id": 0,
+--             "texture": -1
+--         },
+--         {
+--             "drawable": -1,
+--             "prop_id": 1,
+--             "texture": -1
+--         },
+--         {
+--             "drawable": -1,
+--             "prop_id": 2,
+--             "texture": -1
+--         },
+--         {
+--             "drawable": -1,
+--             "prop_id": 6,
+--             "texture": -1
+--         },
+--         {
+--             "drawable": -1,
+--             "prop_id": 7,
+--             "texture": -1
+--         }
+--     ]
+-- }
+
+-- this still needed?

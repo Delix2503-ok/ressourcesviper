@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    pointer-events: none;
+}
+
+#panel {
+    background: #0d0d0d;
+    border: 1px solid #39ff14;
+    border-radius: 8px;
+    width: 360px;
+    box-shadow: 0 0 24px rgba(57, 255, 20, 0.25);
+    pointer-events: all;
+    overflow: hidden;
+}
+
+#panel.hidden { display: none; }
+
+/* Header */
+.panel-header {
+    background: #111;
+    border-bottom: 1px solid #39ff14;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.panel-title {
+    color: #39ff14;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.panel-title i { margin-right: 7px; }
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: color 0.2s;
+}
+.btn-icon:hover { color: #39ff14; }
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background: #111;
+    border-bottom: 1px solid #222;
+}
+
+.tab {
+    flex: 1;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #666;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 9px 4px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.tab i { margin-right: 5px; }
+
+.tab:hover { color: #aaa; }
+.tab.active { color: #39ff14; border-bottom-color: #39ff14; }
+
+/* Tab content */
+.tab-content { display: none; padding: 14px; }
+.tab-content.active { display: block; }
+
+/* Info block */
+.info-block {
+    background: #161616;
+    border: 1px solid #222;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 12px;
+}
+
+.info-row + .info-row { border-top: 1px solid #1e1e1e; }
+
+.label { color: #777; }
+.value { color: #ccc; font-family: monospace; font-size: 11px; }
+
+/* Badges */
+.badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+.badge-on  { background: rgba(57,255,20,0.15); color: #39ff14; border: 1px solid #39ff14; }
+.badge-off { background: rgba(255,50,50,0.15); color: #ff5555; border: 1px solid #ff5555; }
+
+/* Fields */
+.field-row {
+    margin-bottom: 12px;
+}
+.field-row label {
+    display: block;
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+.field-row input {
+    width: 100%;
+    background: #161616;
+    border: 1px solid #333;
+    border-radius: 5px;
+    color: #eee;
+    font-size: 13px;
+    padding: 7px 10px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.field-row input:focus { border-color: #39ff14; }
+
+/* Buttons */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 9px 14px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+    background: linear-gradient(135deg, #1a4a0a, #2a7a12);
+    color: #39ff14;
+    border: 1px solid #39ff14;
+}
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-warning {
+    background: linear-gradient(135deg, #4a3500, #7a5c00);
+    color: #ffd700;
+    border: 1px solid #ffd700;
+}
+.btn-warning:hover { opacity: 0.85; }
+
+.btn-danger {
+    background: linear-gradient(135deg, #4a0a0a, #7a1212);
+    color: #ff5555;
+    border: 1px solid #ff5555;
+}
+.btn-danger:hover { opacity: 0.85; }

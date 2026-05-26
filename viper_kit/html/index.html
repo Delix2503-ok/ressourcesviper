@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <link href="style.css?v=2" rel="stylesheet" />
+</head>
+<body>
+
+<div id="root" class="hidden">
+
+    <!-- ══ PANEL ADMIN ══ -->
+    <div id="admin-panel" class="overlay hidden">
+        <div class="window admin-window">
+            <div class="win-header">
+                <div class="win-title"><span class="logo-dot">⬡</span> VIPER KIT — PANEL ADMIN</div>
+                <button class="close-btn" id="close-admin">✕</button>
+            </div>
+            <div class="win-body">
+
+                <!-- Sidebar -->
+                <div class="kits-sidebar">
+                    <div class="sidebar-header">KITS <span id="kit-count" class="badge">0</span></div>
+                    <div id="admin-kits-list" class="admin-kits-list"></div>
+                    <button class="btn-new" id="btn-new-kit">+ NOUVEAU KIT</button>
+                    <button class="btn-spawn" id="btn-spawn-npc">📍 SPAWN ICI</button>
+                </div>
+
+                <!-- Éditeur -->
+                <div class="kit-editor">
+                    <div class="editor-empty" id="editor-empty">
+                        <div class="empty-icon">⬡</div>
+                        <p>Sélectionne un kit ou crée-en un nouveau</p>
+                    </div>
+                    <div id="editor-form" class="editor-form hidden">
+                        <div class="form-title" id="form-title">NOUVEAU KIT</div>
+                        <input type="hidden" id="edit-id" value="" />
+
+                        <div class="fields-row">
+                            <div class="field-group flex2">
+                                <label>NOM DU KIT</label>
+                                <input type="text" id="field-name" placeholder="Ex: Kit VIP" maxlength="64" />
+                            </div>
+                            <div class="field-group flex1">
+                                <label>PERMISSION <span class="hint">— vide = tous</span></label>
+                                <input type="text" id="field-perm" placeholder="group.vip" />
+                            </div>
+                            <div class="field-group field-cooldown">
+                                <label>COOLDOWN <span class="hint">— min (0 = aucun)</span></label>
+                                <input type="number" id="field-cooldown" min="0" max="10080" placeholder="0" value="0" />
+                            </div>
+                            <div class="field-group field-toggle">
+                                <label>ONE SHOT</label>
+                                <label class="toggle">
+                                    <input type="checkbox" id="field-onetime" />
+                                    <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                </label>
+                                <span class="toggle-hint" id="onetime-hint">Non</span>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label>ITEMS</label>
+                            <div class="items-header-row">
+                                <span class="col-label">NOM DE L'ITEM (ox_inventory)</span>
+                                <span class="col-label col-qty">QUANTITÉ</span>
+                            </div>
+                            <div id="items-container"></div>
+                            <button class="btn-add-item" id="btn-add-item">+ Ajouter un item</button>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn-save" id="btn-save">SAUVEGARDER</button>
+                            <button class="btn-cancel" id="btn-cancel">ANNULER</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ PANEL JOUEUR ══ -->
+    <div id="player-panel" class="overlay hidden">
+        <div class="window player-window">
+            <div class="win-header">
+                <div class="win-title"><span class="logo-dot">⬡</span> VIPER KIT</div>
+                <button class="close-btn" id="close-player">✕</button>
+            </div>
+            <div class="player-subtitle">Choisis ton kit</div>
+            <div id="player-kits-grid" class="player-kits-grid"></div>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viper Coca — Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="panel" class="hidden">
+        <div class="panel-header">
+            <span class="panel-title"><i class="fa-solid fa-leaf"></i> VIPER COCA</span>
+            <button id="btn-close" class="btn-icon"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="zone"><i class="fa-solid fa-map-location-dot"></i> Zone</button>
+            <button class="tab" data-tab="npc"><i class="fa-solid fa-user-secret"></i> PNJ</button>
+            <button class="tab" data-tab="config"><i class="fa-solid fa-sliders"></i> Config</button>
+        </div>
+
+        <!-- ZONE -->
+        <div class="tab-content active" id="tab-zone">
+            <div class="info-block">
+                <div class="info-row"><span class="label">Statut</span><span id="zone-status" class="badge badge-off">Inactive</span></div>
+                <div class="info-row"><span class="label">Position</span><span id="zone-pos" class="value">—</span></div>
+                <div class="info-row"><span class="label">Rayon</span><span id="zone-radius" class="value">—</span></div>
+            </div>
+
+            <div class="field-row">
+                <label>Rayon (m)</label>
+                <input type="number" id="input-radius" min="5" max="500" value="30" placeholder="30">
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" id="btn-set-zone"><i class="fa-solid fa-crosshairs"></i> Définir zone ici</button>
+                <button class="btn btn-warning" id="btn-toggle-zone"><i class="fa-solid fa-power-off"></i> Activer / Désactiver</button>
+            </div>
+        </div>
+
+        <!-- NPC -->
+        <div class="tab-content" id="tab-npc">
+            <div class="info-block">
+                <div class="info-row"><span class="label">PNJ revendeur</span><span id="npc-status" class="badge badge-off">Absent</span></div>
+                <div class="info-row"><span class="label">Position</span><span id="npc-pos" class="value">—</span></div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" id="btn-spawn-npc"><i class="fa-solid fa-person-walking-arrow-right"></i> Placer PNJ ici</button>
+                <button class="btn btn-danger" id="btn-delete-npc"><i class="fa-solid fa-trash"></i> Supprimer PNJ</button>
+            </div>
+        </div>
+
+        <!-- CONFIG -->
+        <div class="tab-content" id="tab-config">
+            <div class="info-block">
+                <div class="info-row"><span class="label">Prix actuel</span><span id="current-price" class="value">—</span></div>
+            </div>
+
+            <div class="field-row">
+                <label>Prix de vente ($)</label>
+                <input type="number" id="input-price" min="0" value="500" placeholder="500">
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" id="btn-set-price"><i class="fa-solid fa-dollar-sign"></i> Appliquer le prix</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

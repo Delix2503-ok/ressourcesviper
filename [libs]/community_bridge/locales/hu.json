@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "Nincs elég pénzed ennek a tételnek a megvásárlásához",
+		"Input": "Mennyiség bevitel",
+		"PurchaseAmount": "Vásárlási mennyiség",
+		"PurchasedItem": "Megvásároltad %s %s",
+		"PurchaseFailed": "Vásárlás sikertelen, leltár tele",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "Vásárlás megerősítése",
+		"AreYouSure": "Biztosan meg akarsz vásárolni egy %s-t",
+		"PayByCash": "%s fizetése készpénzzel",
+		"PayByCard": "%s fizetése kártyával",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Bolt neve"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "Értesítés"
+	},
+	"clipboard": {
+		"copy": "Vágólapra másolva"
+	},
+	"input": {
+		"submit_text": "Elküld"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Nem definiáltál semmilyen objektumot elhelyezésre",
+		"cant_place_here": "Nem helyezheted el ezt az objektumot itt",
+		"place_object_place": "[E] Elhelyezés  \n",
+		"place_object_cancel": "[X] Mégse  \n",
+		"place_object_scroll_up": "[Scroll Up] Jobbra fordítás  \n",
+		"place_object_scroll_down": "[Scroll Down] Balra fordítás  \n",
+		"object_place": "[%s] Elhelyezés  \n",
+		"object_cancel": "[%s] Mégse  \n",
+		"object_scroll_up": "[%s] Jobbra fordítás  \n",
+		"object_scroll_down": "[%s] Balra fordítás  \n",
+		"rotate_left": "Balra fordítás",
+		"rotate_right": "Jobbra fordítás",
+		"rotate_clockwise": "[%s] Forgatás óramutató járásával megegyezően  \n",
+		"rotate_counter_clockwise": "[%s] Forgatás óramutató járásával ellentétesen  \n",
+		"depth_modifier": "[%s] Mélység vezérlő módosító  \n"
+	},
+	"target": {
+		"interact": "[E] Interakció",
+		"title": "Lehetőségek",
+		"description": "Nincs leírás"
+	}
+}

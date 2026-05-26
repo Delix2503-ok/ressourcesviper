@@ -1,0 +1,91 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	min-height: 100vh;
+	background: transparent
+}
+
+.dialogue-container {
+	position: fixed;
+	bottom: 30px;
+	width: 50%;
+	background: transparent;
+	padding: 15px;
+	left: 50%;
+	transform: translate(-50%)
+}
+
+.dialogue-text {
+	background: #242424;
+	padding: 10px;
+	border-radius: 4px;
+	margin: 10px 0;
+	line-height: 1.6;
+	font-size: 1.1em;
+	border: 0.5px dotted rgba(203, 203, 203, 0.5);
+	box-shadow: 0 4px 16px #0000007e;
+    
+}
+
+.dialogue-options {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 6px;
+	justify-content: space-between;
+	margin-top: 20px;
+	width: 100%
+}
+
+.dialogue-button {
+	background: #242424;
+	border: 0.5px solid rgba(203, 203, 203, 0.5);
+	color: #fff;
+	padding: 12px 24px;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all .2s ease;
+	font-size: .95em;
+	flex: 1;
+	text-align: center;
+	min-width: calc(33.333% - 8px);
+	box-shadow: 0 4px 16px #0003
+}
+
+.dialogue-button:hover {
+	background: #3333338c;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 16px #0000007e;
+	border: 1px solid rgba(255, 255, 255, .3);
+}
+
+h2 {
+	color: #fff;
+	margin: 0;
+	font-size: 1.4em;
+	font-weight: 600;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, .3)
+}
+
+p {
+	color: #fff;
+	margin: 0;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, .2)
+}
+
+* {
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale
+}
+
+.hidden {
+	display: none
+}
+
+* {
+	overflow-y: hidden;
+	overflow-x: hidden
+}

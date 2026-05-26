@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Viper Jail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── Écran prison (visible pendant la détention) ───────────────────────── -->
+<div id="jail-screen" class="hidden">
+    <div class="jail-box">
+        <div class="jail-chains">⛓</div>
+        <div class="jail-title">VOUS ÊTES EN PRISON</div>
+        <div class="jail-timer" id="jail-timer">00:00</div>
+        <div class="jail-sub">Temps restant avant libération</div>
+    </div>
+</div>
+
+<!-- ── Panel Admin ───────────────────────────────────────────────────────── -->
+<div id="admin-panel" class="panel hidden">
+    <div class="panel-header">
+        <span class="panel-title">VIPER <span class="subtitle-red">JAIL</span> <span class="subtitle">ADMIN</span></span>
+        <button class="close-btn" onclick="closeAdmin()">✕</button>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('players', this)">JOUEURS</button>
+        <button class="tab" onclick="switchTab('cells', this)">CELLULES</button>
+        <button class="tab" onclick="switchTab('logs', this)">LOGS</button>
+    </div>
+
+    <!-- Tab Joueurs -->
+    <div id="tab-players" class="tab-content">
+        <div class="toolbar">
+            <button class="btn-refresh" onclick="refreshAdmin()">↻ ACTUALISER</button>
+        </div>
+        <div class="list-header">EN LIGNE</div>
+        <div id="online-list" class="item-list"></div>
+        <div class="list-header offline-hdr">PRISONNIERS HORS LIGNE</div>
+        <div id="offline-list" class="item-list"></div>
+    </div>
+
+    <!-- Tab Logs -->
+    <div id="tab-logs" class="tab-content hidden">
+        <div class="add-section">
+            <div class="input-row">
+                <input id="log-license-input" type="text" placeholder="license:de43671d6e0457044af83c3bfdbc2d9bb5acc96c" maxlength="120"
+                    onkeydown="if(event.key==='Enter') searchLogs()">
+                <button class="btn-green" onclick="searchLogs()">RECHERCHER</button>
+            </div>
+        </div>
+        <div id="log-player-header" class="log-player-header hidden">
+            <span id="log-player-name" class="log-ph-name"></span>
+            <span id="log-entry-count" class="log-ph-count"></span>
+        </div>
+        <div id="log-list" class="item-list log-list"></div>
+    </div>
+
+    <!-- Tab Cellules -->
+    <div id="tab-cells" class="tab-content hidden">
+        <div class="add-section">
+            <div class="input-row">
+                <input id="cell-name-input" type="text" placeholder="Nom de la cellule (ex: Cellule A)" maxlength="64">
+                <button class="btn-green" onclick="addLocation()">AJOUTER ICI</button>
+            </div>
+        </div>
+        <div class="list-header">CELLULES CONFIGURÉES</div>
+        <div id="cell-list" class="item-list"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "このアイテムを購入するのに十分なお金がありません",
+		"Input": "数量入力",
+		"PurchaseAmount": "購入数量",
+		"PurchasedItem": "購入しました %s %s",
+		"PurchaseFailed": "購入に失敗しました、インベントリがいっぱいです",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "購入を確認",
+		"AreYouSure": "%sを購入してもよろしいですか",
+		"PayByCash": "%sを現金で支払う",
+		"PayByCard": "%sをカードで支払う",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "店舗名"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "通知"
+	},
+	"clipboard": {
+		"copy": "クリップボードにコピーされました"
+	},
+	"input": {
+		"submit_text": "送信"
+	},
+	"placeable_object": {
+		"no_prop_defined": "配置するオブジェクトが定義されていません",
+		"cant_place_here": "このオブジェクトをここに配置することはできません",
+		"place_object_place": "[E] 配置  \n",
+		"place_object_cancel": "[X] キャンセル  \n",
+		"place_object_scroll_up": "[Scroll Up] 右回転  \n",
+		"place_object_scroll_down": "[Scroll Down] 左回転  \n",
+		"object_place": "[%s] 配置  \n",
+		"object_cancel": "[%s] キャンセル  \n",
+		"object_scroll_up": "[%s] 右回転  \n",
+		"object_scroll_down": "[%s] 左回転  \n",
+		"rotate_left": "左回転",
+		"rotate_right": "右回転",
+		"rotate_clockwise": "[%s] 時計回りに回転  \n",
+		"rotate_counter_clockwise": "[%s] 反時計回りに回転  \n",
+		"depth_modifier": "[%s] 深さコントロール修飾子  \n"
+	},
+	"target": {
+		"interact": "[E] 対話",
+		"title": "オプション",
+		"description": "説明なし"
+	}
+}

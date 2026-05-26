@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "Neturite pakankamai pinigų šiam daiktui nusipirkti",
+		"Input": "Kiekio įvestis",
+		"PurchaseAmount": "Pirkimo kiekis",
+		"PurchasedItem": "Jūs nusipirkote %s %s",
+		"PurchaseFailed": "Pirkimas nepavyko, inventorius pilnas",
+		"CurrencySymbol": "%s €",
+		"Confirm": "Patvirtinti pirkimą",
+		"AreYouSure": "Ar tikrai norite nusipirkti %s",
+		"PayByCash": "Sumokėti %s grynaisiais",
+		"PayByCard": "Sumokėti %s kortele",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Parduotuvės pavadinimas"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "Pranešimas"
+	},
+	"clipboard": {
+		"copy": "Nukopijuota į iškarpinę"
+	},
+	"input": {
+		"submit_text": "Pateikti"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Nenurodėte jokio objekto, kurį reikia pastatyti",
+		"cant_place_here": "Čia negalite pastatyti šio objekto",
+		"place_object_place": "[E] Pastatyti  \n",
+		"place_object_cancel": "[X] Atšaukti  \n",
+		"place_object_scroll_up": "[Slinkti aukštyn] Pasukti dešinėn  \n",
+		"place_object_scroll_down": "[Slinkti žemyn] Pasukti kairėn  \n",
+		"object_place": "[%s] Pastatyti  \n",
+		"object_cancel": "[%s] Atšaukti  \n",
+		"object_scroll_up": "[%s] Pasukti dešinėn  \n",
+		"object_scroll_down": "[%s] Pasukti kairėn  \n",
+		"rotate_left": "Pasukti kairėn",
+		"rotate_right": "Pasukti dešinėn",
+		"rotate_clockwise": "[%s] Sukti pagal laikrodžio rodyklę  \n",
+		"rotate_counter_clockwise": "[%s] Sukti prieš laikrodžio rodyklę  \n",
+		"depth_modifier": "[%s] Gylio kontrolės modifikatorius  \n"
+	},
+	"target": {
+		"interact": "[E] Sąveika",
+		"title": "Parinktys",
+		"description": "Nėra aprašymo"
+	}
+}

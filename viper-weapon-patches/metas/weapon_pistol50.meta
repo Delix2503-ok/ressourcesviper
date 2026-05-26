@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CWeaponInfoBlob>
+  <TintSpecValues />
+  <FiringPatternAliases />
+  <UpperBodyFixupExpressionData />
+  <AimingInfos />
+  <Infos>
+    <Item>
+      <Infos />
+    </Item>
+    <Item>
+      <Infos>
+        <Item type="CWeaponInfo">
+          <Name>WEAPON_PISTOL50</Name>
+          <AimingInfo ref="PISTOL_ZERO_RECOIL" />
+          <RecoilAccuracyMax value="0.000000" />
+          <RecoilShakeAmplitude value="0.000000" />
+          <IkRecoilDisplacement value="0.000000" />
+          <IkRecoilDisplacementScope value="0.000000" />
+          <IkRecoilDisplacementScaleBackward value="0.000000" />
+          <IkRecoilDisplacementScaleVertical value="0.000000" />
+        </Item>
+      </Infos>
+    </Item>
+    <Item>
+      <Infos />
+    </Item>
+    <Item>
+      <Infos />
+    </Item>
+  </Infos>
+  <VehicleWeaponInfos />
+</CWeaponInfoBlob>

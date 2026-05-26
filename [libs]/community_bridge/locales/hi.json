@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "इस वस्तु को खरीदने के लिए आपके पास पर्याप्त पैसे नहीं हैं",
+		"Input": "मात्रा इनपुट",
+		"PurchaseAmount": "खरीदारी की मात्रा",
+		"PurchasedItem": "आपने खरीदा है %s %s",
+		"PurchaseFailed": "खरीदारी विफल, इन्वेंटरी भरी हुई है",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "खरीदारी की पुष्टि करें",
+		"AreYouSure": "क्या आप वाकई %s खरीदना चाहते हैं",
+		"PayByCash": "%s नकदी से भुगतान करें",
+		"PayByCard": "%s कार्ड से भुगतान करें",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "दुकान का नाम"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "सूचना"
+	},
+	"clipboard": {
+		"copy": "क्लिपबोर्ड पर कॉपी किया गया"
+	},
+	"input": {
+		"submit_text": "प्रस्तुत करें"
+	},
+	"placeable_object": {
+		"no_prop_defined": "आपने रखने के लिए कोई वस्तु परिभाषित नहीं की है",
+		"cant_place_here": "आप इस वस्तु को यहां नहीं रख सकते",
+		"place_object_place": "[E] रखें  \n",
+		"place_object_cancel": "[X] रद्द करें  \n",
+		"place_object_scroll_up": "[Scroll Up] दाएं मुड़ें  \n",
+		"place_object_scroll_down": "[Scroll Down] बाएं मुड़ें  \n",
+		"object_place": "[%s] रखें  \n",
+		"object_cancel": "[%s] रद्द करें  \n",
+		"object_scroll_up": "[%s] दाएं मुड़ें  \n",
+		"object_scroll_down": "[%s] बाएं मुड़ें  \n",
+		"rotate_left": "बाएं मुड़ें",
+		"rotate_right": "दाएं मुड़ें",
+		"rotate_clockwise": "[%s] घड़ी की दिशा में घुमाएं  \n",
+		"rotate_counter_clockwise": "[%s] घड़ी की विपरीत दिशा में घुमाएं  \n",
+		"depth_modifier": "[%s] गहराई नियंत्रण संशोधक  \n"
+	},
+	"target": {
+		"interact": "[E] बातचीत करें",
+		"title": "विकल्प",
+		"description": "कोई विवरण नहीं"
+	}
+}

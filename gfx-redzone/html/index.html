@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="./index.js"></script>
+</head>
+<body>
+    <div class="redzone-container pb-2">
+
+        <!-- Timer prochaine zone -->
+        <div class="redzone-border relative">
+            <div class="relative w-full">
+                <div class="relative w-full h-full flex items-center justify-center" style="z-index:3;">
+                    <h2 class="whitetext2">PROCHAINE ZONE</h2>
+                </div>
+                <div class="absolute w-full h-full flex items-center justify-center" style="top:0;left:-0.1vw;">
+                    <h2 class="kirmizitext2">PROCHAINE ZONE</h2>
+                </div>
+                <div class="absolute w-full h-full flex items-center justify-center" style="top:0;right:-0.1vw;">
+                    <h2 class="mavitext2">PROCHAINE ZONE</h2>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto you mt-1">
+            <div class="flex w-full justify-center items-center">
+                <p class="zone-timer text-center">20:00</p>
+            </div>
+        </div>
+
+        <!-- Meilleur joueur -->
+        <div class="redzone-border mt-2 relative">
+            <div class="relative w-full">
+                <div class="relative w-full h-full flex items-center justify-center" style="z-index:3;">
+                    <h2 class="whitetext2">MEILLEUR JOUEUR</h2>
+                </div>
+                <div class="absolute w-full h-full flex items-center justify-center" style="top:0;left:-0.1vw;">
+                    <h2 class="kirmizitext2">MEILLEUR JOUEUR</h2>
+                </div>
+                <div class="absolute w-full h-full flex items-center justify-center" style="top:0;right:-0.1vw;">
+                    <h2 class="mavitext2">MEILLEUR JOUEUR</h2>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto player mt-1">
+            <p class="leader-name">—</p>
+            <div class="flex items-center">
+                <img class="mr-1" src="./assets/images/kills.png" style="width:12px;height:12px;">
+                <p class="leader-kills">0</p>
+            </div>
+        </div>
+
+        <!-- Kills totaux -->
+        <div class="redzone-border mt-2 relative">
+            <div class="relative w-full">
+                <div class="relative w-full h-full flex items-center justify-center" style="z-index:3;">
+                    <h2 class="whitetext2">KILLS TOTAUX</h2>
+                </div>
+                <div class="absolute w-full h-full flex items-center justify-center" style="top:0;left:-0.1vw;">
+                    <h2 class="kirmizitext2">KILLS TOTAUX</h2>
+                </div>
+                <div class="absolute w-full h-full flex items-center justify-center" style="top:0;right:-0.1vw;">
+                    <h2 class="mavitext2">KILLS TOTAUX</h2>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto you mt-1">
+            <div class="flex w-full justify-center items-center">
+                <img class="mr-1" src="./assets/images/kills.png" style="width:12px;height:12px;">
+                <p class="total-kills text-center">0</p>
+            </div>
+        </div>
+
+        <!-- Vous -->
+        <div class="redzone-border mt-2 relative">
+            <div class="relative w-full">
+                <div class="relative w-full h-full flex items-center justify-center" style="z-index:3;">
+                    <h2 class="whitetext2">VOUS</h2>
+                </div>
+                <div class="absolute w-full h-full flex items-center justify-center" style="top:0;left:-0.1vw;">
+                    <h2 class="kirmizitext2">VOUS</h2>
+                </div>
+                <div class="absolute w-full h-full flex items-center justify-center" style="top:0;right:-0.1vw;">
+                    <h2 class="mavitext2">VOUS</h2>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto you mt-1">
+            <p>JOUEURS TUÉS</p>
+            <div class="flex items-center">
+                <img class="mr-1" src="./assets/images/kills.png" style="width:12px;height:12px;">
+                <p class="your-kills">0</p>
+            </div>
+        </div>
+        <div class="mx-auto you mt-1">
+            <p>CLASSEMENT</p>
+            <div class="flex items-center">
+                <p class="leaderboard-place">—</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Leaderboard -->
+    <div id="leaderboard" class="hidden">
+        <div id="lb-panel">
+            <div id="lb-header">
+                <div id="lb-skull-l">&#9760;</div>
+                <div id="lb-title">CLASSEMENT<span id="lb-title-sub">REDZONE</span></div>
+                <div id="lb-skull-r">&#9760;</div>
+            </div>
+            <div id="lb-podium-wrap">
+                <div id="lb-podium"></div>
+            </div>
+            <div id="lb-separator"></div>
+            <div id="lb-list-header">
+                <span class="lb-th-rank">#</span>
+                <span class="lb-th-name">JOUEUR</span>
+                <span class="lb-th-kills">KILLS</span>
+            </div>
+            <div id="lb-list"></div>
+            <button id="lb-close" onclick="closeLeaderboard()">&#10005;&nbsp; FERMER</button>
+        </div>
+    </div>
+
+    <!-- Panel Forcer Redzone (admin) -->
+    <div id="zone-picker" class="hidden">
+        <div id="zone-picker-panel">
+            <div id="zone-picker-header">
+                <span class="zp-skull">&#9760;</span>
+                <div id="zone-picker-title">FORCER REDZONE</div>
+                <span class="zp-skull">&#9760;</span>
+            </div>
+            <div id="zone-picker-sub">Sélectionne la prochaine zone active</div>
+            <div id="zone-picker-grid"></div>
+            <button id="zone-picker-close" onclick="closeZonePicker()">&#10005;&nbsp; ANNULER</button>
+        </div>
+    </div>
+
+    <!-- Panel TP Safezone -->
+    <div id="tp-select" class="hidden">
+        <div id="tp-select-panel">
+            <div id="tp-select-title">TÉLÉPORTATION SAFEZONE</div>
+            <div id="tp-select-list"></div>
+            <button id="tp-select-close" onclick="closeTpSelect()">&#10005; FERMER</button>
+        </div>
+    </div>
+
+    <!-- Vote prochaine zone -->
+    <div id="vote-panel" class="gfx-vote hidden">
+        <div class="gfx-vote-header">
+            <div class="gfx-vote-title">&#128257; PROCHAINE ZONE</div>
+            <div id="gfx-vote-timer" class="gfx-vote-timer">30</div>
+        </div>
+        <div class="gfx-vote-hint" id="gfx-vote-hint">&#8592; &#8594; naviguer &bull; ENTR&Eacute;E voter</div>
+        <div id="gfx-vote-options" class="gfx-vote-options"></div>
+        <div id="gfx-vote-result" class="gfx-vote-result hidden"></div>
+    </div>
+
+    <!-- Barre de fouille -->
+    <div id="loot-bar" class="prog-box hidden">
+        <div class="prog-title">&#128269; FOUILLE</div>
+        <div class="prog-track"><div class="prog-fill loot-fill" id="loot-bar-fill"></div></div>
+        <div class="prog-pct loot-pct" id="loot-bar-pct">0%</div>
+    </div>
+
+    <!-- Barre de réanimation -->
+    <div id="revive-bar" class="prog-box hidden">
+        <div class="prog-title">&#128137; RÉANIMATION</div>
+        <div class="prog-track"><div class="prog-fill revive-fill" id="revive-bar-fill"></div></div>
+        <div class="prog-pct revive-pct" id="revive-bar-pct">0%</div>
+    </div>
+
+    <!-- Écran de mort / coma -->
+    <div id="death-screen" class="hidden">
+        <div class="death-vignette"></div>
+        <div class="death-content">
+            <div class="death-title">HORS COMBAT</div>
+            <div class="death-main-timer">
+                <div class="death-timer-val" id="death-timer-val">15:00</div>
+                <div class="death-timer-lbl">avant téléportation forcée</div>
+            </div>
+            <div class="death-sep"></div>
+            <div class="death-revive-info">&#128137; Un joueur peut vous réanimer avec <strong>[G]</strong></div>
+            <div id="death-e-wait" class="death-e-wait">
+                Auto-relèvement disponible dans <span id="death-e-countdown">30</span>s
+            </div>
+            <div id="death-e-hint" class="death-e-hint hidden">
+                <span class="death-key">E</span>
+                <span>Réapparaître à la safezone la plus proche</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

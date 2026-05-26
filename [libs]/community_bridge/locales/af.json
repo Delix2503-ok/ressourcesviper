@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "Jy het nie genoeg geld om hierdie item te koop nie",
+		"Input": "Hoeveelheid Invoer",
+		"PurchaseAmount": "Aankoop Hoeveelheid",
+		"PurchasedItem": "Jy het gekoop %s %s",
+		"PurchaseFailed": "Aankoop het misluk, inventaris vol",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "Bevestig Aankoop",
+		"AreYouSure": "Is jy seker jy wil 'n %s koop",
+		"PayByCash": "Betaal %s met kontant",
+		"PayByCard": "Betaal %s met kaart",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Winkel Naam"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "Kennisgewing"
+	},
+	"clipboard": {
+		"copy": "Gekopieer na knipbord"
+	},
+	"input": {
+		"submit_text": "Indien"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Jy het nie enige voorwerp gedefinieer om te plaas nie",
+		"cant_place_here": "Jy kan nie hierdie voorwerp hier plaas nie",
+		"place_object_place": "[E] Plaas  \n",
+		"place_object_cancel": "[X] Kanselleer  \n",
+		"place_object_scroll_up": "[Scroll Up] Draai regs  \n",
+		"place_object_scroll_down": "[Scroll Down] Draai links  \n",
+		"object_place": "[%s] Plaas  \n",
+		"object_cancel": "[%s] Kanselleer  \n",
+		"object_scroll_up": "[%s] Draai regs  \n",
+		"object_scroll_down": "[%s] Draai links  \n",
+		"rotate_left": "Draai links",
+		"rotate_right": "Draai regs",
+		"rotate_clockwise": "[%s] Draai Kloksgewys  \n",
+		"rotate_counter_clockwise": "[%s] Draai Antikloksgewys  \n",
+		"depth_modifier": "[%s] Diepte Beheer Wysiging  \n"
+	},
+	"target": {
+		"interact": "[E] Interaksie",
+		"title": "Opsies",
+		"description": "Geen Beskrywing"
+	}
+}

@@ -1,0 +1,80 @@
+loadedModules = {}
+
+function Require(modulePath, resourceName)
+    if resourceName and type(resourceName) ~= "string" then
+        resourceName = GetInvokingResource()
+    end
+
+    if not resourceName then
+        resourceName = "community_bridge"
+    end
+
+    local id = resourceName .. ":" .. modulePath
+    if loadedModules[id] then
+        return loadedModules[id]
+    end
+
+    local file = LoadResourceFile(resourceName, modulePath)
+    if not file then
+        error("Error loading file [" .. id .. "]")
+    end
+
+    local chunk, loadErr = load(file, id)
+    if not chunk then
+        error("Error wrapping module [" .. id .. "] Message: " .. loadErr)
+    end
+
+    local success, result = pcall(chunk)
+    if not success then
+        error("Error executing module [" .. id .. "] Message: " .. result)
+    end
+    loadedModules[id] = result
+    return result
+end
+
+
+
+cLib = {
+    Require = Require,
+    Callback = Callback or Require("lib/callback/shared/callback.lua"),
+    Ids = Ids or Require("lib/utility/shared/ids.lua"),
+    Tables = Table or Require("lib/utility/shared/tables.lua"),
+    Prints = Prints or Require("lib/utility/shared/prints.lua"),
+    Math = Math or Require("lib/utility/shared/math.lua"),
+    LA = LA or Require("lib/utility/shared/la.lua")
+}
+
+exports('cLib', cLib)
+
+if not IsDuplicityVersion() then goto client end
+
+cLib.SQL = SQL or Require("lib/sql/server/sqlHandler.lua")
+cLib.Logs = Logs or Require("lib/logs/server/logs.lua")
+cLib.Marker = Marker or Require("lib/markers/server/server.lua")
+cLib.Shell = Shells or Require("lib/shells/server/shells.lua")
+cLib.Entity = ServerEntity or Require("lib/entities/server/server_entity.lua")
+
+-- Depricated 
+cLib.ServerEntity = cLib.Entity
+
+if IsDuplicityVersion() then return cLib end
+::client::
+
+cLib.Scaleform = Scaleform or Require("lib/scaleform/client/scaleform.lua")
+cLib.Placeable = Placeable or Require("lib/placers/client/object_placer.lua")
+cLib.Utility = Utility or Require("lib/utility/client/utility.lua")
+cLib.PlaceableObject = ObjectPlacer or Require("lib/placers/client/placeable_object.lua")
+cLib.Raycast = Raycast or Require("lib/raycast/client/raycast.lua")
+cLib.Point = Point or Require("lib/points/client/points.lua")
+cLib.Particle = Particle or Require("lib/particles/client/particles.lua")
+cLib.Marker = Marker or Require("lib/markers/client/markers.lua")
+cLib.Anim = Anim or Require("lib/anim/client/client.lua")
+cLib.Cutscene = Cutscene or Require("lib/cutscenes/client/cutscene.lua")
+cLib.Particle = Particle or Require("lib/particles/client/particles.lua")
+cLib.Entity = ClientEntity or Require("lib/entities/client/client_entity.lua")
+cLib.Vehicles = Vehicles or Require("lib/vehicles/client.lua")
+
+-- Deprecated
+cLib.ClientEntity = cLib.Entity
+
+return cLib

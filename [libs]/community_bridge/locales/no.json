@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "Du har ikke nok penger til å kjøpe denne varen",
+		"Input": "Mengde inndata",
+		"PurchaseAmount": "Kjøpsmengde",
+		"PurchasedItem": "Du har kjøpt %s %s",
+		"PurchaseFailed": "Kjøp mislyktes, inventar fullt",
+		"CurrencySymbol": "$ %s",
+		"Confirm": "Bekreft kjøp",
+		"AreYouSure": "Er du sikker på at du vil kjøpe en %s",
+		"PayByCash": "Betal %s med kontanter",
+		"PayByCard": "Betal %s med kort",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Butikknavn"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "Varsling"
+	},
+	"clipboard": {
+		"copy": "Kopiert til utklippstavle"
+	},
+	"input": {
+		"submit_text": "Send inn"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Du har ikke definert noe objekt å plassere",
+		"cant_place_here": "Du kan ikke plassere dette objektet her",
+		"place_object_place": "[E] Plasser  \n",
+		"place_object_cancel": "[X] Avbryt  \n",
+		"place_object_scroll_up": "[Scroll Up] Snu til høyre  \n",
+		"place_object_scroll_down": "[Scroll Down] Snu til venstre  \n",
+		"object_place": "[%s] Plasser  \n",
+		"object_cancel": "[%s] Avbryt  \n",
+		"object_scroll_up": "[%s] Snu til høyre  \n",
+		"object_scroll_down": "[%s] Snu til venstre  \n",
+		"rotate_left": "Roter til venstre",
+		"rotate_right": "Roter til høyre",
+		"rotate_clockwise": "[%s] Roter med klokken  \n",
+		"rotate_counter_clockwise": "[%s] Roter mot klokken  \n",
+		"depth_modifier": "[%s] Dybdekontroll Modifikator  \n"
+	},
+	"target": {
+		"interact": "[E] Samhandle",
+		"title": "Alternativer",
+		"description": "Ingen beskrivelse"
+	}
+}

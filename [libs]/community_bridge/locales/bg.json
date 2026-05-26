@@ -1,0 +1,49 @@
+{
+	"Shops": {
+		"NotEnoughMoney": "Нямате достатъчно пари, за да купите този артикул",
+		"Input": "Въвеждане на количество",
+		"PurchaseAmount": "Количество за покупка",
+		"PurchasedItem": "Закупихте %s %s",
+		"PurchaseFailed": "Покупката е неуспешна, инвентарът е пълен",
+		"CurrencySymbol": "%s лв.",
+		"Confirm": "Потвърдете покупката",
+		"AreYouSure": "Сигурни ли сте, че искате да закупите %s",
+		"PayByCash": "Плащане на %s в брой",
+		"PayByCard": "Плащане на %s с карта",
+		"CardIcon": "fa-solid fa-building-columns",
+		"CashIcon": "fa-solid fa-money-bill-wave",
+		"ShopIcon": "fa-solid fa-basket-shopping",
+		"ShopName": "Име на магазина"
+	},
+	"Notifications": {
+		"PlaceholderTitle": "Известие"
+	},
+	"clipboard": {
+		"copy": "Копирано в клипборда"
+	},
+	"input": {
+		"submit_text": "Изпрати"
+	},
+	"placeable_object": {
+		"no_prop_defined": "Не сте дефинирали обект за поставяне",
+		"cant_place_here": "Не можете да поставите този обект тук",
+		"place_object_place": "[E] Поставяне  \n",
+		"place_object_cancel": "[X] Отказ  \n",
+		"place_object_scroll_up": "[Превъртане нагоре] Завъртане надясно  \n",
+		"place_object_scroll_down": "[Превъртане надолу] Завъртане наляво  \n",
+		"object_place": "[%s] Поставяне  \n",
+		"object_cancel": "[%s] Отказ  \n",
+		"object_scroll_up": "[%s] Завъртане надясно  \n",
+		"object_scroll_down": "[%s] Завъртане наляво  \n",
+		"rotate_left": "Завъртане наляво",
+		"rotate_right": "Завъртане надясно",
+		"rotate_clockwise": "[%s] Завъртане по часовниковата стрелка  \n",
+		"rotate_counter_clockwise": "[%s] Завъртане обратно на часовниковата стрелка  \n",
+		"depth_modifier": "[%s] Модификатор на дълбочината  \n"
+	},
+	"target": {
+		"interact": "[E] Взаимодействие",
+		"title": "Опции",
+		"description": "Няма описание"
+	}
+}
