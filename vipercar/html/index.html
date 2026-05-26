@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViperCar Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="overlay" class="hidden">
+        <div id="panel">
+
+            <!-- Header -->
+            <div id="header">
+                <div class="header-left">
+                    <div class="logo-wrap">
+                        <span class="logo-viper">VIPER</span><span class="logo-car">CAR</span>
+                    </div>
+                    <div class="subtitle">PANEL ADMINISTRATION</div>
+                </div>
+                <button id="closeBtn" title="Fermer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Stats bar -->
+            <div id="stats-bar">
+                <div class="stat-item">
+                    <i class="fa-solid fa-robot"></i>
+                    <span id="stat-count">0</span> PNJ(s) actif(s)
+                </div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-car"></i>
+                    <span>BF400 &amp; Revolter</span>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div id="content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-users"></i> PNJs déployés</h2>
+                    <button id="addBtn" class="btn-add">
+                        <i class="fa-solid fa-plus"></i> Ajouter un PNJ
+                    </button>
+                </div>
+
+                <div id="npc-list">
+                    <div id="empty-state" class="empty-state">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p>Aucun PNJ déployé.<br>Cliquez sur «&nbsp;Ajouter un PNJ&nbsp;» pour commencer.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

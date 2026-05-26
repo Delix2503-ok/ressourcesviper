@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viper Blanchiment</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════ MENU BLANCHIMENT -->
+  <div id="laundry-overlay" class="overlay hidden">
+    <div class="panel laundry-panel" id="laundry-panel">
+
+      <div class="panel-header">
+        <img src="img/logo.png" alt="Viper" class="logo">
+        <div class="header-text">
+          <h1>BLANCHIMENT</h1>
+          <p class="subtitle">Conversion d'argent sale</p>
+        </div>
+        <button class="close-btn" onclick="closeLaundry()"><i class="fas fa-times"></i></button>
+      </div>
+
+      <div class="panel-body">
+
+        <!-- Stats -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <i class="fas fa-biohazard"></i>
+            <span class="stat-label">Argent sale</span>
+            <span class="stat-value" id="black-money-amount">$0</span>
+          </div>
+          <div class="stat-divider">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-percentage"></i>
+            <span class="stat-label">Taux de conversion</span>
+            <span class="stat-value green" id="rate-value">80%</span>
+            <span id="vip-badge" class="vip-badge hidden">VIP</span>
+          </div>
+        </div>
+
+        <!-- Input -->
+        <div class="section">
+          <label class="field-label">MONTANT À BLANCHIR</label>
+          <div class="input-wrap">
+            <span class="input-icon"><i class="fas fa-dollar-sign"></i></span>
+            <input type="number" id="laundry-amount" placeholder="Entrez un montant..." min="0">
+            <button class="btn-max" onclick="setMax()">MAX</button>
+          </div>
+          <div class="amount-preview">
+            <span>Vous recevrez : <strong class="green" id="preview-receive">$0</strong></span>
+            <span>Frais : <strong class="red" id="preview-fee">$0</strong></span>
+          </div>
+        </div>
+
+        <!-- Boutons rapides -->
+        <div class="quick-btns">
+          <button onclick="quickAmount(500)">$500</button>
+          <button onclick="quickAmount(2500)">$2 500</button>
+          <button onclick="quickAmount(10000)">$10 000</button>
+          <button onclick="quickAmount(25000)">$25 000</button>
+        </div>
+
+        <!-- Action -->
+        <button class="btn-action" onclick="startLaundry()">
+          <i class="fas fa-sync-alt spin-hover"></i>
+          BLANCHIR
+        </button>
+
+        <p class="disclaimer"><i class="fas fa-clock"></i> Le blanchiment prend <span id="duration-label">60</span> secondes</p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ PANEL ADMIN -->
+  <div id="admin-overlay" class="overlay hidden">
+    <div class="panel admin-panel">
+
+      <div class="panel-header">
+        <img src="img/logo.png" alt="Viper" class="logo">
+        <div class="header-text">
+          <h1>ADMIN PANEL</h1>
+          <p class="subtitle">Gestion des spots de blanchiment</p>
+        </div>
+        <button class="close-btn" onclick="closeAdmin()"><i class="fas fa-times"></i></button>
+      </div>
+
+      <div class="panel-body admin-body">
+
+        <!-- Ajouter un spot -->
+        <div class="admin-section">
+          <div class="section-title">
+            <i class="fas fa-plus-circle"></i>
+            AJOUTER UN SPOT
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label>Nom du spot</label>
+              <input type="text" id="spot-name" placeholder="ex: Laverie du Vieux Port">
+            </div>
+            <div class="form-field">
+              <label>Modèle de PED</label>
+              <select id="ped-model-select"></select>
+            </div>
+          </div>
+
+          <button class="btn-action small" onclick="addSpot()">
+            <i class="fas fa-map-marker-alt"></i>
+            Ajouter à ma position actuelle
+          </button>
+        </div>
+
+        <!-- Liste des spots -->
+        <div class="admin-section">
+          <div class="section-title">
+            <i class="fas fa-map-marked-alt"></i>
+            SPOTS ACTIFS
+            <span class="badge" id="spots-count">0</span>
+          </div>
+
+          <div id="spots-list" class="spots-list">
+            <div class="empty-state">
+              <i class="fas fa-map-marked-alt"></i>
+              <p>Aucun spot configuré.<br>Ajoutez-en un ci-dessus.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ BARRE DE PROGRESSION -->
+  <div id="progress-bar-overlay" class="hidden">
+    <div class="progress-wrapper">
+      <div class="progress-header">
+        <div class="progress-title">
+          <i class="fas fa-sync-alt fa-spin"></i>
+          Blanchiment en cours...
+        </div>
+        <span class="progress-cancel-hint"><kbd>X</kbd> pour annuler</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+        <span class="progress-pct" id="progress-pct">0%</span>
+      </div>
+      <div class="progress-footer">
+        <span id="progress-money-info">$0 → $0</span>
+        <span id="progress-time-info">60s</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
