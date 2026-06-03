@@ -92,11 +92,13 @@ Cocher `[x]` quand fait. Format : `resource/fichier:ligne`.
 
 ## 🧹 SIMPLICITÉ — duplication / dead code
 
-- [ ] **NPC ground-snap spawn dupliqué 4×** (vipercar, vipergun, viper-boutique, viperpvp_redzone) — ~60 lignes chacun. Extraire un export partagé.
-- [ ] **4 `IsAdmin` différents** (license vs ACE vs group), incohérents → admin dans une resource ≠ admin dans une autre. Export partagé unique.
-- [ ] **viper-boutique/server/main.lua:458,525** — `BroadcastGarageNpcs`/`BroadcastCustomNpcs` définis, jamais appelés. Dead code.
-- [ ] **viper-emote/Client/EmoteMenu.lua:68** — `table.insert` danceemotes dupliqué ; `/e` suggestion enregistrée 2×. Supprimer doublons.
-- [ ] **xeroshieldv3** — 3rd-party obfusqué, ouvre un listener websocket ; non auditable. Vérifier que le port `5104` n'est pas exposé externe ; confiance = vendor uniquement.
+> ✅ Wins sûrs corrigés sur branche `fix/simplicity` (2026-06-03). Refactors cross-resource différés volontairement (voir notes).
+
+- [x] ✅ **viper-boutique/server/main.lua:458,525** — `BroadcastGarageNpcs`/`BroadcastCustomNpcs` dead code. → ✅ Supprimés.
+- [x] ✅ **viper-emote** — `table.insert` danceemotes dupliqué (EmoteMenu.lua:69) + `/e` suggestion 2× (Emote.lua:51). → ✅ Doublons retirés.
+- [ ] **NPC ground-snap spawn dupliqué 4×** (vipercar, vipergun, viper-boutique, viperpvp_redzone). → ⏸️ **Différé** : la séquence de spawn (ordre freeze/collision/snap) est délicate et documentée dans CLAUDE.md ; un export partagé introduit une dépendance d'ordre de chargement et un risque de régression élevé, non testable hors serveur. À faire seulement avec accès runtime + tests.
+- [ ] **4 `IsAdmin` différents** (license vs ACE vs group). → ⏸️ **Différé** : unifier change la surface admin (une licence admin ici ≠ ailleurs) — risque sécurité si une resource gagne/perd des droits par effet de bord. Nécessite de cartographier chaque appelant + validation avant.
+- [ ] **xeroshieldv3** — 3rd-party obfusqué, listener websocket ; non auditable. → ⏸️ Vérifier que le port `5104` n'est pas exposé externe (action IR). Confiance = vendor uniquement.
 
 ---
 

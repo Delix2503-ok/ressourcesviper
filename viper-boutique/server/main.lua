@@ -455,11 +455,6 @@ RegisterNetEvent('boutique:buy', function(itemId, qty)
 end)
 
 -- ─── Garage NPC : sync vers clients ─────────────────────────────────────────────
-local function BroadcastGarageNpcs()
-    local npcs = MySQL.query.await('SELECT * FROM boutique_garage_npcs', {})
-    TriggerClientEvent('boutique:syncGarageNpcs', -1, npcs)
-end
-
 RegisterNetEvent('boutique:requestGarageNpcs', function()
     local src  = source
     local npcs = MySQL.query.await('SELECT * FROM boutique_garage_npcs', {})
@@ -522,11 +517,6 @@ RegisterNetEvent('boutique:requestGarage', function(npcId)
 end)
 
 -- ─── Custom NPC : sync ───────────────────────────────────────────────────────
-local function BroadcastCustomNpcs()
-    local npcs = MySQL.query.await('SELECT * FROM boutique_custom_npcs', {})
-    TriggerClientEvent('boutique:syncCustomNpcs', -1, npcs)
-end
-
 RegisterNetEvent('boutique:requestCustomNpcs', function()
     local src  = source
     local npcs = MySQL.query.await('SELECT * FROM boutique_custom_npcs', {})
