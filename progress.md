@@ -150,3 +150,33 @@
 
 
 `5 files changed, 23 insertions(+), 18 deletions(-)`
+## 2026-06-03 22:19 - ressourcesviper
+
+- c74f7a6 Merge fix/simplicity: dead code/dup removal + IR downgrade
+- 76eb385 docs: downgrade IR actions (backdoor never executed - server never started)
+- e5d0206 refactor: remove dead code and duplicate lines
+- be1ca25 Merge fix/perf: per-frame and N+1 perf fixes
+- 02462f5 chore: update progress.md
+- 82d86d4 perf: reduce wasted per-frame work and N+1 queries
+- fa31421 Merge fix/med-issues: 6 MED severity bug fixes
+- 792e3dc chore: update progress.md
+- feff11d fix: patch 6 MED severity bugs
+- 0379d04 docs: mark completed TODO items with green check for visibility
+
+
+`5 files changed, 47 insertions(+), 25 deletions(-)`
+## 2026-06-03 22:21 - ressourcesviper
+
+- c74f7a6 Merge fix/simplicity: dead code/dup removal + IR downgrade
+- 76eb385 docs: downgrade IR actions (backdoor never executed - server never started)
+- e5d0206 refactor: remove dead code and duplicate lines
+- be1ca25 Merge fix/perf: per-frame and N+1 perf fixes
+- 02462f5 chore: update progress.md
+- 82d86d4 perf: reduce wasted per-frame work and N+1 queries
+- fa31421 Merge fix/med-issues: 6 MED severity bug fixes
+- 792e3dc chore: update progress.md
+- feff11d fix: patch 6 MED severity bugs
+- 0379d04 docs: mark completed TODO items with green check for visibility
+
+
+`5 files changed, 62 insertions(+), 25 deletions(-)`
