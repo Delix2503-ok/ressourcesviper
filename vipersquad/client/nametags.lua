@@ -31,8 +31,11 @@ local function makeSettings()
     }
 end
 
+local nameLoopRunning = false
 function StartNameLoop()
     if not PersonalSettings.nametagsVisible then return end
+    if nameLoopRunning then return end  -- évite les threads dupliqués (fuite)
+    nameLoopRunning = true
     Citizen.CreateThread(function()
         while SquadMembers and #SquadMembers > 0 and PersonalSettings.nametagsVisible do
             Citizen.Wait(50)
@@ -47,6 +50,7 @@ function StartNameLoop()
             end
         end
         RemoveGamerTags()
+        nameLoopRunning = false
     end)
 end
 
@@ -78,7 +82,7 @@ function RenderNames(v, isSquad)
                 mpGamerTagSettings[i].rename = nil
             end
 
-            local distance = #(pedCoords - GetEntityCoords(ped))
+            local distance = #(pedCoords - GetEntityCoords(PlayerPedId()))
             if distance < 100 then
                 SetMpGamerTagVisibility(tag, gtComponent.GAMER_NAME, true)
                 SetMpGamerTagVisibility(tag, gtComponent.healthArmour, true)

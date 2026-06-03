@@ -38,7 +38,12 @@ Citizen.CreateThread(function()
 
     if Config.MenuKeybindEnabled then if IsControlPressed(0, Config.MenuKeybind) then OpenEmoteMenu() end end
     if Config.EnableXtoCancel then if IsControlPressed(0, 73) then EmoteCancel() end end
-    Citizen.Wait(1)
+    -- Idle quand rien d'actif : garde la réactivité keybind (~50ms) sans tourner chaque frame
+    if IsInAnimation or PtfxPrompt then
+      Citizen.Wait(1)
+    else
+      Citizen.Wait(50)
+    end
   end
 end)
 

@@ -55,7 +55,7 @@ Citizen.CreateThread(function()
         end
       end
     end
-    Citizen.Wait(1)
+    Citizen.Wait(50)  -- keybind unique : 50ms suffit, évite un thread chaque frame
   end
 end)
 
@@ -294,8 +294,12 @@ _menuPool:RefreshIndex()
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(0)
-        _menuPool:ProcessMenus()
+        if _menuPool:IsAnyMenuOpen() then
+            _menuPool:ProcessMenus()
+            Citizen.Wait(0)
+        else
+            Citizen.Wait(100)  -- menu fermé : pas de rendu chaque frame
+        end
     end
 end)
 
