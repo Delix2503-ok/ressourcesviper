@@ -6,7 +6,9 @@
       "Bash(Sort-Object Name)",
       "PowerShell(Get-ChildItem C:\\\\FVO\\\\ressourcesviper -Directory | Where-Object { $_.Name -notlike '.git' -and $_.Name -notlike '.claude' } | Select-Object Name | Sort-Object Name)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git pull *)"
     ]
   }
 }
