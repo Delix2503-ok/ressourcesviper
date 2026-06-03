@@ -120,3 +120,33 @@
 
 
 `7 files changed, 59 insertions(+), 20 deletions(-)`
+## 2026-06-03 22:16 - ressourcesviper
+
+- e5d0206 refactor: remove dead code and duplicate lines
+- be1ca25 Merge fix/perf: per-frame and N+1 perf fixes
+- 02462f5 chore: update progress.md
+- 82d86d4 perf: reduce wasted per-frame work and N+1 queries
+- fa31421 Merge fix/med-issues: 6 MED severity bug fixes
+- 792e3dc chore: update progress.md
+- feff11d fix: patch 6 MED severity bugs
+- 0379d04 docs: mark completed TODO items with green check for visibility
+- d5f2d2e Merge fix/high-security: 9 HIGH security fixes + progress.md switch
+- 4b5b637 chore: update progress.md
+
+
+`4 files changed, 7 insertions(+), 17 deletions(-)`
+## 2026-06-03 22:18 - ressourcesviper
+
+- e5d0206 refactor: remove dead code and duplicate lines
+- be1ca25 Merge fix/perf: per-frame and N+1 perf fixes
+- 02462f5 chore: update progress.md
+- 82d86d4 perf: reduce wasted per-frame work and N+1 queries
+- fa31421 Merge fix/med-issues: 6 MED severity bug fixes
+- 792e3dc chore: update progress.md
+- feff11d fix: patch 6 MED severity bugs
+- 0379d04 docs: mark completed TODO items with green check for visibility
+- d5f2d2e Merge fix/high-security: 9 HIGH security fixes + progress.md switch
+- 4b5b637 chore: update progress.md
+
+
+`5 files changed, 23 insertions(+), 18 deletions(-)`

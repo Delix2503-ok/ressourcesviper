@@ -13,13 +13,15 @@
 - [x] ✅ **Configs/clés exposées** — aucun `.cfg`, aucune licence/clé API/mdp DB dans le repo.
 - [x] ✅ **ACE/principal abusifs** — aucun. `viper-boutique` `add_principal` = grades VIP achetés (`item.set_group` défini par admin) ; `givecoins` gated console/admin. OK.
 
-### ⚠️ ACTIONS IR — décisions utilisateur (le nettoyage repo ne suffit pas)
-- [ ] **Considérer le serveur comme compromis** depuis l'install de thug-killfeeds — le backdoor a pu exécuter du code en mémoire (le stage-2 eval'd n'est PAS sur disque, donc invisible au repo).
-- [ ] **Roter tous les secrets** : tokens Discord/webhooks, clés API, mdp DB (`server.cfg`), licence serveur (`sv_licenseKey`), identifiants steam/admin.
-- [ ] **Vérifier la persistance hors repo** : `server.cfg` (ressources `ensure` inattendues), tâches planifiées/services Windows, comptes admin ajoutés en DB, fichiers récents sur l'hôte.
-- [ ] **D'où vient thug-killfeeds ?** identifier la source pour repérer d'autres resources de la même origine. Le remplacer par une source propre plutôt que garder un trojan nettoyé.
-- [ ] **xeroshieldv3** (anticheat) — code obfusqué non auditable, aucune signature backdoor trouvée mais non vérifiable à 100%. Confirmer provenance officielle XeroShield.
-- [ ] **[cfx-default]/[system]/runcode** — outil dev d'exécution de code arbitraire (rcon). Vérifier qu'il n'est PAS `ensure` dans `server.cfg` en prod ; sinon le retirer.
+### ✅ ACTIONS IR — RISQUE DÉCLASSÉ (2026-06-03)
+**Confirmé par l'utilisateur : les scripts n'ont jamais tourné sur un FXServer démarré.** Le backdoor s'exécute uniquement au chargement de la resource côté serveur → jamais démarré = jamais exécuté = **pas de compromission**. Rotation de secrets **non nécessaire**. Items gardés en simple précaution si un déploiement passé est incertain.
+
+- [x] ✅ **Évaluation compromission** — backdoor jamais exécuté (serveur jamais lancé avec la resource). Pas de RCE, pas d'exfil.
+- [ ] ⏸️ *(précaution, seulement si un déploiement passé est incertain)* Roter secrets : tokens Discord, clés API, mdp DB, `sv_licenseKey`.
+- [ ] ⏸️ *(précaution)* Vérifier `server.cfg` : pas de `ensure` inattendu ; confirmer que thug-killfeeds n'y était pas.
+- [ ] **D'où vient thug-killfeeds ?** identifier la source ; le remplacer par une source propre avant tout futur déploiement (ne pas réintroduire le trojan nettoyé en prod).
+- [ ] **xeroshieldv3** (anticheat) — obfusqué, non auditable ; aucune signature backdoor. Confirmer provenance officielle XeroShield avant déploiement.
+- [ ] **[cfx-default]/[system]/runcode** — outil dev RCE (rcon). Ne PAS `ensure` en prod.
 
 ---
 # Reste de l'audit
