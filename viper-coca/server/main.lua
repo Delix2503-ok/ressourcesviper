@@ -106,7 +106,7 @@ RegisterNetEvent('vipercoca:collect', function()
     local pos = GetEntityCoords(ped)
     local dx  = pos.x - Zone.x
     local dy  = pos.y - Zone.y
-    if (dx * dx + dy * dy) > (Zone.radius + 5.0) ^ 2 then
+    if (dx * dx + dy * dy) > (Zone.radius + 5.0) ^ 2 or (Zone.z and math.abs(pos.z - Zone.z) > 10.0) then
         TriggerClientEvent('vipercoca:collectFail', src, 'Tu es hors de la zone.')
         return
     end
@@ -136,7 +136,7 @@ RegisterNetEvent('vipercoca:sell', function(amount)
     local pos  = GetEntityCoords(ped)
     local dx   = pos.x - SellNpc.x
     local dy   = pos.y - SellNpc.y
-    if (dx * dx + dy * dy) > 100.0 then
+    if (dx * dx + dy * dy) > 100.0 or (SellNpc.z and math.abs(pos.z - SellNpc.z) > 10.0) then
         TriggerClientEvent('QBCore:Notify', src, 'Trop loin du revendeur.', 'error')
         return
     end

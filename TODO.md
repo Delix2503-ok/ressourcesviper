@@ -66,12 +66,14 @@ Cocher `[x]` quand fait. Format : `resource/fichier:ligne`.
 
 ## 🟡 MED — bugs
 
-- [ ] **viperpvp_redzone/server/main.lua:802** — `Carriers` utilisé avant son `local` → résout en global → cleanup carry du revive = no-op silencieux. **CLAUDE.md le marque "résolu" — régressé.** Déplacer la decl avant le handler.
-- [ ] **viper-dv/server/main.lua:9** — `GetPlayerIdentifierByType(src,...)` attend un string → `tostring(src)`, sinon check admin license échoue en silence.
-- [ ] **viper-hud/client/main.lua:278** — callback NUI `safeDone` ré-enregistré dans le handler à chaque `/safe` → closure coords périmée. Enregistrer une fois au scope fichier.
-- [ ] **viper_ranked/match.lua** — `StartRound` planifié check `Matches[id]` mais pas `state` → peut fire sur match terminé. Ajouter guard `state ~= 'ended'`.
-- [ ] **viper-coca/server/main.lua:109,127** — distance ne check pas `Zone.z` → harvest/sell possible à un autre étage (2D radius seul).
-- [ ] **viperlogs/server/main.lua:180,199** — `days` concaténé dans le SQL (`tonumber` actuel le protège mais pattern fragile). Préférer entier paramétré/clampé.
+> ✅ Lot corrigé sur branche `fix/med-issues` (2026-06-03). Vérifié par revue manuelle — **test runtime serveur FiveM à faire**.
+
+- [x] ✅ **viperpvp_redzone/server/main.lua:802** — `Carriers` utilisé avant son `local`. → ✅ `local Carriers = {}` déplacé avant le handler `redzone:revive:attempt` ; cleanup carry du revive fonctionne à nouveau.
+- [x] ✅ **viper-dv/server/main.lua:9** — `GetPlayerIdentifierByType(src,...)` attend un string. → ✅ `tostring(src)`.
+- [x] ✅ **viper-hud/client/main.lua:278** — callback NUI `safeDone` ré-enregistré à chaque `/safe`. → ✅ Enregistré une fois au scope fichier, lit `safeCoords` + guard `safeInProgress`.
+- [x] ✅ **viper_ranked/match.lua** — `StartRound` ne checkait pas `state`. → ✅ Guard `if not match or match.state == 'ended' then return`.
+- [x] ✅ **viper-coca/server/main.lua:109,127** — distance ne checkait pas l'axe Z. → ✅ Ajout check vertical nil-safe (`Zone.z`/`SellNpc.z` + `math.abs(dz) > 10.0`).
+- [x] ✅ **viperlogs/server/main.lua:165** — `days` concaténé dans le SQL. → ✅ `math.max(1, math.floor(...))` garantit un entier sûr.
 
 ---
 

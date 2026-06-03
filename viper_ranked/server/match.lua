@@ -132,7 +132,7 @@ end
 -- ─── Nouvelle manche ─────────────────────────────────────────────────────────
 function StartRound(matchId)
     local match = Matches[matchId]
-    if not match then return end
+    if not match or match.state == 'ended' then return end
 
     local pos   = GetPositions()
     local arena = pos[match.mode].arenas[match.arenaIdx]

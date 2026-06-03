@@ -6,7 +6,7 @@ local playerCooldowns = {}
 
 local function IsAdmin(src)
     if src == 0 then return true end
-    local license = GetPlayerIdentifierByType(src, 'license')
+    local license = GetPlayerIdentifierByType(tostring(src), 'license')
     if license then
         for _, l in ipairs(Config.AdminLicenses) do
             if l == license then return true end

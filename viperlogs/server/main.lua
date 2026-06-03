@@ -162,7 +162,7 @@ exports.ox_inventory:registerHook('swapItems', function(payload)
 end)
 
 -- ─── Requêtes panel ──────────────────────────────────────────────────────────
-local days = tonumber(Config.LogDays) or 7
+local days = math.max(1, math.floor(tonumber(Config.LogDays) or 7))  -- entier clampé : sûr pour la concat SQL
 
 RegisterNetEvent('viperlogs:getKills')
 AddEventHandler('viperlogs:getKills', function(license)
