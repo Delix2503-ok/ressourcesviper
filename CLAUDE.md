@@ -4,6 +4,12 @@ Serveur FiveM PVP-only basé sur QBCore. Pas de roleplay, pas de métiers actifs
 
 ---
 
+## Always-on instructions
+
+- **maintain-todo** — `TODO.md` (racine du projet) est la liste de travail de l'audit. La tenir à jour en permanence : cocher `[x]` une tâche dès qu'elle est terminée et vérifiée ; ajouter toute nouvelle tâche/bug/amélioration découverte avec le format `resource/fichier:ligne — problème → fix`, classée par priorité (🔴 critique / 🟠 high / 🟡 med / ⚡ perf / 🧹 simplicité). Ne pas supprimer une tâche faite — la cocher pour garder la trace.
+
+---
+
 ## Architecture générale
 
 | Ressource | Rôle |

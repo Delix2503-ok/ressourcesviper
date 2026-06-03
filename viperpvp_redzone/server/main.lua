@@ -722,8 +722,18 @@ end)
 
 local DeadPlayers = {}  -- [serverId] = timestamp (GetGameTimer) de la mort
 
+-- Exports état de mort validé serveur-side (utilisés par vipertpramp pour le self-revive)
+exports('IsPlayerDead', function(src)
+    return DeadPlayers[tonumber(src)] ~= nil
+end)
+exports('ClearPlayerDeath', function(src)
+    DeadPlayers[tonumber(src)] = nil
+end)
+
 RegisterNetEvent('redzone:death:register', function(killerId, zoneId)
     local victimId = source
+    -- Anti-spam / anti double-crédit : ignorer si la victime est déjà comptée morte
+    if DeadPlayers[victimId] then return end
     DeadPlayers[victimId] = GetGameTimer()
 
     -- Émettre l'événement de log (même sans kill en zone)
@@ -733,6 +743,8 @@ RegisterNetEvent('redzone:death:register', function(killerId, zoneId)
     if not killerId or not zoneId then return end
     killerId = tonumber(killerId)
     if not killerId or killerId == victimId then return end
+    -- Un joueur mort ne peut pas créditer un kill (empêche le farm via alt à terre)
+    if DeadPlayers[killerId] then return end
 
     local zone = Zones[zoneId]
     if not zone or not zone.active then return end
@@ -746,6 +758,12 @@ RegisterNetEvent('redzone:death:register', function(killerId, zoneId)
     local dx = kcoords.x - zone.x
     local dy = kcoords.y - zone.y
     if (dx * dx + dy * dy) > ((zone.radius + 25) * (zone.radius + 25)) then return end
+
+    -- Valider que la victime était elle aussi en zone (tolérance 25m)
+    local vcoords = GetEntityCoords(GetPlayerPed(victimId))
+    local vdx = vcoords.x - zone.x
+    local vdy = vcoords.y - zone.y
+    if (vdx * vdx + vdy * vdy) > ((zone.radius + 25) * (zone.radius + 25)) then return end
 
     exports['ox_inventory']:AddItem(killerId, 'black_money', zone.moneyReward)
     TriggerClientEvent('redzone:notifyKill', killerId, zone.moneyReward)

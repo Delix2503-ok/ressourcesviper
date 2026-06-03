@@ -27,12 +27,23 @@ RegisterNetEvent('weaponpatch:hitRegistered', function(data)
 end)
 
 -- Headshot détecté côté attaquant hors ranked
+-- Portée max parmi les armes configurées → gate distance anti-instakill à distance
+local headshotMaxDist = 0.0
+for _, w in pairs(activeWeapons) do
+    if w.range and w.range > headshotMaxDist then headshotMaxDist = w.range end
+end
+headshotMaxDist = (headshotMaxDist > 0 and headshotMaxDist or 100.0) + 5.0  -- tolérance
+
 local lastHeadshotByPlayer = {}
 RegisterNetEvent('weaponpatch:headshotConfirmed', function(victimSrc)
     local src = source
     victimSrc = tonumber(victimSrc)
     if not victimSrc or victimSrc == src then return end
-    if GetPlayerPed(victimSrc) == 0 then return end
+    local aPed, vPed = GetPlayerPed(src), GetPlayerPed(victimSrc)
+    if aPed == 0 or vPed == 0 then return end
+
+    -- Valider que l'attaquant est à portée d'arme de la victime (anti-kill à distance arbitraire)
+    if #(GetEntityCoords(aPed) - GetEntityCoords(vPed)) > headshotMaxDist then return end
 
     -- Rate-limit : 1 headshot par 300ms par attaquant
     local now = GetGameTimer()
