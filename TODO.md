@@ -79,12 +79,14 @@ Cocher `[x]` quand fait. Format : `resource/fichier:ligne`.
 
 ## ⚡ PERF — gaspillage per-frame
 
-- [ ] **vipersquad** — threads chevauchants (50ms/200ms/5s) **re-spawnés** à chaque changement membre/settings, pas de dedup → fuite de threads. Guard running-flag.
-- [ ] **vipersquad/client/nametags.lua:81** — distance = ped vs **lui-même** = toujours 0 → gate distance inutile. Comparer au ped local.
-- [ ] **viper-emote** — 3 threads tight permanents (`Wait(1)`×2 + `Wait(0)`) ; idle à 150-250ms quand pas d'anim/menu.
-- [ ] **viper-hud/client/blips.lua:28** — scan sprites 2..826 toutes les 15s en permanence. Utiliser le blip pool.
-- [ ] **viper_kit/server/main.lua:168** — N+1 queries cooldown dans la boucle `getMyKits`. Batch en une query.
-- [ ] **viperjail/client/main.lua:71** — `closeInventory` pcall chaque frame quand jailed. Throttle ~250ms ou seulement si inventaire ouvert.
+> ✅ Lot corrigé sur branche `fix/perf` (2026-06-03). Vérifié par revue manuelle — **test runtime serveur FiveM à faire**.
+
+- [x] ✅ **vipersquad/client/nametags.lua** — thread `StartNameLoop` re-spawné sans dedup → fuite. → ✅ Guard `nameLoopRunning` (un seul thread à la fois).
+- [x] ✅ **vipersquad/client/nametags.lua:81** — distance = ped vs lui-même = toujours 0. → ✅ Comparé au `PlayerPedId()` local (gate `< 100m` désormais utile).
+- [x] ✅ **viper-emote** — 3 threads tight permanents. → ✅ Emote main + fav-keybind idle à `Wait(50)` quand inactif ; `ProcessMenus` ne tourne en `Wait(0)` que si un menu est ouvert (`Wait(100)` sinon).
+- [ ] **viper-hud/client/blips.lua:28** — scan sprites 2..826 toutes les 15s. → ⏸️ **Laissé volontairement** : pas d'API blip-pool fiable côté FiveM, narrower range = risque de rater des blips. ROI faible vs risque de régression. À refaire seulement si profiling le justifie.
+- [x] ✅ **viper_kit/server/main.lua:168** — N+1 queries cooldown dans `getMyKits`. → ✅ Tous les cooldowns récupérés en une requête + lookup table.
+- [x] ✅ **viperjail/client/main.lua:71** — `closeInventory` chaque frame quand jailed. → ✅ Throttle 500ms (`lastInvClose`). Freeze/disable-controls restent per-frame (nécessaire).
 
 ---
 

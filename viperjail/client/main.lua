@@ -68,6 +68,7 @@ end)
 -- ─── Freeze + enforcement + inventory block ───────────────────────────────────
 -- Wait(0) en PREMIER puis vérification IsJailed — évite la race condition
 -- où le thread re-freeze après que le release handler ait dégelé.
+local lastInvClose = 0
 CreateThread(function()
     while true do
         Wait(0)
@@ -96,7 +97,11 @@ CreateThread(function()
             EnableControlAction(0, 106, true)  -- Zoom
             EnableControlAction(0, 245, true)  -- Look behind
 
-            pcall(function() exports['ox_inventory']:closeInventory() end)
+            local now = GetGameTimer()
+            if now - lastInvClose > 500 then
+                lastInvClose = now
+                pcall(function() exports['ox_inventory']:closeInventory() end)
+            end
         end
     end
 end)

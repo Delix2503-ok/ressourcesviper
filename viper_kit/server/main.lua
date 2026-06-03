@@ -157,6 +157,14 @@ RegisterNetEvent('viper_kit:getMyKits', function()
     local used = {}
     for _, r in ipairs(usedRows) do used[r.kit_id] = true end
 
+    -- Tous les cooldowns du joueur en une seule requête (évite le N+1 dans la boucle)
+    local cdRows = MySQL.query.await(
+        'SELECT kit_id, TIMESTAMPDIFF(SECOND, last_claimed, NOW()) AS elapsed FROM viper_kit_cooldowns WHERE citizenid=?',
+        { citizenid }
+    ) or {}
+    local cooldowns = {}
+    for _, r in ipairs(cdRows) do cooldowns[r.kit_id] = tonumber(r.elapsed) or 0 end
+
     local mine = {}
     for _, kit in ipairs(all) do
         local perm = kit.permission
@@ -165,13 +173,9 @@ RegisterNetEvent('viper_kit:getMyKits', function()
             -- Cooldown restant
             local cdMins = tonumber(kit.cooldown_minutes) or 0
             if cdMins > 0 and not kit.one_time then
-                local cdRow = MySQL.query.await(
-                    'SELECT TIMESTAMPDIFF(SECOND, last_claimed, NOW()) AS elapsed FROM viper_kit_cooldowns WHERE citizenid=? AND kit_id=?',
-                    { citizenid, kit.id }
-                )
-                if cdRow and cdRow[1] then
-                    local elapsed = tonumber(cdRow[1].elapsed) or 0
-                    local cdSecs  = cdMins * 60
+                local elapsed = cooldowns[kit.id]
+                if elapsed then
+                    local cdSecs = cdMins * 60
                     if elapsed < cdSecs then
                         kit.cooldown_remaining = math.ceil((cdSecs - elapsed) / 60)
                     end
