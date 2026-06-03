@@ -108,9 +108,12 @@ RegisterCallback('removeInvite', function(source, id)
 end)
 
 RegisterCallback('gfx-crew:getMemberCoords', function(source, member)
-    local player = GetPlayerPed(member)
-    local playerCoords = GetEntityCoords(player)
-    return playerCoords
+    member = tonumber(member)
+    -- N'autoriser que les coords d'un membre du même squad (anti radar/wallhack)
+    if not member or not MySquad[source] or MySquad[member] ~= MySquad[source] then
+        return nil
+    end
+    return GetEntityCoords(GetPlayerPed(member))
 end)
 
 RegisterCallback('getInvites', function(source, data)
@@ -470,8 +473,13 @@ RegisterCallback("getSquadSettings", function(source)
 end)
 
 RegisterCallback("updateSquadSettings", function(source, data)
-    if not IsPlayerInASquad(source) then 
+    if not IsPlayerInASquad(source) then
         Notify(source, _L("not_in_crew"))
+        return
+    end
+    -- Seul le propriétaire peut modifier les réglages du squad
+    if not IsMemberOwner(source) then
+        Notify(source, "Seul le chef du squad peut modifier les réglages.")
         return
     end
 
@@ -480,11 +488,13 @@ RegisterCallback("updateSquadSettings", function(source, data)
         return Notify(source, "Squad not found")
     end
 
-    squad.name = data.name
-    squad.image = data.image
-    squad.privacy = data.privacy
-    squad.memberLimit = data.memberLimit
-    
+    if type(data) ~= 'table' then return end
+    squad.name  = tostring(data.name or squad.name):sub(1, 32)
+    squad.image = tostring(data.image or squad.image or ''):sub(1, 256)
+    if data.privacy ~= nil then squad.privacy = data.privacy end
+    local lim = tonumber(data.memberLimit)
+    if lim then squad.memberLimit = math.max(1, math.min(10, math.floor(lim))) end
+
     return true
 end)
 

@@ -154,7 +154,11 @@ RegisterNetEvent('viper-blanchiment:server:launderMoney', function(amount)
 
     local cleanAmount = math.floor(amount * GetRate(src))
 
-    Player.Functions.RemoveItem('black_money', amount)
+    -- N'ajouter l'argent propre que si le retrait a réellement réussi (anti-dupe)
+    if not Player.Functions.RemoveItem('black_money', amount) then
+        Notify(src, 'error', 'Erreur lors du retrait de l\'argent sale.')
+        return
+    end
     Player.Functions.AddMoney('cash', cleanAmount)
 
     if Config.Cooldown > 0 then

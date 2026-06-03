@@ -21,7 +21,11 @@ local function CheckWeaponLoadout(src)
             return inv and inv.items
         end)
     end
-    if not ok or not items then return true end  -- API introuvable → laisser passer
+    if not ok or not items then
+        -- Fail-closed : ne jamais désactiver silencieusement la restriction d'arme
+        print('^1[viper_ranked]^7 CheckWeaponLoadout: API ox_inventory introuvable — accès Ranked refusé.')
+        return false, 'Vérification d\'inventaire indisponible, réessaie.'
+    end
 
     local allowedCount = 0
     local otherWeapon  = nil
