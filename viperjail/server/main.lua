@@ -269,7 +269,7 @@ RegisterNetEvent('viperjail:admin:unjailOffline', function(citizenid)
     local rows = dbQuery('SELECT player_name FROM viperjail_prisoners WHERE citizenid = ?', { cid })
     local pName = (rows and rows[1]) and rows[1].player_name or cid
     dbExec('DELETE FROM viperjail_prisoners WHERE citizenid = ?', { cid })
-    LogJailAction(src, pName, cid, 'UNJAIL', nil, nil)
+    LogJailAction(src, pName, '', cid, 'UNJAIL', nil, nil, nil)
 end)
 
 RegisterNetEvent('viperjail:admin:addLocation', function(name)

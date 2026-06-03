@@ -148,7 +148,14 @@ RegisterNetEvent('vipercar:server:DeleteNPC', function(id)
     end)
 end)
 
+-- Whitelist des modèles autorisés (anti spawn de véhicule arbitraire)
+local AllowedModels = {}
+for _, v in ipairs(Config.Vehicles or {}) do
+    if v.model then AllowedModels[string.lower(v.model)] = true end
+end
+
 RegisterNetEvent('vipercar:server:SpawnVehicle', function(model, spawnData)
     local src = source
+    if not model or not AllowedModels[string.lower(tostring(model))] then return end
     TriggerClientEvent('vipercar:client:DoSpawnVehicle', src, model, spawnData)
 end)

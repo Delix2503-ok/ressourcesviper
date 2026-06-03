@@ -186,11 +186,16 @@ end)
 -- ─── /r : auto-revive dans zone ──────────────────────────────────────────
 RegisterNetEvent('vipertpramp:selfRevive', function()
     local src = source
+    -- Exiger une mort validée serveur-side par redzone (anti self-revive arbitraire)
+    local ok, dead = pcall(function() return exports['viperpvp_redzone']:IsPlayerDead(src) end)
+    if not ok or not dead then return end
     local c   = GetEntityCoords(GetPlayerPed(src))
     for _, z in pairs(ZonesDB) do
         local dx = c.x - z.x
         local dy = c.y - z.y
         if (dx*dx + dy*dy) <= (z.radius * z.radius) then
+            -- Effacer l'état mort côté redzone pour stopper loot/revive ciblé
+            pcall(function() exports['viperpvp_redzone']:ClearPlayerDeath(src) end)
             TriggerClientEvent('redzone:revived', src)
             return
         end

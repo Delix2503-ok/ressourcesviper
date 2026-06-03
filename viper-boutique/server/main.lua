@@ -567,6 +567,12 @@ RegisterNetEvent('boutique:saveVehicleMods', function(vehicleModel, mods)
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
     local citizenid = Player.PlayerData.citizenid
+    -- Vérifier que le joueur possède bien ce véhicule avant d'écrire les mods
+    local owns = MySQL.scalar.await(
+        'SELECT COUNT(*) FROM boutique_vehicles WHERE citizenid = ? AND vehicle_model = ?',
+        { citizenid, tostring(vehicleModel) }
+    )
+    if not owns or owns == 0 then return end
     local bodyModsJson = nil
     if mods.body_mods then
         if type(mods.body_mods) == 'table' then
