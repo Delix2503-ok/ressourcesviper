@@ -102,7 +102,15 @@ RegisterNetEvent('viper_ranked:buyItem', function(itemId)
         return
     end
 
-    MySQL.query.await('UPDATE ranked_stats SET ranked_coins=ranked_coins-? WHERE citizenid=?', { item.price, cid })
+    -- Débit atomique : la condition empêche le dépassement de solde en cas d'achats concurrents
+    local affected = MySQL.update.await(
+        'UPDATE ranked_stats SET ranked_coins=ranked_coins-? WHERE citizenid=? AND ranked_coins>=?',
+        { item.price, cid, item.price }
+    )
+    if not affected or affected == 0 then
+        TriggerClientEvent('ox_lib:notify', src, { title='Boutique', description='Pas assez de RC !', type='error' })
+        return
+    end
     MySQL.insert.await('INSERT INTO ranked_purchases (citizenid, shop_item_id) VALUES (?,?)', { cid, itemId })
     exports.ox_inventory:AddItem(src, item.item_name, 1)
 

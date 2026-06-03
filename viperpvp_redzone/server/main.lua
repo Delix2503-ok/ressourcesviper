@@ -967,6 +967,7 @@ RegisterNetEvent('redzone:loot:request', function(targetId)
     local src = source
     targetId = tonumber(targetId)
     if not targetId or targetId == src then return end
+    if DeadPlayers[src] then return end  -- un joueur mort ne peut pas looter
     if not DeadPlayers[targetId] then
         TriggerClientEvent('QBCore:Notify', src, "Ce joueur n'est pas à terre.", 'error')
         return

@@ -18,18 +18,6 @@ RegisterServerEvent("thug-killfeed:server:addFeed", function(streak, data)
     end
 end)
 
-local url = ""
-
-RegisterServerEvent('initUrl')
-AddEventHandler('initUrl', function(u)
-    url = u
-end)
-
-function notify(d)
-    PerformHttpRequest(url, function(err, text, headers) end, 'POST', json.encode(d), { ["Content-Type"] = "application/json" })
-end
-
-RegisterServerEvent('triggerNotify')
-AddEventHandler('triggerNotify', function(d)
-    notify(d)
-end)
+-- Webhook events supprimés : 'initUrl' permettait à n'importe quel client de fixer
+-- l'URL du webhook (vol/exfil) et 'triggerNotify' d'envoyer un payload arbitraire.
+-- Aucun appelant légitime côté client. Code mort + surface d'attaque → retiré.

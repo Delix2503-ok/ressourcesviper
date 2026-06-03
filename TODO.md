@@ -50,15 +50,17 @@ Cocher `[x]` quand fait. Format : `resource/fichier:ligne`.
 
 ## 🟠 HIGH — exploits + dupe / intégrité
 
-- [ ] **viperpvp_redzone/server/main.lua:948** — `loot:request` gardé seulement sur mort déclarée client → looter n'importe qui.
-- [ ] **viper-blanchiment/server/main.lua:157** — retour `RemoveItem` **ignoré** puis `AddMoney` → dupe black_money. Wrap `if RemoveItem() then`.
-- [ ] **viper_kit/server/main.lua:187** — `claim` TOCTOU → spam = double-claim kits one-time. Insert atomique + check affected rows.
-- [ ] **viper_ranked/server/shop.lua:79** — `buyItem` check-then-act → overspend cross-items. `UPDATE ... WHERE coins>=?` atomique.
-- [ ] **viper_ranked/server/queue.lua:24** — `CheckWeaponLoadout` **fail-open** sur erreur API → restriction off en silence. Fail-closed.
-- [ ] **thug-killfeeds/server/main.lua:23** — `initUrl` net event → n'importe quel client hijack le webhook Discord. Hardcode serveur-side, supprimer l'event.
-- [ ] **vipersquad/server/server.lua:472** — `updateSquadSettings` n'importe quel membre set name/image/memberLimit, pas de check owner + pas de clamp.
-- [ ] **vipersquad/server/server.lua:110** — `getMemberCoords` renvoie coords de **n'importe quel** player id → wallhack/radar. Vérifier même squad.
-- [ ] **viper-emote/Client/Emote.lua:318** — `if ChosenDict == "MaleScenario" or "Scenario"` toujours-vrai (literal truthy). → `or ChosenDict == "Scenario"`.
+> ✅ Lot corrigé sur branche `fix/high-security` (2026-06-03). Vérifié par revue manuelle — **test runtime serveur FiveM à faire**.
+
+- [x] **viperpvp_redzone/server/main.lua:948** — `loot:request` gardé seulement sur mort déclarée client. → ✅ Ajout guard `if DeadPlayers[src] then return` (looter mort interdit). La cible doit avoir une mort validée serveur (déjà durci dans les crits).
+- [x] **viper-blanchiment/server/main.lua:157** — retour `RemoveItem` ignoré → dupe black_money. → ✅ `if not RemoveItem() then notify+return end` avant `AddMoney`.
+- [x] **viper_kit/server/main.lua:187** — `claim` TOCTOU → double-claim. → ✅ Verrou `Claiming[src]` + corps enveloppé dans `pcall(doClaim)` (déverrouillage garanti).
+- [x] **viper_ranked/server/shop.lua:79** — `buyItem` check-then-act → overspend. → ✅ Débit atomique `UPDATE ... WHERE ranked_coins>=?` + check affected rows avant l'insert d'achat.
+- [x] **viper_ranked/server/queue.lua:24** — `CheckWeaponLoadout` fail-open. → ✅ Fail-closed : refus + print serveur si l'API ox_inventory est introuvable.
+- [x] **thug-killfeeds/server/main.lua:23** — `initUrl`/`triggerNotify` webhook hijack. → ✅ Supprimés (code mort, aucun appelant client légitime — c'était l'infra du backdoor).
+- [x] **vipersquad/server/server.lua:472** — `updateSquadSettings` sans check owner ni clamp. → ✅ `IsMemberOwner` requis + name/image cappés, `memberLimit` clampé 1-10, validation type.
+- [x] **vipersquad/server/server.lua:110** — `getMemberCoords` renvoie coords de n'importe qui. → ✅ Renvoie nil sauf si `member` dans le même squad (`MySquad[member] == MySquad[source]`).
+- [x] **viper-emote/Client/Emote.lua:318** — `or "Scenario"` toujours-vrai. → ✅ `if ChosenDict == "MaleScenario" or ChosenDict == "ScenarioObject" or ChosenDict == "Scenario"`.
 
 ---
 

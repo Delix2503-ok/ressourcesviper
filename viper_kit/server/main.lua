@@ -184,8 +184,12 @@ RegisterNetEvent('viper_kit:getMyKits', function()
 end)
 
 -- ─── Joueur : réclamer un kit ────────────────────────────────────────────────
+local Claiming = {}  -- verrou anti-spam (TOCTOU) par joueur
 RegisterNetEvent('viper_kit:claim', function(kitId)
     local src = source
+    if Claiming[src] then return end
+    Claiming[src] = true
+    local function doClaim()
     local citizenid = GetCitizenId(src)
     if not citizenid then return end
 
@@ -233,4 +237,7 @@ RegisterNetEvent('viper_kit:claim', function(kitId)
         exports.ox_inventory:AddItem(src, item.item, tonumber(item.amount) or 1)
     end
     Notify(src, 'Kit **' .. kit.name .. '** reçu !', 'success')
+    end
+    pcall(doClaim)
+    Claiming[src] = nil
 end)
