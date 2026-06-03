@@ -244,9 +244,11 @@ end, false)
 -- ============================================================
 --  /safe → barre bleue 20s → teleport (annule si bouge)
 -- ============================================================
+local safeCoords = nil
 RegisterNetEvent('viper-hud:client:startSafe', function(coords)
     if safeInProgress then return end
     safeInProgress = true
+    safeCoords = coords
 
     local startPos = GetEntityCoords(PlayerPedId())
     SendNUIMessage({ action = 'startSafeProgress' })
@@ -273,17 +275,17 @@ RegisterNetEvent('viper-hud:client:startSafe', function(coords)
         safeInProgress = false
     end)
 
-    -- Callback NUI quand la barre est terminee (joueur n'a pas bouge)
-    -- Note: ce callback n'est plus appele si cancelProgress a ete envoye
-    RegisterNUICallback('safeDone', function(d, cb)
-        if coords then
-            local ped = PlayerPedId()
-            SetEntityCoords(ped, coords.x, coords.y, coords.z, false, false, false, false)
-            SetEntityHeading(ped, coords.h)
-        end
-        safeInProgress = false
-        cb('ok')
-    end)
+end)
+
+-- Callback NUI quand la barre est terminee — enregistre une seule fois au scope fichier
+RegisterNUICallback('safeDone', function(d, cb)
+    if safeInProgress and safeCoords then
+        local ped = PlayerPedId()
+        SetEntityCoords(ped, safeCoords.x, safeCoords.y, safeCoords.z, false, false, false, false)
+        SetEntityHeading(ped, safeCoords.h)
+    end
+    safeInProgress = false
+    cb('ok')
 end)
 
 -- ============================================================

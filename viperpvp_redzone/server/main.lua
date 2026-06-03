@@ -802,6 +802,8 @@ RegisterNetEvent('redzone:death:clear', function()
     DeadPlayers[source] = nil
 end)
 
+local Carriers = {}  -- [carrierId] = targetId — déclaré AVANT revive:attempt qui l'utilise
+
 RegisterNetEvent('redzone:revive:attempt', function(targetId)
     local src = source
     targetId = tonumber(targetId)
@@ -834,8 +836,6 @@ RegisterNetEvent('redzone:revive:attempt', function(targetId)
 
     TriggerClientEvent('redzone:revived', targetId)
 end)
-
-local Carriers = {}  -- [carrierId] = targetId
 
 AddEventHandler('playerDropped', function()
     local src = source
